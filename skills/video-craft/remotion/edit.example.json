@@ -1,0 +1,69 @@
+{
+  "src": null,
+  "durationSec": 8,
+  "theme": "dark-lime",
+  "cuts": [
+    3,
+    6
+  ],
+  "zoom": [
+    1.0,
+    1.12
+  ],
+  "shiftY": 0,
+  "sfx": [],
+  "guides": false,
+  "beats": [
+    {
+      "kind": "top-title",
+      "props": {
+        "line1": "口播剪辑",
+        "line2": "三步剪出网感",
+        "at": 0.2,
+        "until": 7.6
+      }
+    },
+    {
+      "kind": "chest-big",
+      "props": {
+        "small": "剪出网感的第一步",
+        "big": "删停顿",
+        "at": 0.6,
+        "until": 3.4
+      }
+    },
+    {
+      "kind": "stack-list",
+      "props": {
+        "items": [
+          {
+            "text": "先删停顿",
+            "at": 3.6
+          },
+          {
+            "text": "再对节奏",
+            "at": 4.3
+          },
+          {
+            "text": "最后配音效",
+            "at": 5.0
+          }
+        ],
+        "punch": {
+          "text": "三步就够",
+          "at": 5.8
+        },
+        "until": 7.0
+      }
+    },
+    {
+      "kind": "end-cta",
+      "props": {
+        "label": "找我聊聊",
+        "hint": "点左下角",
+        "at": 6.4,
+        "until": 7.8
+      }
+    }
+  ]
+}

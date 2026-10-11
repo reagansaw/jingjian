@@ -1,0 +1,24 @@
+{
+  "name": "video-craft-starter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "video-craft skill 的可运行起步项目：一条口播 + 一份 edit.json → 带版式 / 小标题 / 结尾行动的竖屏成片",
+  "scripts": {
+    "dev": "remotion studio index.ts",
+    "still": "remotion still index.ts",
+    "render": "remotion render index.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "node scripts/check-edit.mjs edit.json",
+    "final": "node scripts/check-edit.mjs edit.json && remotion render index.ts Edit out.mp4 --props=edit.json --concurrency=2"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.484",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.484"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.1",
+    "typescript": "5.5.4"
+  }
+}

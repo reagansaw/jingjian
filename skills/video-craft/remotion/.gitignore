@@ -1,0 +1,6 @@
+node_modules/
+out/
+*.mp4
+!public/**/.gitkeep
+public/input*
+edit.json

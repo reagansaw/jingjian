@@ -1,0 +1,486 @@
+{
+ "entries": {
+  "chest-big": {
+   "title": "Chest line + big word",
+   "use": "A setup line plus one key word. The most-used layout — at least 3 per talking-head video.",
+   "avoid": "Three in a row turns into \"everything is the point = nothing is the point\".",
+   "sfx": "Shrink-in + thud (`dong` / `peng`)"
+  },
+  "strike-swap": {
+   "title": "Strike out, swap the claim",
+   "use": "Correct a common misconception: the old claim gets crossed out, the new one slams in.",
+   "avoid": "Keep the old claim short (≤6 characters) so the strike lands in one stroke.",
+   "sfx": "Strike = paper rustle (`sword`/`paper`) · new word = stamp/thud (`stamp`)"
+  },
+  "left-stair": {
+   "title": "Left-aligned stair",
+   "use": "Three-step progression: cause → process → result. Each line indents further and the previous line dims.",
+   "avoid": "More than 3 lines; keep each line short and put the keyword in big type.",
+   "sfx": "One ding per line, a heavier hit on the last line"
+  },
+  "a-to-b": {
+   "title": "A → B (cause and effect)",
+   "use": "\"The more A, the more B\" / \"because A, therefore B\" — one arrow joins before and after.",
+   "avoid": "A and B ≤ 4 characters each, or the arrow has no room.",
+   "sfx": "A soft · arrow whoosh · B thud (`dong2`)"
+  },
+  "two-column": {
+   "title": "Two-column compare",
+   "use": "Two options side by side. The centre line draws first, then one block on each side.",
+   "avoid": "Wildly uneven text lengths look lopsided; keep each column ≤ 3 lines.",
+   "sfx": "Centre line whoosh · one ding per side"
+  },
+  "bars": {
+   "title": "Highlighter bars",
+   "use": "Two parallel points, like a highlighter swipe (selling points, results).",
+   "avoid": "Keep bar text to 2–5 characters; more than 2 bars steals focus from the face.",
+   "sfx": "One ding or cash-register per bar (`cash`, `gold`)"
+  },
+  "vertical-wall": {
+   "title": "Right-wall vertical text",
+   "use": "A 2–4 character key word stacked on the right edge. Keeps the face clear — good for emotion/conclusion words.",
+   "avoid": "More than 4 characters; if the face sits on the right, mirror it to the left wall.",
+   "sfx": "One hit per character, heaviest on the last"
+  },
+  "dark-question": {
+   "title": "Dim + big question",
+   "use": "Low voice, rhetorical question, suspense. Edges darken, only one question stays, the camera creeps in.",
+   "avoid": "Max 1–2 per video, or it loses weight.",
+   "sfx": "A puzzled sound (`huh`) — or total silence"
+  },
+  "chapter": {
+   "title": "Chapter list 01/02",
+   "use": "Explaining a method or steps: big number + title + ticked cards, with the picture lifted so text sits on the chest.",
+   "avoid": "One number at a time; ≤ 2 cards.",
+   "sfx": "Number = thud · each card = ding"
+  },
+  "giant-fill": {
+   "title": "Giant-character fill",
+   "use": "The punchline: one huge hollow character above the head fills from the bottom as you say the key line.",
+   "avoid": "One character only; at most once per video — save it for the last line.",
+   "sfx": "Outline appears = whoosh · fill = impact (`filmdong`)"
+  },
+  "typed-quote": {
+   "title": "Round window + typed quote",
+   "use": "A quote/golden line: black background, a round portrait window on top, your words typed out character by character below.",
+   "avoid": "Each line ≤ 9 characters; each character must appear when you actually say it.",
+   "sfx": "Typing sound (one per character)"
+  },
+  "signature": {
+   "title": "Signature card",
+   "use": "Outro: name + one-line persona + series name. Dimmed base, no heavy SFX, a clean ending.",
+   "avoid": "No more than 3 lines; no new information.",
+   "sfx": "None (or one very soft ding)"
+  },
+  "split-retention": {
+   "title": "Card over face · retention curve",
+   "use": "Hook / talking about \"nobody watches to the end\": a curve card draws on top, your portrait window below. Give viewers a visual hook in the first 3 seconds — not just captions.",
+   "avoid": "Don't put paragraphs in the card — one graphic plus one word; max 2 per video.",
+   "sfx": "Whoosh → tech-reveal → sigh (on the \"swipe away\" beat)"
+  },
+  "split-compare": {
+   "title": "Card over face · compare timelines",
+   "use": "\"Messy vs tidy\", \"beginner vs pro\": two small graphics side by side (✗ / ✓) on top, you talking below.",
+   "avoid": "The two sides must look clearly different (messy vs tidy) or the contrast is lost.",
+   "sfx": "Whoosh → puzzled (messy) → correct (tidy)"
+  },
+  "phone-swipe": {
+   "title": "Phone swipe-away",
+   "use": "Talking about viewers swiping away: your video plays inside a phone on black, three lines on the right build up, and on the key line the phone flicks upward.",
+   "avoid": "Max three lines of ≤ 6 characters (only ~360px of width on the right); don't chain it right after left-stair.",
+   "sfx": "Bubble → click → suspense (`sus`) → swish (the swipe)"
+  },
+  "reporter": {
+   "title": "Reporter stand-up (cut-out in front)",
+   "use": "Steps/lists: black background, a chapter card on top, you cut out and standing in front. Needs per-frame matting (macOS: Apple Vision).",
+   "avoid": "Don't use it without matting (the preview shows a stand-in); one number per card.",
+   "sfx": "Pop-up → bowl ding → prompt → correct"
+  },
+  "pip-broll": {
+   "title": "Full-screen B-roll + PIP face",
+   "use": "When you name a concrete thing (product, place, animal…): B-roll fills the screen and you shrink to a white-ringed round window. Rotate the window top-right / top-left / bottom-centre; don't cover the subject.",
+   "avoid": "B-roll with no clear subject looks empty; keep the window off the label tag; don't reuse the same corner 3 times.",
+   "sfx": "Whoosh (B-roll in) → bubble (window pops)"
+  },
+  "split-broll": {
+   "title": "Face on top, B-roll below (split screen)",
+   "use": "Talk while showing something: you on top (face stays put), a B-roll strip below, named with a yellow label tag.",
+   "avoid": "No captions on the strip (captions stay on you, y ≤ 1230); give static images a slow push.",
+   "sfx": "Swish (strip rises) → prompt (label tag)"
+  },
+  "broll-bottom": {
+   "title": "Bottom slide-in B-roll strip",
+   "use": "You stay full-screen; B-roll slides up over the lower ~45%. The lightest way to insert B-roll — good for a noun that flashes by.",
+   "avoid": "The strip covers the chest band, so captions must move out of the way (above the strip, or hidden for the moment).",
+   "sfx": "Whoosh (slide in) → nothing (keep the sound clean)"
+  },
+  "poster-hero": {
+   "title": "Poster hero word + dim",
+   "use": "A key noun / pain word: a full-screen poster or AI image dimmed 40% and one gold (benefit) or red (pain) word slams in, then slowly grows across the shot.",
+   "avoid": "Only the 2–3 most important words per video; keep it ≤ 4 characters or the type gets too small.",
+   "sfx": "Stamp (`stamp`/`peng`) → cinematic impact when it reaches full size"
+  },
+  "label-hero": {
+   "title": "Label + hero overlap",
+   "use": "A small label stacked onto a big word (like \"GMV\" pressed onto \"20M\") so a number or key term reads at a glance; optionally add a white-box red-text mini tag.",
+   "avoid": "Don't use the same colour for label and hero; keep the hero ≤ 4 characters or it shrinks too much.",
+   "sfx": "Ding → stamp / impact"
+  },
+  "spread-hero": {
+   "title": "Wide-tracked hero word",
+   "use": "A 1–3 character hero word with tracking stretched across the full width, like a poster headline (\"DON'T / GAMBLE\"). Top line yellow, bottom line white or red.",
+   "avoid": "More than 3 characters falls apart when spread; use only for the harshest line, 1–2 times per video.",
+   "sfx": "Impact / punch / heavy hit"
+  },
+  "ghost-word": {
+   "title": "Ghost word (giant translucent glyph)",
+   "use": "A giant translucent word as background (\"烦\", \"WHY\", \"100%\") with a small line on top that names the topic.",
+   "avoid": "Don't put it over the face (this library keeps it in the chest band); no more than 3 glyphs or it turns to mush.",
+   "sfx": "Whoosh → thud"
+  },
+  "quote-card": {
+   "title": "Quote card (dimmed + blurred)",
+   "use": "Background dims and blurs; a numbered white-box tag plus the quoted line with the key words in yellow; a small right-aligned source line. For data, quotes and findings.",
+   "avoid": "Max 2 quotes of ≤ 2 lines each; keep the source short; don't use it for subjective claims that have no source.",
+   "sfx": "Prompt tone / typing"
+  },
+  "chapter-tag": {
+   "title": "Chapter tag",
+   "use": "A yellow rounded block (italic number) + arrow + dashed-outline title — marks \"point 1\", lighter than a giant number.",
+   "avoid": "One number at a time; pick either this or the Chapter list, don't stack them.",
+   "sfx": "Ding / prompt tone"
+  },
+  "motion-fade": {
+   "title": "Fade in",
+   "use": "The workhorse base: knowledge, narration, ordinary lines; never steals focus (110 uses in the source pack — #1).",
+   "avoid": "Don't use it when you need emphasis; don't use it on every line.",
+   "sfx": "Paper rustle / soft whoosh, or none"
+  },
+  "motion-slide-up": {
+   "title": "Slide up",
+   "use": "Gentle entrances: titles, list items one by one — a small upward drift plus fade.",
+   "avoid": "Many lines in the same direction look stiff.",
+   "sfx": "Soft whoosh / swish"
+  },
+  "motion-reveal-up": {
+   "title": "Reveal upward",
+   "use": "Wipes on from the bottom upward: definitions and conclusions, a little ceremony.",
+   "avoid": "Small text hides the wipe.",
+   "sfx": "Swish"
+  },
+  "motion-curtain": {
+   "title": "Curtain open",
+   "use": "Opens from the centre outward: opening titles, chapter names; a knowledge / classical feel.",
+   "avoid": "Drags in fast sequences.",
+   "sfx": "Paper rustle / whoosh"
+  },
+  "motion-grow": {
+   "title": "Grow",
+   "use": "Numbers and key points: scale up from half size, a \"growing in\" feel.",
+   "avoid": "Don't combine with Slam in the same line.",
+   "sfx": "Click / ding / spring"
+  },
+  "motion-grow-soft": {
+   "title": "Soft grow",
+   "use": "Subtle motion for caption-level emphasis (a 6% scale).",
+   "avoid": "Too weak when you need impact.",
+   "sfx": "Soft ding"
+  },
+  "motion-shrink": {
+   "title": "Shrink in",
+   "use": "Emphasis and reversals: starts slightly large and settles — a \"dropping in\" feel (80 uses — #2).",
+   "avoid": "Not for long sentences (the scaling pushes them out of bounds).",
+   "sfx": "Thud / impact / water drop"
+  },
+  "motion-slam": {
+   "title": "Slam",
+   "use": "The single heaviest word: lands from 3× size to 1× — must have a heavy hit.",
+   "avoid": "Max 2–3 per video; without a heavy SFX it feels hollow.",
+   "sfx": "Boom / cinematic thud"
+  },
+  "motion-glow-blur": {
+   "title": "Glow blur",
+   "use": "Emotional, mystical, soft lines: blurred → sharp with a little bloom (106 uses across three variants).",
+   "avoid": "Too slow (0.7 s) for fast-paced words.",
+   "sfx": "Water drop / bell / magic"
+  },
+  "motion-blur-left": {
+   "title": "Blur-slide left",
+   "use": "Topic changes and transition-feel lines: slides in from the right with motion blur.",
+   "avoid": "Not for text sitting on the right side.",
+   "sfx": "Whoosh / swish"
+  },
+  "motion-rise-random": {
+   "title": "Random rise",
+   "use": "Knowledge / book-type lines: each character floats up from a different height.",
+   "avoid": "Gets messy beyond ~8 characters.",
+   "sfx": "Paper rustle"
+  },
+  "motion-wave-bounce": {
+   "title": "Wave bounce",
+   "use": "Light, playful words: characters bounce in one after another like a wave.",
+   "avoid": "Wrong tone for legal / financial / serious content.",
+   "sfx": "Bubble / pop"
+  },
+  "motion-typewriter": {
+   "title": "Typewriter",
+   "use": "Definitions, keywords, a \"typing\" feel; the safest pairing is a typing sound (68 uses).",
+   "avoid": "Slow for long lines (0.075 s per character).",
+   "sfx": "Typing sound (one per character)"
+  },
+  "motion-develop": {
+   "title": "Develop (char by char)",
+   "use": "Calm, literary lines: each character develops from blurry grey to sharp.",
+   "avoid": "Drags beyond ~0.7 s; keep ≤ 8 characters.",
+   "sfx": "None, or water drop / airy"
+  },
+  "motion-leap": {
+   "title": "Leap in",
+   "use": "Punchy short words: leaps up into place with a little overshoot.",
+   "avoid": "Not for long sentences.",
+   "sfx": "Ding / spring"
+  },
+  "motion-roll-in": {
+   "title": "Roll in",
+   "use": "Numbers, money, deals: rolls up like a slot machine.",
+   "avoid": "Long text is unreadable mid-roll.",
+   "sfx": "Cash register / coin"
+  },
+  "motion-tracking-in": {
+   "title": "Tracking in",
+   "use": "Titles and golden lines: characters gather from wide spacing into place — a \"focusing\" feel (52 uses across two variants).",
+   "avoid": "The effect is hard to see with fewer than 3 characters.",
+   "sfx": "Soft whoosh"
+  },
+  "motion-echo": {
+   "title": "Echo",
+   "use": "Shouts, strong emotion, \"Attention!\": the word pops and sends echo rings outward.",
+   "avoid": "Once or twice per video; not for long lines.",
+   "sfx": "Heavy thud / impact"
+  },
+  "theme-biz-gold-red": {
+   "title": "Business gold & red",
+   "use": "Law, finance, loans, property, education, business, cars, study-abroad — credible and crisp. Smiley Sans as the main font + gold #ffbf17 / deep red #b71c1c (52% of the industry clips). Entrances lean to fade / grow / shrink / glow-blur; SFX lean to whoosh and impact.",
+   "avoid": "Gold = benefit and red = pain within a layout; don't add a third accent colour.",
+   "sfx": "Whoosh → impact / whirl"
+  },
+  "theme-guofeng-cream": {
+   "title": "Classical cream",
+   "use": "Wellness, women's emotion / growth, psychology, relationships, yoga, custom homes — gentle and refined. Serif fonts + cream #fff589 / deep red. Entrances lean to fade / grow-soft / curtain / develop; SFX lean to paper and whoosh.",
+   "avoid": "The pack uses Classical / Jinling fonts (not bundled); this library falls back to Source Han Serif Heavy, so the refined feel is weaker.",
+   "sfx": "Paper rustle → whoosh"
+  },
+  "theme-knowledge-yellow": {
+   "title": "Knowledge yellow",
+   "use": "Paid knowledge, career, founder IP, business coaches, used cars, property agents, reading, tax — bright and practical. Douyin Meihao as the supporting font + bright yellow #fff589 / deep red. Entrances lean to shrink / fade / curtain / blur-left; SFX lean to swish, paper, typing.",
+   "avoid": "The densest pacing (about 78 blocks/min and 54 SFX/min — medians for 15–60 s shorts); don't copy it to long videos.",
+   "sfx": "Swish → typing"
+  },
+  "emo-cry": {
+   "title": "Cry (emotion loading)",
+   "use": "One word carries a negative emotion: the text starts white and red fills it from the bottom like liquid (about 0.7 s), tracking stretched across the width. For words like \"breakdown\", \"pain\", \"crying\".",
+   "avoid": "1–2 per video; not for long lines; red is the pain colour, so don't stack it on layouts that already use red as the accent.",
+   "sfx": "Heavy thud / sigh"
+  },
+  "emo-surprise": {
+   "title": "Surprise (wave)",
+   "use": "Surprise and sudden turns: two characters bob out of phase, each tilted about ±8°, looping about 1 s, in gold.",
+   "avoid": "Gets messy with more characters (2–3 is best); wrong tone for serious content.",
+   "sfx": "Surprise sound / pop"
+  },
+  "emo-joy": {
+   "title": "Joy (text glow)",
+   "use": "Joy, good news, success: pale-yellow text with radiating light rays pulsing in beat behind it, about 1 s per cycle.",
+   "avoid": "The rays wash over what is behind; don't use it together with large B-roll; 1–2 per video.",
+   "sfx": "Ding / magic / cheer"
+  },
+  "emo-shout": {
+   "title": "Shout (megaphone)",
+   "use": "Shouting, calling for help, \"Attention!\": two characters tilt outward, fade in, then sway gently while echoes ripple outward.",
+   "avoid": "Short words of 2–3 characters only; the echo grows beyond the text, so leave room on both sides.",
+   "sfx": "Heavy thud / impact"
+  },
+  "glass-hero": {
+   "title": "Glass text (translucent gradient)",
+   "use": "One hero word as \"glass text\": a gold gradient, but the light/dark texture of the picture behind shows through it, like frosted glass. For opening titles, brand words, the one big word in a video.",
+   "avoid": "The picture behind needs light/dark variation (wood grain, brick, curtains) — a flat dark wall barely shows the effect; it must not sit inside a wrapper with transform / opacity / filter (the blend stops working).",
+   "sfx": "Whoosh → magic / sparkle"
+  },
+  "text-behind": {
+   "title": "Text behind the person (matte)",
+   "use": "Big text placed behind the person: background → text → matte PNG on top, so the person covers part of the text and the frame gains depth. Needs per-frame matting (macOS: Apple Vision).",
+   "avoid": "Don't use it without a matte; put the text inside the same camera container as the video (so it follows hand-shake / push-ins); a frame without a matte draws no text — better no text than text across the face; keep the window to ~3 s (per-frame matting is slow).",
+   "sfx": "Thud / impact"
+  },
+  "glass-behind": {
+   "title": "Glass text behind the person",
+   "use": "Both together: a gold glass word behind the person, texture showing through, the person covering part of it. The most premium-looking big text.",
+   "avoid": "The limits of Glass text and Text behind combined; at most once per video — save it for the opening or the one key line.",
+   "sfx": "Whoosh → thud / magic"
+  },
+  "top-title": {
+   "title": "Persistent top title",
+   "use": "A two-line series name pinned to the top for the whole video (white + accent colour): someone who scrolls in late still knows the topic. Appears at the start and stays until just before the end.",
+   "avoid": "Only when there is room above the head; a big face (head top ≈ y230) covers it, so lower the picture or make headroom first. Keep it under 8 characters, not a sentence.",
+   "sfx": "None (background information, it doesn't sound)"
+  },
+  "stack-list": {
+   "title": "Stacking list (older lines dim)",
+   "use": "For 2–3 points: lines appear one by one, the older ones dim when a new one lands, and a closing line drops on top as a big word.",
+   "avoid": "More than 3 lines (with the closing word) or 4 (without) overflows the chest band; keep each line ≤ 8 characters.",
+   "sfx": "A ding per line, a heavy hit on the closing word"
+  },
+  "end-cta": {
+   "title": "Ending action (pill + arrow)",
+   "use": "The ending tells them where to tap next: a blue pill button + an arrow pointing to the bottom-left. Almost every industry video ends this way.",
+   "avoid": "The wording comes from the user; if there is no account / contact, don't invent one. Don't stack it with the signature card (pick one, or pill above and signature below).",
+   "sfx": "One very light ding, no heavy sound effect"
+  }
+ },
+ "ui": {
+  "zh": {
+   "htmlLang": "zh-CN",
+   "title": "video-craft 版式库",
+   "eyebrow": "VIDEO-CRAFT · SKILL LIBRARY",
+   "h1a": "口播剪出",
+   "h1b": "网感",
+   "h1c": "挑一个版式就能用",
+   "lede1": "给 Claude Code 用的口播剪辑 skill。这里是它会用到的 ",
+   "lede2": " 个文字版式、字搭配、文字动画、换场和抖音精剪画面——悬停预览，点开看什么时候用、什么时候别用、配什么音效。",
+   "search": "搜索：划走、对比、金句、钩子…",
+   "chipAll": "全部",
+   "chipLayout": "文字版式",
+   "chipScene": "换场",
+   "chipJj": "抖音精剪",
+   "safe": "<b>所有字都守安全区：</b>x 60–1010、y 250–1250（y&gt;900 时右边收到 950）。字幕最多两行、每行 ≤12 字。下面的预览用占位人形，不是真人。",
+   "count": "{n} / {m} 个",
+   "empty": "没有找到匹配的版式，换个词试试。",
+   "useH": "什么时候用",
+   "avoidH": "别用在",
+   "sfxH": "配什么音效",
+   "codeH": "代码",
+   "cpPrompt": "复制给 AI 的指令",
+   "cpCode": "复制代码",
+   "toastPrompt": "已复制，粘贴给 Claude Code",
+   "toastCode": "代码已复制",
+   "badgeScene": "换场",
+   "badgeJj": "精剪",
+   "idPre": "图鉴 ",
+   "limH": "已知限制",
+   "lim": [
+    "预览是静态示例，<b>动态手感（砸字力度、淡出时机）要自己看一遍</b>。",
+    "「记者出镜」需要逐帧抠像，目前只有 macOS（Apple Vision）能跑。",
+    "音效和 BGM 不附带（版权），请自备可商用文件，按 id 命名。",
+    "精剪的素材（B-roll）是占位画面；真用时换成实拍 / stock / AI 图。",
+    "没有自动越界检测：靠渲染时自动缩小推回 + 安全区红框目视检查。",
+    "文字动画预览是循环播放的示例；只核对了动到一半的静帧，没有逐帧核对速度曲线。"
+   ],
+   "prompt": "用 video-craft skill 剪我的口播。在合适的一句用「{zh}」（{kind}，id: {id}）：{use}\n注意：{avoid}\n所有字守安全区（x60–1010、y250–1250，y>900 右边 950），字幕最多两行、每行≤12 字。音效参考：{sfx}。",
+   "kinds": {
+    "layout": "文字版式",
+    "scene": "换场",
+    "jj": "抖音精剪",
+    "mo": "文字动画",
+    "th": "行业主题",
+    "em": "情绪字",
+    "mx": "抠像 / 玻璃字",
+    "sk": "骨架（一条片的排法）"
+   },
+   "langBtn": "EN",
+   "chipMo": "文字动画",
+   "badgeMo": "动画",
+   "chipTh": "行业主题",
+   "badgeTh": "主题",
+   "sfx": {
+    "title": "音效配对表",
+    "lede": "入场动画 → 最常配的音效。来自 66 个行业成片的统计（每个文字片段 ±0.5 秒内最近的音效，共 {n} 对）。",
+    "fact1": "<b>{pct}%</b> 的音效和字<b>在同一帧</b>起声（{same}/{n}）——音效起点 = 字出现的第一帧，不提前、不延后。",
+    "fact2": "音量没有统一电平：{down} 个压低（中位 {dm}×≈−7 dB）、{up} 个拉高（中位 {um}×≈+6 dB）、其余默认。",
+    "search": "搜索动画或音效：缩小、打字、水滴…",
+    "colAnim": "入场动画",
+    "colN": "配对数",
+    "colSfx": "最常配的音效（次数）",
+    "colId": "本库 id",
+    "note": "「本库 id」= references/sfx-pairing.md 里的语义 id；— = 本库没有收这个音效。音效文件不随仓库发布。"
+   },
+   "chipEm": "情绪字",
+   "badgeEm": "情绪字",
+   "chipMx": "抠像 · 玻璃字",
+   "badgeMx": "抠像",
+   "chipSk": "骨架",
+   "badgeSk": "骨架"
+  },
+  "en": {
+   "htmlLang": "en",
+   "title": "video-craft layout library",
+   "eyebrow": "VIDEO-CRAFT · SKILL LIBRARY",
+   "h1a": "Cut talking-head video with ",
+   "h1b": "platform feel",
+   "h1c": "— pick a layout and go",
+   "lede1": "A talking-head editing skill for Claude Code. These are the ",
+   "lede2": " text layouts, typography pairings, text-motion presets, scene changes and Douyin-style (精剪) cuts it uses — hover to preview, click for when to use it, when not to, and which sound effect to pair.",
+   "search": "Search: swipe, compare, hook, quote…",
+   "chipAll": "All",
+   "chipLayout": "Text layouts",
+   "chipScene": "Scene changes",
+   "chipJj": "Douyin-style cuts",
+   "safe": "<b>Every piece of text respects the safe zone:</b> x 60–1010, y 250–1250 (right edge pulled in to 950 below y 900). Captions: max two lines, ≤12 characters each. Previews use a placeholder figure, not a real person.",
+   "count": "{n} / {m}",
+   "empty": "No matching layout — try another word.",
+   "useH": "When to use",
+   "avoidH": "Avoid when",
+   "sfxH": "Sound effects",
+   "codeH": "Code",
+   "cpPrompt": "Copy prompt for AI",
+   "cpCode": "Copy code",
+   "toastPrompt": "Copied — paste into Claude Code",
+   "toastCode": "Code copied",
+   "badgeScene": "Scene",
+   "badgeJj": "精剪",
+   "idPre": "Ref ",
+   "limH": "Known limitations",
+   "lim": [
+    "Previews are static examples — <b>watch the motion yourself</b> (hit strength, fade timing).",
+    "\"Reporter stand-up\" needs per-frame matting; currently only macOS (Apple Vision) can run it.",
+    "SFX and BGM are not included (licensing). Bring your own commercially usable files, named by id.",
+    "B-roll in the Douyin-style cuts is a placeholder; swap in real footage / stock / AI images.",
+    "No automatic out-of-bounds detection: relies on shrink-and-nudge at render time plus visual checks with the safe-zone guides.",
+    "Text-motion previews are looping examples; only mid-animation stills were checked — easing curves were not verified frame by frame."
+   ],
+   "prompt": "Use the video-craft skill to edit my talking-head video. On a suitable line, use \"{zh}\" ({kind}, id: {id}): {use}\nNote: {avoid}\nAll text must stay in the safe zone (x60–1010, y250–1250; right edge 950 below y900); captions max two lines, ≤12 characters each. SFX reference: {sfx}.",
+   "kinds": {
+    "layout": "text layout",
+    "scene": "scene change",
+    "jj": "Douyin-style cut",
+    "mo": "text motion",
+    "th": "industry theme",
+    "em": "emotion word",
+    "mx": "matte / glass text",
+    "sk": "skeleton (how to arrange a video)"
+   },
+   "langBtn": "中文",
+   "chipMo": "Text motion",
+   "badgeMo": "Motion",
+   "chipTh": "Industry themes",
+   "badgeTh": "Theme",
+   "sfx": {
+    "title": "SFX pairing table",
+    "lede": "Entrance animation → the SFX it is most often paired with. Statistics from 66 industry clips (the nearest SFX within ±0.5 s of each text segment, {n} pairs).",
+    "fact1": "<b>{pct}%</b> of SFX start on the <b>same frame</b> as the text ({same}/{n}) — the SFX starts on the first frame the text appears, no earlier, no later.",
+    "fact2": "There is no single level: {down} lowered (median {dm}× ≈ −7 dB), {up} raised (median {um}× ≈ +6 dB), the rest at default.",
+    "search": "Search an animation or sound: shrink, typing, water drop…",
+    "colAnim": "Entrance animation",
+    "colN": "Pairs",
+    "colSfx": "Most common SFX (count)",
+    "colId": "Library id",
+    "note": "\"Library id\" = the semantic id in references/sfx-pairing.md; — = this library does not include that sound. SFX files are not distributed with the repo."
+   },
+   "chipEm": "Emotion words",
+   "badgeEm": "Emotion",
+   "chipMx": "Matte & glass",
+   "badgeMx": "Matte",
+   "chipSk": "Skeleton",
+   "badgeSk": "Skeleton"
+  }
+ }
+}
