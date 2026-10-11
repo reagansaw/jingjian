@@ -162,5 +162,6 @@ description: 把真人口播竖屏短视频剪出「网感」——用 Remotion 
 
 ## 9. 代码在哪
 **可运行的起步项目：`remotion/`**（`npm install` → 放视频 → 写 `edit.json` → `npm run check` → `npm run final`（出片前自动拦「红框没关」），细节读 `remotion/README.md`）。**别在别处重写一套，用它。**
+**先复制再用**：装成 plugin 后这些文件在 Claude 的缓存目录里，更新时会被清掉，**不要在原地 `npm install` 或放视频**。先把 `remotion/` 整个复制到用户的工作文件夹（`cp -R <你读到本 SKILL.md 的目录>/remotion ./my-video`），之后所有操作都在那份副本里做；`references/` 和 `tools/` 留在原地只读即可。
 `remotion/craft/`：`kit.tsx`（SAFE、Zone、Txt/FitBox、主题）· `layouts.tsx`（12 款版式）· `scenes.tsx`（4 个换场 + 4 个精剪素材类 + `LabelTag`）· `typo.tsx`（5 个排版搭配）· `motion.tsx`（18 个入场动画预设 `MotionText`）· `emotion.tsx`（4 个情绪字）· `glass.tsx`（玻璃字 `GlassWord` + 字在人后 `TextBehind`）· `gallery.tsx`（预览合成 + 注册表）。
 工具：`tools/`（补停顿、混 BGM、BGM 分析、音效库构建）。

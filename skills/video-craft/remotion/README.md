@@ -5,10 +5,13 @@
 **要求**：Node 18+（作者用 24）、1080×1920 的口播视频。**不需要 Mac**（抠像那几款才需要，起步项目不含）。
 
 ## 1. 装
+**如果是用 plugin 装的：先把这个 `remotion/` 文件夹整个复制到你自己的工作文件夹**（plugin 的缓存目录更新时会被清掉）：
 ```bash
-cd remotion
+cp -R <plugin 里的 remotion 路径> ~/my-video
+cd ~/my-video
 npm install
 ```
+（直接让 Claude 做：「把 video-craft 的 remotion 复制到 ~/my-video 并 npm install」。）
 > 如果 `npm install` 报 `EACCES … ~/.npm`（缓存里有 root 拥有的文件）：`npm install --cache /tmp/npm-cache`，或按提示 `sudo chown -R $(id -u):$(id -g) ~/.npm`。
 > 第一次渲染会自动下载无头 Chrome（约 100MB）。
 

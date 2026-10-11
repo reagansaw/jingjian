@@ -164,5 +164,6 @@ All 57 ids and their semantics: `references/en/sfx-pairing.md`.
 
 ## 9. Where the code is
 **A runnable starter project: `remotion/`** (`npm install` → put the video in `public/` → write `edit.json` → `npm run check` → `npm run final` (it blocks a final render with the red box still on); details in `remotion/README.md`). **Don't rewrite one elsewhere — use it.**
+**Copy first, then use**: once installed as a plugin these files live in Claude's cache directory, which is wiped on update — **don't `npm install` or put videos in place**. First copy the whole `remotion/` folder into the user's working folder (`cp -R <the directory you read this SKILL.md from>/remotion ./my-video`) and do everything in that copy; `references/` and `tools/` stay where they are, read-only.
 `remotion/craft/`: `kit.tsx` (SAFE, Zone, Txt/FitBox, themes) · `layouts.tsx` (12 layouts) · `scenes.tsx` (4 scene changes + 4 refined-cut footage types + `LabelTag`) · `typo.tsx` (5 typographic pairings) · `motion.tsx` (18 entrance-animation presets, `MotionText`) · `emotion.tsx` (4 emotion words) · `glass.tsx` (glass text `GlassWord` + text-behind `TextBehind`) · `gallery.tsx` (preview compositions + layout registry).
 Tools: `tools/` (pause padding, BGM mixing, BGM analysis, sound-effect library build).
