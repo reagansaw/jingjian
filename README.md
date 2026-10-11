@@ -11,11 +11,11 @@
 ### 安装（Claude Code）
 **方式一：plugin（推荐，发布到 GitHub 之后）**
 ```
-/plugin marketplace add <owner>/jingjian
+/plugin marketplace add reagansaw/jingjian
 /plugin install video-craft@video-craft
 ```
 装好后新开一个会话，说：「用 video-craft 剪这条口播」。更新：`/plugin update video-craft`（第三方 marketplace 默认**不会**自动更新；有新版本时没有推送通知，要手动更新）。
-> 本地验证过：`plugin validate` 通过（只剩「没写作者」一条警告）；在隔离的临时配置里 `marketplace add <本地路径>` → `install` 成功，识别出 1 个 skill，常驻上下文约 70 token、触发时约 2.1k。**还没发布到 GitHub，所以 `<owner>/jingjian` 这条路没有真实跑过。**
+> 验证过：`plugin validate --strict` 零警告；在隔离的临时配置里从 GitHub 真实 `marketplace add reagansaw/jingjian` → `install` 成功，识别出 1 个 skill，常驻上下文约 70 token、触发时约 2.1k。**没验证**：模型会不会在真实对话里自动触发（只用「描述文字喂新 agent 判 8 句」测过，8/8；命令行版未登录没法真跑）。
 
 **方式二：手动复制**：把 `skills/video-craft/` 整个文件夹放进 `~/.claude/skills/video-craft/`（里面要有 `SKILL.md`）。
 > 这个仓库是用 `tools/build_plugin.py` 从源目录生成的；`skills/video-craft/` 里的内容和 plugin 安装的一样。
@@ -53,11 +53,11 @@ tools/                   脚本 + 生成网页 build_library.py
 ### Install (Claude Code)
 **Option 1: plugin (recommended, once it is published on GitHub)**
 ```
-/plugin marketplace add <owner>/jingjian
+/plugin marketplace add reagansaw/jingjian
 /plugin install video-craft@video-craft
 ```
 Then open a new session and say: "Use video-craft to edit this talking-head video." To update: `/plugin update video-craft` (third-party marketplaces do **not** auto-update by default, and there is no push notification for new versions — update by hand).
-> Verified locally: `plugin validate` passes (one warning left: no author); in an isolated temporary config, `marketplace add <local path>` → `install` succeeded, 1 skill was detected, about 70 tokens always-on and about 2.1k when it fires. **It is not published to GitHub yet, so the `<owner>/jingjian` route has never actually been run.**
+> Verified: `plugin validate --strict` is clean; in an isolated temporary config, a real `marketplace add reagansaw/jingjian` → `install` from GitHub succeeded, 1 skill was detected, about 70 tokens always-on and about 2.1k when it fires. **Not verified**: whether the model auto-triggers it in a real conversation (only tested by showing the description text to a fresh agent with 8 sentences, 8/8; the CLI was not logged in so a live run wasn't possible).
 
 **Option 2: copy by hand**: put the whole `skills/video-craft/` folder at `~/.claude/skills/video-craft/` (it must contain `SKILL.md`).
 > This repository is generated from the source folder by `tools/build_plugin.py`; `skills/video-craft/` has the same content the plugin installs.
