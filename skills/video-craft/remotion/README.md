@@ -32,7 +32,8 @@ npx remotion still index.ts Craft-end-cta out.jpg --frame=48
    - `beats`: 每一项 `{ "kind": 版式 id, "props": { ... } }`，`props` 就是 library 每张卡「代码」里的那些属性（`at` / `until` 单位是秒）
    - `sfx`: `[{ "t": 1.2, "file": "ding.mp3" }]`，文件放 `public/sfx/`（自备，只用有权使用的）；**没有音效就写 `[]`，不会报错**
    - `guides`: 先设 `true` 画出安全区红框，逐款目视检查，出片前改回 `false`
-3. 出静帧检查，再出片：
+   - **字幕**：先转写（0 步）并校对文字，再 `python3 ../tools/make_captions.py --words 转写.json --text 校对后的文字.txt --out captions.json`，把结果放进 `captions`（拼接多条素材用 `--offset` / `--length`）。**转写会听错字（低置信度处要和说话的人确认），字幕以校对后的为准。**
+3. 出静帧检查，再出片（`node scripts/stills.mjs edit.json 0.8,5.9,13.5 stills` 一次打包渲多张静帧，比逐张 `remotion still` 快）：
 ```bash
 npx remotion still index.ts Edit check.jpg --props=edit.json --frame=90
 npm run check            # 检查 edit.json：红框没关 / 版式 id 写错 / 文件不存在 / 时间超出片长
