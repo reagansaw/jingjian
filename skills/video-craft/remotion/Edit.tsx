@@ -6,6 +6,7 @@ import { SafeGuides, StageBg, THEMES, Theme, useCraftFonts } from './craft/kit';
 import { AtoB, Bars, Chapter, ChestBig, DarkQuestion, GiantFill, LeftStair, SignatureCard, StrikeSwap, TwoColumn, VerticalWall } from './craft/layouts';
 import { ChapterTag, GhostWord, LabelHero, QuoteCard, SpreadHero } from './craft/typo';
 import { EndCta, StackList, TopTitle } from './craft/skeleton';
+import { CaptionItem, Captions } from './craft/captions';
 
 // kind → 组件。props 就是版式库每张卡「代码」里的那些属性（at / until 单位是秒；th 自动带上）。
 const REG: Record<string, React.FC<any>> = {
@@ -31,11 +32,19 @@ export type EditProps = {
   shiftY: number;
   /** 音效：t 秒处播 public/sfx/<file>（文件你自己准备，只用有权使用的） */
   sfx: { t: number; file: string; volume?: number }[];
+  /** 胸口压暗渐变的强度 0–1（默认 0.75）：素材的胸口带是白衣服 / 亮背景时，字会糊——压暗它。0 = 不加。版式库预览里一直有这层，Edit 以前漏了 */
+  scrim: number;
+  /** 字幕：[{ from, to, text }]（秒）。用 `python3 ../tools/make_captions.py` 从转写 + 校对后的文字生成，每条 ≤12 字宽 */
+  captions: CaptionItem[];
+  /** 字幕里要换强调色的词 */
+  captionHl: string[];
+  /** 字幕字号，默认 54 */
+  captionSize: number;
   /** 画出安全区红框（检查用；出片前关掉） */
   guides: boolean;
 };
 export const defaultEdit: EditProps = {
-  src: null, durationSec: 8, theme: 'dark-lime', cuts: [3, 6], zoom: [1.0, 1.12], shiftY: 0, sfx: [], guides: false,
+  src: null, durationSec: 8, theme: 'dark-lime', cuts: [3, 6], zoom: [1.0, 1.12], shiftY: 0, scrim: 0.75, captions: [], captionHl: [], captionSize: 54, sfx: [], guides: false,
   beats: [
     { kind: 'top-title', props: { line1: '口播剪辑', line2: '三步剪出网感', at: 0.2, until: 7.6 } },
     { kind: 'chest-big', props: { small: '剪出网感的第一步', big: '删停顿', at: 0.6, until: 3.4 } },
@@ -44,9 +53,10 @@ export const defaultEdit: EditProps = {
   ],
 };
 
+const rgba = (hex: string, a: number) => { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; };
 const zoomAt = (t: number, cuts: number[], zoom: [number, number]) => { const i = cuts.filter((c) => c <= t).length; return i % 2 === 1 ? zoom[1] : zoom[0]; };
 
-export const Edit: React.FC<EditProps> = ({ src, theme, beats, cuts, zoom = [1.0, 1.12], shiftY = 0, sfx, guides }) => {
+export const Edit: React.FC<EditProps> = ({ src, theme, beats, cuts, zoom = [1.0, 1.12], shiftY = 0, scrim = 0.75, captions = [], captionHl = [], captionSize = 54, sfx, guides }) => {
   useCraftFonts();
   const th: Theme = THEMES[theme] ?? THEMES['dark-lime'];
   const { fps } = useVideoConfig();
@@ -57,11 +67,13 @@ export const Edit: React.FC<EditProps> = ({ src, theme, beats, cuts, zoom = [1.0
       <AbsoluteFill style={{ transform: `translateY(${shiftY}px) scale(${z})`, transformOrigin: '50% 38%' }}>
         {src ? <OffthreadVideo src={staticFile(src)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <StageBg th={th} />}
       </AbsoluteFill>
+      {scrim > 0 && <AbsoluteFill style={{ background: `linear-gradient(to bottom, ${rgba(th.bg, 0)} 40%, ${rgba(th.bg, 0.72 * scrim)} 54%, ${rgba(th.bg, 0.92 * scrim)} 100%)` }} />}
       {beats.map((b, i) => {
         const C = REG[b.kind];
         if (!C) throw new Error(`未知版式 "${b.kind}"。可用：${KINDS.join(', ')}`);
         return <C key={i} th={th} {...b.props} />;
       })}
+      {captions.length > 0 && <Captions th={th} items={captions} hl={captionHl} size={captionSize} />}
       {sfx.map((s, i) => <Sequence key={i} from={Math.round(s.t * fps)}><Audio src={staticFile(`sfx/${s.file}`)} volume={s.volume ?? 0.8} /></Sequence>)}
       {guides && <SafeGuides />}
     </AbsoluteFill>

@@ -12,6 +12,10 @@
 | `cuts` | 硬切推近时间点（秒）；相邻两段在 `zoom[0]` / `zoom[1]` 之间交替 |
 | `zoom` | 两档缩放，默认 `[1.0, 1.12]`；实战值 `[1.15, 1.2]` |
 | `shiftY` | 整个画面上移像素（负数）；脸很大时 `-120` 并配 `zoom` ≥1.12 |
+| `scrim` | 胸口压暗渐变强度 0–1，默认 0.75。胸口是白衣服 / 亮背景时字会糊，靠它压暗；0 = 不加 |
+| `captions` | 字幕：`[{ from, to, text }]`（秒）。用 `python3 ../tools/make_captions.py --words 转写.json --text 校对后的文字.txt [--offset 起点秒] [--length 本段长度秒]` 生成；每条 ≤12 字宽（中文 1、英文数字 0.55），`npm run check` 会检查 |
+| `captionHl` | 字幕里要换强调色的词，如 `["销冠", "AI 自动化"]` |
+| `captionSize` | 字幕字号，默认 54（底边贴 y≤1230）。有字幕时，`end-cta` 的 `cy` 要往上挪（如 1020），别和字幕撞 |
 | `sfx` | `[{ "t": 秒, "file": "xx.mp3", "volume"?: 0.8 }]`，文件放 `public/sfx/`；没有就写 `[]` |
 | `guides` | `true` = 画安全区红框（只在检查静帧时开；`npm run final` 会拒绝 `true`） |
 
@@ -38,7 +42,7 @@
 | `chapter-tag` | `num` `title` `at` `until` · `color?` |
 | `top-title` | `line1` `line2` `until` · `at?` `size1?` `size2?`（整块在 y≥250，脸大要先下移画面） |
 | `stack-list` | `items: [{ text, at }]` `until` · `punch?: { text, at }` `size?`（带 `punch` 最多 3 条） |
-| `end-cta` | `label` `at` `until` · `hint?` `arrow?` `color?`（文案由用户给 / 用口播原话，别编账号） |
+| `end-cta` | `label` `at` `until` · `hint?` `arrow?` `color?` `cy?`（胶囊中线，默认 1150；有字幕时用 1020）（文案由用户给 / 用口播原话，别编账号） |
 
 ## 写 edit.json 的顺序
 1. 先写 `top-title`（如要）和钩子（`chest-big` / `giant-fill` / `spread-hero` 之一，`at` ≤ 0.3）。

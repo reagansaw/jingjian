@@ -18,6 +18,14 @@ for (const [i, b] of (e.beats ?? []).entries()) {
   if (typeof u === 'number' && e.durationSec && u > e.durationSec + 0.3) warn.push(`beats[${i}] (${b.kind}) 的 until=${u} 超过片长 ${e.durationSec}`);
   if (typeof a === 'number' && typeof u === 'number' && u <= a) fail.push(`beats[${i}] (${b.kind}) 的 until(${u}) 不晚于 at(${a})，字一个都不会出现。`);
 }
+const wid = (t) => [...t].reduce((a, c) => a + (c === ' ' ? 0.3 : /[A-Za-z0-9%&@.\-+/]/.test(c) ? 0.55 : 1), 0);
+for (const [i, c] of (e.captions ?? []).entries()) {
+  if (!(c.to > c.from)) fail.push(`captions[${i}] 的 to(${c.to}) 不晚于 from(${c.from})`);
+  if (e.durationSec && c.to > e.durationSec + 0.3) warn.push(`captions[${i}] 的 to=${c.to} 超过片长 ${e.durationSec}`);
+  if (wid(c.text) > 12.5) fail.push(`captions[${i}] "${c.text}" 宽度 ${wid(c.text).toFixed(1)} > 12（字幕每行最多 12 字宽，见 SKILL.md §2）`);
+  const nx = (e.captions ?? [])[i + 1];
+  if (nx && nx.from < c.to - 0.01) warn.push(`captions[${i}] 和下一条时间重叠（${c.to} > ${nx.from}）`);
+}
 if (e.src) {
   const p = `public/${e.src}`;
   if (!existsSync(p)) fail.push(`找不到视频 ${p}`);

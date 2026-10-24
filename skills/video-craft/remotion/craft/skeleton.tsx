@@ -43,11 +43,11 @@ export const StackList: React.FC<Base & { items: { text: string; at: number }[];
 
 /* 结尾行动（essence §四）：蓝色胶囊按钮「找我聊聊」+ 向左下角点的箭头。胶囊放胸口带下沿，箭头在它左边上下跳。
    说明：这是画面元素，**文案由用户给**（账号 / 联系方式没有就别编）。箭头的方向是「指向平台的头像 / 关注按钮」，位置在 y≤1250 内。 */
-export const EndCta: React.FC<Base & { label: string; at: number; hint?: string; arrow?: boolean; color?: string }> = ({ th, label, at, until, hint, arrow = true, color = '#2F7BFF' }) => {
+export const EndCta: React.FC<Base & { label: string; at: number; hint?: string; arrow?: boolean; color?: string; cy?: number }> = ({ th, label, at, until, hint, arrow = true, color = '#2F7BFF', cy = 1150 }) => {
   const t = useT(), p = pop(t, at, 0.34), o = Math.min(1, p * 1.5) * (1 - lin(t, until, until + 0.22));
   if (t < at - 0.02 || t > until + 0.25) return null;
   const size = 76, pulse = 1 + 0.035 * Math.sin((t - at) * 6.2), bob = Math.sin((t - at) * 7) * 12;
-  const cy = 1150;                                   // 胶囊中线（真实坐标，不放进 Zone）
+  // cy = 胶囊中线（真实坐标，不放进 Zone）；有字幕时往上挪（例如 1020），别和字幕撞在一起
   return (
     <div style={{ position: 'absolute', inset: 0, opacity: o }}>
       {arrow && (
