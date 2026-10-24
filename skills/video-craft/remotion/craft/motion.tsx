@@ -4,7 +4,7 @@
 // 不是每个字都要动：原包 2684 个文字片段里 52% 没有动画、45% 只有入场、2% 有出场 —— 只给重点词上动画。
 import React from 'react';
 import { Easing, interpolate } from 'remotion';
-import { FitBox, Theme, Tone, lin, toneStyle, useT } from './kit';
+import { FitBox, Theme, Tone, estW, lin, toneStyle, useT } from './kit';
 
 export type MotionId =
   | 'fade' | 'slide-up' | 'reveal-up' | 'curtain' | 'grow' | 'grow-soft' | 'shrink' | 'slam'
@@ -18,10 +18,10 @@ export const MOTIONS: Record<MotionId, { zh: string; jy: string; dur: number; cl
   'curtain': { zh: '开幕', jy: '开幕', dur: 0.5, cls: '位移' },
   'roll-in': { zh: '滚入', jy: '滚入', dur: 0.5, cls: '位移' },
   'leap': { zh: '跃进', jy: '跃进', dur: 0.4, cls: '位移' },
-  'grow': { zh: '放大', jy: '放大', dur: 0.5, cls: '缩放' },
+  'grow': { zh: '放大', jy: '放大', dur: 0.55, cls: '缩放' },
   'grow-soft': { zh: '轻微放大', jy: '轻微放大', dur: 0.5, cls: '缩放' },
-  'shrink': { zh: '缩小', jy: '缩小', dur: 0.4, cls: '缩放' },
-  'slam': { zh: '砸下（大→小）', jy: '缩小 II', dur: 0.35, cls: '缩放' },
+  'shrink': { zh: '缩小', jy: '缩小', dur: 0.5, cls: '缩放' },
+  'slam': { zh: '砸下（大→小）', jy: '缩小 II', dur: 0.5, cls: '缩放' },
   'glow-blur': { zh: '发光模糊', jy: '模糊发光 / 雪光模糊', dur: 0.7, cls: '模糊光效' },
   'blur-left': { zh: '向左模糊', jy: '向左模糊', dur: 0.5, cls: '模糊光效' },
   'rise-random': { zh: '随机上升', jy: '随机上升', dur: 0.4, cls: '逐字' },
@@ -34,6 +34,12 @@ export const MOTIONS: Record<MotionId, { zh: string; jy: string; dur: number; cl
 
 const rnd = (i: number) => { const x = Math.sin(i * 12.9898 + 4.1414) * 43758.5453; return x - Math.floor(x); };   // 确定性伪随机（渲染要可重复）
 const eo = (t: number, a: number, d: number) => interpolate(t, [a, a + d], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic) });
+/** 实测曲线：在「入场时长 × [0, .1, .25, .5, .75, 1]」6 个时间点取值，中间线性插值。数字来自 2-1 教学工程的预览逐帧测量（见 references/motion-measured.md）。 */
+const KT = [0, 0.1, 0.25, 0.5, 0.75, 1];
+const kf = (t: number, at: number, d: number, v: number[]) => interpolate(t, KT.map((k) => at + k * d), v, { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+/** 「放大 / 缩小 / 向上滑动」三个动画共用的亮度曲线（实测三者几乎一样：第 1 帧 ≈0.13–0.17 → 25% 处 0.46 → 50% 处 0.79 → 75% 处 0.98） */
+/** 实测里的「字高」= 字形墨迹高度 ≈ 字号 × 0.97（原包字块 160px / 字号约 165px），所以位移直接用「倍数 × 字号」。 */
+const OP_MEASURED = [0.08, 0.2, 0.46, 0.79, 0.98, 1];
 const eb = (t: number, a: number, d: number) => interpolate(t, [a, a + d], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.back(1.7)) });
 
 /** 一行字 + 一个入场动画。到 until 淡出（原包出场动画只占 2%，默认只做淡出）。 */
@@ -49,15 +55,18 @@ export const MotionText: React.FC<{ th: Theme; text: string; preset: MotionId; a
     let inner: React.ReactNode = text, box: React.CSSProperties = {}, outer: React.CSSProperties = {};
     switch (preset) {
       case 'fade': outer = { opacity: p }; break;
-      case 'slide-up': outer = { opacity: p, transform: `translateY(${(1 - p) * 30}px)` }; break;
+      case 'slide-up': outer = { opacity: kf(t, at, dur, OP_MEASURED), transform: `translateY(${kf(t, at, dur, [1.32, 1.29, 1.06, 0.475, 0.11, 0]) * size}px)` }; break;   // 实测：起点在最终位置下方 1.3 个字高，亮度和位移是两条不同的曲线
       case 'reveal-up': outer = { clipPath: `inset(${(1 - p) * 100}% 0 0 0)`, opacity: Math.min(1, p * 3) }; break;
       case 'curtain': outer = { clipPath: `inset(0 ${(1 - p) * 50}% 0 ${(1 - p) * 50}%)`, opacity: Math.min(1, p * 2.5) }; break;
       case 'roll-in': outer = { opacity: Math.min(1, p * 2), transform: `translateY(${(1 - p) * 70}px)`, clipPath: `inset(0 0 ${(1 - p) * 60}% 0)`, filter: `blur(${(1 - p) * 5}px)` }; break;
       case 'leap': { const q = eb(t, at, dur); outer = { opacity: Math.min(1, p * 2.2), transform: `translateY(${(1 - q) * 56}px)` }; break; }
-      case 'grow': outer = { opacity: Math.min(1, p * 1.6), transform: `scale(${0.5 + 0.5 * p})` }; break;
-      case 'grow-soft': outer = { opacity: p, transform: `scale(${0.94 + 0.06 * p})` }; break;
-      case 'shrink': outer = { opacity: 0.3 + 0.7 * p, transform: `scale(${1.25 - 0.25 * p})` }; break;
-      case 'slam': { const q = interpolate(t, [at, at + dur], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.exp) }); outer = { opacity: Math.min(1, q * 4), transform: `scale(${3.2 - 2.2 * q})`, filter: `blur(${(1 - q) * 10}px)` }; break; }
+      case 'grow': outer = { opacity: kf(t, at, dur, OP_MEASURED), transform: `scale(${kf(t, at, dur, [0.56, 0.6, 0.73, 0.88, 0.97, 1])})` }; break;
+      case 'grow-soft': outer = { opacity: kf(t, at, dur, [0.58, 0.8, 1, 1, 1, 1]), transform: `translateY(${kf(t, at, dur, [0.094, 0.086, 0.063, 0.027, 0.008, 0]) * size}px) scale(${kf(t, at, dur, [0.915, 0.925, 0.949, 0.978, 0.998, 1])})` }; break;   // 实测：起点已经 0.58 亮、略小 8.5%、略低 0.09 个字高
+      case 'shrink': outer = { opacity: kf(t, at, dur, OP_MEASURED), transform: `scale(${kf(t, at, dur, [1.43, 1.4, 1.28, 1.12, 1.03, 1])})` }; break;   // 实测：从 1.43 倍缩回，没有模糊（量到的「变糊」只是放大带来的）
+      case 'slam': {   // 实测：停在 ~4.1 倍、很糊，过半才砸下来。原包的 3 个字放大 4.1 倍≈铺满画面宽，所以起点倍数封顶在「字块放大后约 1.25 倍画面宽」，长词不会飞出去一大截
+        const s0 = Math.min(4.12, Math.max(1.3, (1.25 * 1080) / estW(text, size, ls)));
+        outer = { opacity: kf(t, at, dur, [0.2, 0.34, 0.81, 1, 1, 1]), transform: `scale(${1 + (s0 - 1) * kf(t, at, dur, [1, 1, 0.968, 0.87, 0.25, 0])})`, filter: `blur(${kf(t, at, dur, [1, 1, 0.9, 0.55, 0.2, 0]) * size * 0.06}px)` }; break;
+      }
       case 'glow-blur': outer = { opacity: 0.2 + 0.8 * p, filter: `blur(${(1 - p) * 14}px) drop-shadow(0 0 ${(1 - p) * 26 + 6}px rgba(255,255,255,${0.9 - 0.5 * p}))` }; break;
       case 'blur-left': outer = { opacity: Math.min(1, p * 2), transform: `translateX(${(1 - p) * 90}px)`, filter: `blur(${(1 - p) * 9}px)` }; break;
       case 'tracking-in': { const lsx = interpolate(p, [0, 1], [size * 0.55, ls]); outer = { opacity: Math.min(1, p * 2), letterSpacing: lsx }; break; }

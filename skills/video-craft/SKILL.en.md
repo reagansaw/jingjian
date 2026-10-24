@@ -16,7 +16,7 @@ The rules come from: statistics over 70 JianYing/CapCut (剪映) talking-head pr
 > **Industry presets** (4 style families + 3 theme presets) → `references/en/industry-styles.md`; **exact SFX timing / level / animation pairing table** → `references/en/sfx-timing.md`.
 > **Which props each layout takes in edit.json** → `references/en/edit-json.md`.
 > **The skeleton of a video** (hook → content routine → breathing → ending action; the arrangement shared by 64 finished videos) → `references/en/essence.md`, **read before laying out a video**.
-> **How to pair text** (fonts / colors / size ratio / position, layout families) → `references/en/typography-pairing.md`; **how text moves** (38 entrance animations, 18 presets) → `references/en/motion-vocabulary.md`.
+> **How to pair text** (fonts / colors / size ratio / position, layout families) → `references/en/typography-pairing.md`; **how text moves** (38 entrance animations, 18 presets) → `references/en/motion-vocabulary.md`; **frame-by-frame measured animation curves** (5 presets rewritten from them and verified in a closed loop) → `references/en/motion-measured.md`.
 > Answer in whatever language the user speaks. 中文: see `SKILL.md`.
 
 ## 0. Confirm before cutting (ask if anything is missing, don't guess)

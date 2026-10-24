@@ -6,8 +6,8 @@ Answers: **how text moves** — which entrance animations exist, how each one mo
 - **"2-1 common pairings of text animation and sound effects"**: 38 entrance animations, each demoed for 1–2 seconds. Every one was slowed down and **split every one into frames** (8 frames per animation, covering "entrance duration + 0.15 seconds", about 0.55–0.85 seconds) and watched how each one moves.
 - **Statistics** come from the text tracks of 70 talking-head projects (plaintext backups): 2684 text segments, 1249 entrance animations.
 ⚠ Limitations:
-- Each has only 8 frames, so **you can see "how it moves" but not the exact speed curve**; this library's implementation approximates with easeOutCubic, it is not a reproduction.
-- The "enlarge / shrink" factors are estimated from frames (缩小 II (Shrink II) starts at about 3–4× and lands at 1× in ~0.35 seconds), not parameters read out.
+- Each has only 8 frames, so **you can see "how it moves" but not the exact speed curve**; except for the 5 below, this library's implementation approximates with easeOutCubic, it is not a reproduction.
+- **Update (frame-by-frame measurement, see `motion-measured.md`)**: enlarge / slight enlarge / shrink / shrink II / slide up now use the measured curves and were verified in a closed loop. The earlier "shrink II starts at about 3–4× and lands at 1× in ~0.35 s" was inaccurate: measured, it is **4.1×, holds, and only slams down after half the time**; plain 缩小 (shrink) is just 1.43×.
 - The implementation here is **original code**; it borrows only the "way of moving" and the "duration", and contains none of the original pack's assets.
 
 ## 1. Numbers (statistics)
@@ -48,7 +48,7 @@ Count = number of appearances across the 70 projects (only the top 30 are listed
 | 放大 (enlarge) | 0.7 | Grows from small (~half) into place + fades in | Numbers, key points | 57 | ✅ `grow` |
 | 轻微放大 (slight enlarge) | 0.5 | A subtle ~6% enlarge | Emphasizing a keyword without stealing the scene | 40 | ✅ `grow-soft` |
 | 缩小 (shrink) | 0.5 | Shrinks from slightly larger + dimmer to normal, brightening | Emphasis, reversal | 80 | ✅ `shrink` |
-| 缩小 II (shrink II) | 0.5 | Slams from 3–4× size down to 1×, very fast (~0.35s) | **The heaviest word in the whole video** | — | ✅ `slam` |
+| 缩小 II (shrink II) | 0.5 | Holds at 4.1× (very blurry), slams down to 1× only after half the time (measured) | **The heaviest word in the whole video** | — | ✅ `slam` |
 | 生长 / 生长 II (grow / grow II) | 0.4–0.5 | A small enlarge with letter-spacing | Light emphasis | 17 (II) | ⏳ (`grow` variant) |
 | 吸入 (suck in) | 0.4 | Quickly grows from tiny into place | Small pop-up elements | 21 | ⏳ |
 | 慢速放大 (slow enlarge) | 0.5 | (Very little changes within the 8 frames; **inferred** to be a continuous slow enlarge during the whole dwell) | Giving still text a "breathing" feel | — | ⏳ (replaced by a camera push-in) |

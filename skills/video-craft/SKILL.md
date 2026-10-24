@@ -12,7 +12,7 @@ description: 把真人口播竖屏短视频剪出「网感」——用 Remotion 
 > 想要**抖音精剪**那种（素材密、画面每 1.5–3 秒变一次）→ 读 `references/douyin-jingjian.md`。
 > **抠像 · 字在人后 · 玻璃字** → `references/text-behind-glass.md`。
 > **不同行业怎么配**（4 个风格家族 + 3 个主题预设）→ `references/industry-styles.md`；**音效的精确时间 / 音量 / 动画配对表** → `references/sfx-timing.md`。
-> **字怎么搭配**（字体 / 颜色 / 大小比 / 位置、版式家族）→ `references/typography-pairing.md`；**字怎么动**（38 种入场动画、18 个预设）→ `references/motion-vocabulary.md`。
+> **字怎么搭配**（字体 / 颜色 / 大小比 / 位置、版式家族）→ `references/typography-pairing.md`；**字怎么动**（38 种入场动画、18 个预设）→ `references/motion-vocabulary.md`；**逐帧实测的动画曲线**（5 个已按实测改写并闭环验证）→ `references/motion-measured.md`。
 > **edit.json 每个版式要写哪些属性** → `references/edit-json.md`。
 > **一条片的骨架**（钩子 → 内容套路 → 呼吸 → 结尾行动，64 条成片共同的排法）→ `references/essence.md`，**排片前先读**。
 > 用户说什么语言就用什么语言回答。English: see `SKILL.en.md`.
