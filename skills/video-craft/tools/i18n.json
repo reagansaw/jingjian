@@ -335,6 +335,108 @@
    "use": "The ending tells them where to tap next: a blue pill button + an arrow pointing to the bottom-left. Almost every industry video ends this way.",
    "avoid": "The wording comes from the user; if there is no account / contact, don't invent one. Don't stack it with the signature card (pick one, or pill above and signature below).",
    "sfx": "One very light ding, no heavy sound effect"
+  },
+  "camera-punch": {
+   "title": "Opening punch-in",
+   "use": "The first second of the video: the picture punches from 1.28× to 1.0× with a bounce and motion blur. The first beat of the hook, paired with a whoosh.",
+   "avoid": "Once per video, at the start; keep the face centred and high, or the punch pushes it out of frame.",
+   "sfx": "Whoosh up (whoosh_up)"
+  },
+  "camera-shake": {
+   "title": "Impact shake",
+   "use": "On the beat a key word slams down, the picture shakes and pops to 1.06×. Only the picture shakes, not the text.",
+   "avoid": "At most 4–6 per video, each on a real hit; never back to back.",
+   "sfx": "Hit / boom"
+  },
+  "camera-tvoff": {
+   "title": "TV switch-off",
+   "use": "For \"the ads stop, the business stops\" / \"it all disappeared\": the picture squashes to a line, then a dot, then black, held until the next sentence.",
+   "avoid": "Always give `until`, or the black runs to the end; only for \"gone / over\" sentences.",
+   "sfx": "Sub drop"
+  },
+  "camera-send": {
+   "title": "Shrink into a phone and fly away",
+   "use": "For \"send this video to him\" / \"share\": the whole picture shrinks into a phone, pauses, then flies to the top right.",
+   "avoid": "Use the dark starfield behind it, not white; at most once, for the share call to action.",
+   "sfx": "Whoosh up + zip up"
+  },
+  "camera-circle": {
+   "title": "Picture becomes a circle + circles around",
+   "use": "For \"the peers around you / your team / your customers\": the speaker shrinks to a circular avatar and circles pop out around him, joined by lines. The textbook \"draw what you say\".",
+   "avoid": "Tell it where the face is (`face`); at most 6 circles; don't combine with captions and big text at once.",
+   "sfx": "Pop × N"
+  },
+  "white-flash": {
+   "title": "White flash",
+   "use": "On the hook beat, a scene change or an impact: the whole screen flashes white for 0.22 s. Often on the same frame as the punch-in and a big word.",
+   "avoid": "At most 3–4 per video; not on quiet sentences.",
+   "sfx": "Flash"
+  },
+  "kinetic-line": {
+   "title": "Word-by-word pop",
+   "use": "One word per beat: the new word pops in big, the previous one shrinks and dims above it; the hot word is accent-coloured and bigger. Good for the opening punchline.",
+   "avoid": "≤ 6 words a line; each word timed to when it is spoken; don't squeeze it into the chest band together with captions.",
+   "sfx": "Pop / hit on the hot word"
+  },
+  "counter-slam": {
+   "title": "Number counts up and slams",
+   "use": "For concrete numbers (8 deals, 500k, 10 years): it counts from 0, slows down, then lands with a slam and a glow — far stronger than just showing the number.",
+   "avoid": "1–3 numbers per video; the number must be what he actually said; put the unit in the suffix.",
+   "sfx": "Tick + hit"
+  },
+  "stamp": {
+   "title": "Stamp text",
+   "use": "For \"all of them were X\" / \"closed\" / \"key point\": the text is stamped down from 2.2× to 1× with a slight tilt.",
+   "avoid": "≤ 6 characters; red / accent, not the same colour as the big text; 1–2 per video.",
+   "sfx": "Stamp"
+  },
+  "chat-dm": {
+   "title": "Chat box send",
+   "use": "For \"DM me X\" / \"comment X\": an input box slides up, types, sends, and an accent bubble flies up. Makes the call to action visible.",
+   "avoid": "Use the keyword he actually says (≤ 6 characters); put it at the end; don't also stack the ending pill.",
+   "sfx": "Typing + pop + notify"
+  },
+  "slot-row": {
+   "title": "Empty slots pop in",
+   "use": "For \"at least 7 deals\" / \"ten places\" / \"the goal\": N dashed slots pop in one by one underneath.",
+   "avoid": "N ≤ 10; keep it in the chest band (y≈1050); don't cover captions.",
+   "sfx": "Pop × N"
+  },
+  "rapid-montage": {
+   "title": "Screenshot flash",
+   "use": "Real screenshots as evidence: each one punches in for 0.2 s with a slight tilt, the last one holds, \"No. N\" on top. A real screenshot beats any animation.",
+   "avoid": "Supply the screenshots yourself (under public, with their pixel sizes); blank out other people's names and phone numbers; at most 12.",
+   "sfx": "Camera shutter"
+  },
+  "jy-text-a": {
+   "title": "JianYing text animations A (4)",
+   "use": "4 of the 24 JianYing presets: reveal up / random rise / blur glow / shout wave. Each preset's offset / scale / brightness / blur is written as a per-frame table measured from the JianYing sample; sound effects are paired automatically.",
+   "avoid": "Not every word needs to move (52% of the original pack's text has no animation); one preset per sentence, never the same one twice in a row.",
+   "sfx": "Per preset (see autosfx)"
+  },
+  "jy-text-b": {
+   "title": "JianYing text animations B (4)",
+   "use": "Shrink II (big first, then slam) / wave bounce / typewriter / leap. The \"bounce\" presets overshoot and pair with variety-show sounds; the rest are basically ease-out.",
+   "avoid": "Bounce only for light words; typewriter only for definitions / keywords; don't make everything bounce.",
+   "sfx": "Per preset (see autosfx)"
+  },
+  "backdrop-cosmos": {
+   "title": "Starfield backdrop page",
+   "use": "The layer revealed when the person shrinks to an avatar or a phone: a dark starfield with three parallax layers and a slowly turning nine-grid; colours come from the theme. No images needed.",
+   "avoid": "Don't use it as the whole-video background (it competes with the person); only for \"black page\" scenes.",
+   "sfx": "None"
+  },
+  "particles": {
+   "title": "Gold dust / fireflies",
+   "use": "An ambient layer over the picture: gold = dust drifting up, firefly = warm fireflies that blink. Gives a traditional / story feel some air.",
+   "avoid": "Keep it sparse (n ≤ 60); not for fast-paced videos, it looks dirty.",
+   "sfx": "None"
+  },
+  "ink-wipe": {
+   "title": "Ink-wash transition",
+   "use": "A transition between two segments: a blob of ink spreads from the centre to cover the screen, then recedes (blot / brush sweep / splash / rise). Traditional / story feel.",
+   "avoid": "At most 3 per video; 0.9 s long, don't put it over a key word.",
+   "sfx": "Long whoosh"
   }
  },
  "ui": {
@@ -384,7 +486,8 @@
     "th": "行业主题",
     "em": "情绪字",
     "mx": "抠像 / 玻璃字",
-    "sk": "骨架（一条片的排法）"
+    "sk": "骨架（一条片的排法）",
+    "fx": "钩子 / 特效"
    },
    "langBtn": "EN",
    "chipMo": "文字动画",
@@ -408,7 +511,9 @@
    "chipMx": "抠像 · 玻璃字",
    "badgeMx": "抠像",
    "chipSk": "骨架",
-   "badgeSk": "骨架"
+   "badgeSk": "骨架",
+   "chipFx": "钩子 · 特效",
+   "badgeFx": "特效"
   },
   "en": {
    "htmlLang": "en",
@@ -456,7 +561,8 @@
     "th": "industry theme",
     "em": "emotion word",
     "mx": "matte / glass text",
-    "sk": "skeleton (how to arrange a video)"
+    "sk": "skeleton (how to arrange a video)",
+    "fx": "hook / effect"
    },
    "langBtn": "中文",
    "chipMo": "Text motion",
@@ -480,7 +586,9 @@
    "chipMx": "Matte & glass",
    "badgeMx": "Matte",
    "chipSk": "Skeleton",
-   "badgeSk": "Skeleton"
+   "badgeSk": "Skeleton",
+   "chipFx": "Hooks & FX",
+   "badgeFx": "FX"
   }
  }
 }

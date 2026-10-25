@@ -1,0 +1,206 @@
+{
+ "whoosh_up": {
+  "label": "嗖 上扬",
+  "dur": 0.55,
+  "peak_db": -3.0,
+  "rms_db": -20.0
+ },
+ "whoosh_down": {
+  "label": "嗖 下落",
+  "dur": 0.55,
+  "peak_db": -3.0,
+  "rms_db": -19.7
+ },
+ "whoosh_short": {
+  "label": "短嗖",
+  "dur": 0.28,
+  "peak_db": -3.0,
+  "rms_db": -17.0
+ },
+ "whoosh_long": {
+  "label": "长嗖",
+  "dur": 1.0,
+  "peak_db": -3.0,
+  "rms_db": -19.4
+ },
+ "swish": {
+  "label": "轻扫",
+  "dur": 0.18,
+  "peak_db": -3.0,
+  "rms_db": -18.9
+ },
+ "pop": {
+  "label": "啵",
+  "dur": 0.09,
+  "peak_db": -3.0,
+  "rms_db": -16.0
+ },
+ "click": {
+  "label": "点击",
+  "dur": 0.03,
+  "peak_db": -3.0,
+  "rms_db": -19.4
+ },
+ "tick": {
+  "label": "嘀",
+  "dur": 0.05,
+  "peak_db": -3.0,
+  "rms_db": -18.1
+ },
+ "tap": {
+  "label": "轻敲",
+  "dur": 0.09,
+  "peak_db": -3.0,
+  "rms_db": -15.0
+ },
+ "ding": {
+  "label": "叮",
+  "dur": 1.1,
+  "peak_db": -3.0,
+  "rms_db": -18.5
+ },
+ "bell_long": {
+  "label": "长铃",
+  "dur": 2.2,
+  "peak_db": -3.0,
+  "rms_db": -17.9
+ },
+ "chime_up": {
+  "label": "上行风铃",
+  "dur": 1.5,
+  "peak_db": -3.0,
+  "rms_db": -18.5
+ },
+ "success": {
+  "label": "成功",
+  "dur": 1.0,
+  "peak_db": -3.0,
+  "rms_db": -18.5
+ },
+ "notify": {
+  "label": "提示",
+  "dur": 0.6,
+  "peak_db": -3.0,
+  "rms_db": -17.5
+ },
+ "boom": {
+  "label": "轰",
+  "dur": 1.4,
+  "peak_db": -3.0,
+  "rms_db": -17.0
+ },
+ "thud": {
+  "label": "闷响",
+  "dur": 0.5,
+  "peak_db": -3.0,
+  "rms_db": -16.8
+ },
+ "hit": {
+  "label": "撞击",
+  "dur": 0.7,
+  "peak_db": -3.0,
+  "rms_db": -23.4
+ },
+ "slam": {
+  "label": "重砸",
+  "dur": 1.8,
+  "peak_db": -3.0,
+  "rms_db": -22.7
+ },
+ "sub_drop": {
+  "label": "低频下沉",
+  "dur": 1.2,
+  "peak_db": -3.0,
+  "rms_db": -11.4
+ },
+ "punch": {
+  "label": "拳击",
+  "dur": 0.35,
+  "peak_db": -3.0,
+  "rms_db": -19.7
+ },
+ "shimmer": {
+  "label": "闪烁",
+  "dur": 1.3,
+  "peak_db": -3.0,
+  "rms_db": -19.3
+ },
+ "flash": {
+  "label": "闪光",
+  "dur": 0.8,
+  "peak_db": -3.0,
+  "rms_db": -17.8
+ },
+ "sweep_light": {
+  "label": "扫光",
+  "dur": 0.7,
+  "peak_db": -3.0,
+  "rms_db": -15.3
+ },
+ "magic": {
+  "label": "魔法",
+  "dur": 1.2,
+  "peak_db": -3.0,
+  "rms_db": -16.8
+ },
+ "typing": {
+  "label": "打字",
+  "dur": 1.2,
+  "peak_db": -3.0,
+  "rms_db": -29.2
+ },
+ "paper": {
+  "label": "纸张",
+  "dur": 0.9,
+  "peak_db": -3.0,
+  "rms_db": -20.1
+ },
+ "camera": {
+  "label": "快门",
+  "dur": 0.35,
+  "peak_db": -3.0,
+  "rms_db": -34.4
+ },
+ "coin": {
+  "label": "金币",
+  "dur": 1.0,
+  "peak_db": -3.0,
+  "rms_db": -18.8
+ },
+ "cash": {
+  "label": "收银",
+  "dur": 1.3,
+  "peak_db": -3.0,
+  "rms_db": -20.0
+ },
+ "stamp": {
+  "label": "印章",
+  "dur": 0.5,
+  "peak_db": -3.0,
+  "rms_db": -22.8
+ },
+ "riser": {
+  "label": "升起铺垫",
+  "dur": 2.0,
+  "peak_db": -3.0,
+  "rms_db": -19.6
+ },
+ "suspense_hit": {
+  "label": "悬疑重音",
+  "dur": 1.2,
+  "peak_db": -3.0,
+  "rms_db": -16.6
+ },
+ "heartbeat": {
+  "label": "心跳",
+  "dur": 1.0,
+  "peak_db": -3.0,
+  "rms_db": -19.8
+ },
+ "zip_up": {
+  "label": "拉链上滑",
+  "dur": 0.35,
+  "peak_db": -3.0,
+  "rms_db": -17.1
+ }
+}

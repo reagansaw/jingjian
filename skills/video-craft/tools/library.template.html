@@ -114,6 +114,7 @@ footer ul{margin:10px 0 0 18px}
       <button class="chip" data-f="em" aria-pressed="false"></button>
       <button class="chip" data-f="mx" aria-pressed="false"></button>
       <button class="chip" data-f="sk" aria-pressed="false"></button>
+      <button class="chip" data-f="fx" aria-pressed="false"></button>
     </div>
     <button class="chip" id="lang" aria-label="Language" style="margin-left:auto"></button>
   </div>
@@ -165,9 +166,9 @@ const pref = () => ((navigator.language || 'zh').toLowerCase().startsWith('zh') 
 try { lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('vc-lang') || pref(); } catch (e) { lang = pref(); }
 if (lang !== 'zh' && lang !== 'en') lang = 'zh';
 const U = () => I18N.ui[lang];
-const kindOf = (d) => (d.no === '换场' ? 'scene' : d.no === '精剪' ? 'jj' : d.no === '动画' ? 'mo' : d.no === '主题' ? 'th' : d.no === '情绪字' ? 'em' : d.no === '抠像' ? 'mx' : d.no === '骨架' ? 'sk' : 'layout');
+const kindOf = (d) => (d.no === '换场' ? 'scene' : d.no === '精剪' ? 'jj' : d.no === '动画' ? 'mo' : d.no === '主题' ? 'th' : d.no === '情绪字' ? 'em' : d.no === '抠像' ? 'mx' : d.no === '骨架' ? 'sk' : d.no === '特效' ? 'fx' : 'layout');
 const tx = (d, k) => (lang === 'en' && I18N.entries[d.id] ? I18N.entries[d.id][k === 'zh' ? 'title' : k] : d[k]);
-const badge = (d) => { const k = kindOf(d); return k === 'scene' ? U().badgeScene : k === 'jj' ? U().badgeJj : k === 'mo' ? U().badgeMo : k === 'th' ? U().badgeTh : k === 'em' ? U().badgeEm : k === 'mx' ? U().badgeMx : k === 'sk' ? U().badgeSk : d.no; };
+const badge = (d) => { const k = kindOf(d); return k === 'scene' ? U().badgeScene : k === 'jj' ? U().badgeJj : k === 'mo' ? U().badgeMo : k === 'th' ? U().badgeTh : k === 'em' ? U().badgeEm : k === 'mx' ? U().badgeMx : k === 'sk' ? U().badgeSk : k === 'fx' ? U().badgeFx : d.no; };
 
 function applyUI() {
   const u = U();
@@ -175,7 +176,7 @@ function applyUI() {
   $('#h1').innerHTML = `${u.h1a}<em>${u.h1b}</em>，<br>${u.h1c}`.replace('，<br>', lang === 'zh' ? '，<br>' : '<br>');
   $('#lede').innerHTML = `${u.lede1}<b>${DATA.length}</b>${u.lede2}`;
   $('#q').placeholder = u.search;
-  const names = { all: u.chipAll, layout: u.chipLayout, scene: u.chipScene, jj: u.chipJj, mo: u.chipMo, th: u.chipTh, em: u.chipEm, mx: u.chipMx, sk: u.chipSk };
+  const names = { all: u.chipAll, layout: u.chipLayout, scene: u.chipScene, jj: u.chipJj, mo: u.chipMo, th: u.chipTh, em: u.chipEm, mx: u.chipMx, sk: u.chipSk, fx: u.chipFx };
   document.querySelectorAll('.chip[data-f]').forEach((b) => (b.textContent = names[b.dataset.f]));
   $('#lang').textContent = u.langBtn; $('#safe').innerHTML = u.safe; $('#empty').textContent = u.empty;
   $('#limh').textContent = u.limH; $('#lim').innerHTML = u.lim.map((x) => `<li>${x}</li>`).join('');

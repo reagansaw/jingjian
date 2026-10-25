@@ -9,6 +9,9 @@ import { EmotionWord } from './emotion';
 import { GlassWord, WallDemo } from './glass';
 import { ChapterTag, GhostWord, LabelHero, QuoteCard, SpreadHero } from './typo';
 import { EndCta, StackList, TopTitle } from './skeleton';
+import { CameraStack, CamFx, ChatDM, CounterSlam, KineticLine, RapidMontage, SlotRow, Stamp, WhiteFlash } from './fx';
+import { JyTextBeat } from './jytext';
+import { Backdrop, InkWipe, Particles } from './backdrop';
 import { AtoB, Bars, Chapter, ChestBig, DarkQuestion, GiantFill, LeftStair, SignatureCard, StrikeSwap, TwoColumn, TypedQuote, VerticalWall } from './layouts';
 
 const Scene: React.FC<{ th: Theme; children: React.ReactNode; dark?: boolean }> = ({ th, children, dark }) => {
@@ -103,6 +106,45 @@ export const CRAFT_SKELETON: CraftLayout[] = [
     dur: U, comp: () => <Scene th={th}><StackList th={th} until={3.6} items={[{ text: '先删停顿', at: 0.4 }, { text: '再对节奏', at: 1.1 }, { text: '最后配音效', at: 1.8 }]} punch={{ text: '三步就够', at: 2.6 }} /></Scene> },
   { id: 'end-cta', no: '骨架', zh: '结尾行动（胶囊 + 箭头）', use: '片尾告诉他下一步点哪里：蓝色胶囊按钮 + 指向左下角的箭头。几乎每条行业成片的结尾都有。', avoid: '文案由用户给；没有账号 / 联系方式就别编。别和签名卡叠在一起（二选一，或胶囊在上、签名在下）。', sfx: '一声很轻的「叮」，不要重音效',
     dur: U, comp: () => <Scene th={th}><EndCta th={th} label="找我聊聊" hint="点左下角" at={0.4} until={3.6} /></Scene> },
+];
+
+/* 钩子 / 特效：镜头层（冲镜 / 震动 / 电视关机 / 缩进手机 / 变圆头像）+ 重点词动画 + 界面比喻 + 纯代码背景。来自作者做的几集真实口播，见 references/audio-pipeline.md。预览用占位人形。 */
+const Cam: React.FC<{ th: Theme; fx: CamFx[]; children?: React.ReactNode }> = ({ th, fx, children }) => { useCraftFonts(); return <AbsoluteFill style={{ background: th.bg }}><CameraStack th={th} fx={fx}><StageBg th={th} /></CameraStack>{children}</AbsoluteFill>; };
+export const CRAFT_FX: CraftLayout[] = [
+  { id: 'camera-punch', no: '特效', zh: '开场冲镜', use: '视频第一秒：画面从 1.28 倍冲到 1.0 倍并回弹，带动态模糊。钩子的第一下，配一个嗖。', avoid: '全片只用 1 次，放在开头；脸要在画面中间偏上，否则冲镜时脸会被推出去。', sfx: '嗖 上扬（whoosh_up）',
+    dur: U, comp: () => <Cam th={th} fx={[{ kind: 'punch', at: 0.1, dur: 1.2 }]}><ChestBig th={th} small="开场第一秒" big="冲进来" at={0.5} until={3.4} /></Cam> },
+  { id: 'camera-shake', no: '特效', zh: '冲击震动', use: '重点词砸下的那一下，画面跟着震动 + 放大 1.06 回弹（剪映「抖动」）。只震画面，字不震。', avoid: '一支片里最多 4–6 次，每次要对着一个重击点；别连续震。', sfx: '撞击（hit）/ 轰（boom）',
+    dur: U, comp: () => <Cam th={th} fx={[{ kind: 'shake', hits: [0.9, 2.2] }]}><ChestBig th={th} small="第一击" big="砸!" at={0.9} until={2.1} /><ChestBig th={th} small="第二击" big="再砸!" at={2.2} until={3.5} /></Cam> },
+  { id: 'camera-tvoff', no: '特效', zh: '电视关机', use: '讲「广告一停，生意就停了」「一下子全没了」：画面压成一条线 → 一个点 → 黑，黑场一直到下一句。', avoid: '黑场要给 until，不然一路黑到片尾；只在「消失 / 结束」的句子用。', sfx: '低频下沉（sub_drop）',
+    dur: U, comp: () => <Cam th={th} fx={[{ kind: 'tvoff', at: 1.2, until: 3.0 }]}><ChestBig th={th} small="广告一停" big="生意就停" at={0.2} until={1.2} /></Cam> },
+  { id: 'camera-send', no: '特效', zh: '缩进手机飞走', use: '讲「把这条视频发给他」「转发」：整个画面缩进一支手机 → 停一下 → 往右上飞走。', avoid: '背景用深色星空（Backdrop），别用白底；全片最多 1 次，留给转发 / 分享的号召。', sfx: '嗖 上扬 + 拉链上滑',
+    dur: U, comp: () => <Cam th={th} fx={[{ kind: 'send', at: 1.0, until: 3.2 }]}><ChestBig th={th} small="发给身边的人" big="转发" at={0.1} until={1.0} /></Cam> },
+  { id: 'camera-circle', no: '特效', zh: '画面变圆头像 + 周围圆圈', use: '讲「身边的同行 / 团队 / 客户」：说话的人缩成圆头像，周围圆圈一个个弹出、连线连上他。「讲什么就画什么」的典型。', avoid: '脸的位置要告诉它（face）；圆圈最多 6 个；别和字幕、大字同时出现太多。', sfx: '啵 × N',
+    dur: 4.2, comp: () => <Cam th={th} fx={[{ kind: 'circle', at: 0.6, until: 4.0, popAt: 1.3, cy: 800, R: 220 }]} /> },
+  { id: 'white-flash', no: '特效', zh: '白闪', use: '钩子那一下、换场、重击点：整屏白一下（0.22 秒）再退掉。常和冲镜、大字同帧。', avoid: '一支片里最多 3–4 次；别用在安静的句子。', sfx: '闪光（flash）',
+    dur: U, comp: () => <Scene th={th}><ChestBig th={th} small="结果他开了" big="8 单" at={0.6} until={3.4} /><WhiteFlash at={0.6} /></Scene> },
+  { id: 'kinetic-line', no: '特效', zh: '逐词放大变色', use: '一句话一拍一词：新词放大弹入，上一词缩小变暗留在上面；重点词用强调色 + 更大。适合开头的金句。', avoid: '一句 ≤6 个词；每个词要对着他讲那个词的时间；别和字幕同时挤在胸口带。', sfx: '啵 / 重点词用撞击',
+    dur: U, comp: () => <Scene th={th}><KineticLine th={th} y={1010} words={[{ t: 0.3, text: '你的' }, { t: 0.8, text: '下一张单' }, { t: 1.5, text: '就在' }, { t: 2.0, text: '同行那里', hot: true }]} until={3.5} /></Scene> },
+  { id: 'counter-slam', no: '特效', zh: '数字滚动砸下', use: '具体数字（8 单、50 万、10 年）：从 0 滚到目标，越滚越慢，落地放大砸下 + 光晕。比直接出数字强很多。', avoid: '一支片 1–3 个数字；数字要是他真讲的，不要编；后缀小字写单位。', sfx: '嘀嘀 + 撞击',
+    dur: U, comp: () => <Scene th={th}><CounterSlam th={th} to={8} at={0.2} land={1.7} top={420} suffix="单" until={3.5} /></Scene> },
+  { id: 'stamp', no: '特效', zh: '印章字', use: '「全部都是 X」「已成交」「重点」：字像印章从大盖下来（2.2 倍 → 1 倍）+ 微倾。', avoid: '字 ≤6 个；颜色用红 / 强调色，别和大字同色；一支片 1–2 次。', sfx: '印章（stamp）',
+    dur: U, comp: () => <Scene th={th}><Stamp th={th} text="全部成交" at={0.8} until={3.4} y={1050} /></Scene> },
+  { id: 'chat-dm', no: '特效', zh: '聊天框发送', use: '讲「私信我 X」「留言 X」：底部弹出输入框 → 打字 → 发送 → 强调色气泡飞上去。号召动作的画面化。', avoid: '字写他真讲的关键词（≤6 个字）；放在结尾引导；别再叠结尾胶囊。', sfx: '打字 + 啵 + 提示',
+    dur: 4.2, comp: () => <Scene th={th}><ChatDM th={th} text="GPS" at={0.2} sendAt={1.5} until={4.0} y={1000} /></Scene> },
+  { id: 'slot-row', no: '特效', zh: '空位一个个弹出', use: '讲「至少 7 单」「十个名额」「目标」：下面摆出 N 个虚线空位，一个个弹出。', avoid: 'N ≤ 10；放在胸口带（y≈1050）；别压字幕。', sfx: '啵 × N',
+    dur: U, comp: () => <Scene th={th}><SlotRow th={th} n={7} y={1050} at={0.3} until={3.5} /></Scene> },
+  { id: 'rapid-montage', no: '特效', zh: '截图快闪', use: '用真截图当证据：每张 0.2 秒放大入 + 左右轻倾，最后一张停住，上面写「第 N 个」。真截图比任何动画有说服力。', avoid: '截图要你自己准备（public 里，写路径和原图像素）；遮掉别人的名字和电话；别超过 12 张。', sfx: '快门（camera）',
+    dur: U, comp: () => <Scene th={th}><RapidMontage th={th} at={0.3} until={3.5} step={0.45} label="第 {n} 个" images={[1, 2, 3, 4].map((i) => ({ src: `craft/ph/shot${i}.png`, w: 540, h: 960 }))} /></Scene> },
+  { id: 'jy-text-a', no: '特效', zh: '剪映文字动画 A（4 个）', use: '24 个剪映文字预设里的 4 个：向上露出 / 随机上升 / 模糊发光 / 呐喊声波。每个预设的位移 / 缩放 / 亮度 / 模糊都按剪映样片逐帧量出来的表写成，音效自动配。', avoid: '不是每个字都要动（原包 52% 的字没有动画）；一句一个预设，别连续同一个。', sfx: '预设自带（见 autosfx）',
+    dur: 4.6, comp: () => <Scene th={th}><JyTextBeat th={th} text="向上露出" at={0.1} dur={1.0} preset="向上露出" y={980} size={130} tone="white" /><JyTextBeat th={th} text="随机上升" at={1.2} dur={1.0} preset="随机上升" y={980} size={130} tone="white" /><JyTextBeat th={th} text="模糊发光" at={2.3} dur={1.0} preset="模糊发光" y={980} size={130} tone="accent" /><JyTextBeat th={th} text="呐喊声波" at={3.4} dur={1.1} preset="呐喊声波" y={980} size={130} tone="accent" /></Scene> },
+  { id: 'jy-text-b', no: '特效', zh: '剪映文字动画 B（4 个）', use: '缩小 II（先大后砸）/ 波浪弹入 / 打字光标 / 跃进。「弹」类预设有回弹，配综艺音；其余基本是缓出。', avoid: '弹类只给轻松的词；打字光标只给「定义 / 关键词」；别全片都弹。', sfx: '预设自带（见 autosfx）',
+    dur: 4.6, comp: () => <Scene th={th}><JyTextBeat th={th} text="缩小二" at={0.1} dur={1.0} preset="缩小II" y={980} size={130} tone="white" /><JyTextBeat th={th} text="波浪弹入" at={1.2} dur={1.0} preset="波浪弹入" y={980} size={130} tone="white" /><JyTextBeat th={th} text="打字光标" at={2.3} dur={1.0} preset="打字光标" y={980} size={130} tone="accent" /><JyTextBeat th={th} text="跃进" at={3.4} dur={1.1} preset="跃进" y={980} size={150} tone="accent" /></Scene> },
+  { id: 'backdrop-cosmos', no: '特效', zh: '星空背景页', use: '人缩成圆头像 / 手机时露出来的那层：深色星空三层视差 + 慢转的九宫格线，颜色来自主题。不需要任何图片。', avoid: '不要整片都用它当背景（会抢人）；只在「黑底页」场景用。', sfx: '无',
+    dur: U, comp: () => <Cam th={th} fx={[]}><Backdrop th={th} kind="cosmos" /><ChestBig th={th} small="黑底页" big="星空" at={0.4} until={3.4} /></Cam> },
+  { id: 'particles', no: '特效', zh: '光尘 / 萤火粒子', use: '压在画面上的氛围层：gold = 光尘往上飘，firefly = 暖色萤火会闪。给国风 / 故事感的画面一点空气。', avoid: '粒子别太密（n≤60）；快节奏的片别用，会显脏。', sfx: '无',
+    dur: U, comp: () => <Scene th={th}><Particles th={th} kind="gold" n={46} at={0} until={3.6} area={[0, 700, 1080, 1700]} /><ChestBig th={th} small="氛围层" big="光尘" at={0.4} until={3.4} /></Scene> },
+  { id: 'ink-wipe', no: '特效', zh: '水墨转场', use: '两段之间的转场：一团墨从中心晕开盖满再退开（blot / brush 一笔横扫 / splash 四溅 / rise 上涌）。国风、故事感。', avoid: '一支片最多 3 次；时长 0.9 秒，别压在重点词上。', sfx: '长嗖（whoosh_long）',
+    dur: U, comp: () => <Scene th={th}><ChestBig th={th} small="第一段" big="之前" at={0.1} until={1.5} /><ChestBig th={th} small="第二段" big="之后" at={1.9} until={3.6} /><InkWipe at={1.0} dur={1.2} kind="brush" /></Scene> },
 ];
 
 /* 文字入场动画：18 个预设（来自「2-1 文字动画和音效常用搭配」38 种动画的慢放拆解）。 */

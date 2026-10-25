@@ -15,6 +15,7 @@ The rules come from: statistics over 70 JianYing/CapCut (剪映) talking-head pr
 > **Matting · text behind the person · glass text** → `references/en/text-behind-glass.md`.
 > **Industry presets** (4 style families + 3 theme presets) → `references/en/industry-styles.md`; **exact SFX timing / level / animation pairing table** → `references/en/sfx-timing.md`.
 > **Which props each layout takes in edit.json** → `references/en/edit-json.md`.
+> **Sound pipeline / synthesised sound effects / hooks & effects / font licences** → `references/en/audio-pipeline.md`.
 > **The skeleton of a video** (hook → content routine → breathing → ending action; the arrangement shared by 64 finished videos) → `references/en/essence.md`, **read before laying out a video**.
 > **How to pair text** (fonts / colors / size ratio / position, layout families) → `references/en/typography-pairing.md`; **how text moves** (38 entrance animations, 18 presets) → `references/en/motion-vocabulary.md`; **frame-by-frame measured animation curves** (5 presets rewritten from them and verified in a closed loop) → `references/en/motion-measured.md`.
 > Answer in whatever language the user speaks. 中文: see `SKILL.md`.
@@ -28,14 +29,16 @@ The rules come from: statistics over 70 JianYing/CapCut (剪映) talking-head pr
 5. Can matting be used? Matting only runs on macOS (Apple Vision); if it can't run, don't pick "reporter" (记者出镜).
 
 ## 1. Workflow (in order, don't skip)
-1. **Transcribe + word-level timing**: mlx-whisper (Mac) or any whisper, with `word_timestamps`. Mixed Chinese/English speech and Malay/Cantonese accents get misheard (examples: 「网感」→「玩感」, 「删停顿」→「三停顿」) → **captions must be proofread by hand / against the script**; use the transcript's timing, the proofread text.
-2. **Split into beats**: cut into 8–12 segments by meaning: hook (0–5s) → story/problem → turn → method → punchline → signature. For each segment decide "which layout or scene change this one uses". Read `references/en/essence.md` for the arrangement: **a 2–4 character giant-word hook in the first second, one content routine for the whole video, always an ending action**.
-3. **Pad pauses**: many people read a script in one breath without pausing. Insert **0.2–0.45 seconds** between sentences: freeze frame + silence, and give the next sentence one shot-size change (push in / pull out), so it reads like a breath rather than a stall. Cut points must snap to frame boundaries (otherwise audio/video drift accumulates). Example script: `tools/build_master.py`.
-4. **Assign layouts / scene changes**: apply the rhythm rules in §4 (change the picture every 5–10 seconds) and the selection tables in §5.
-5. **Pin the timing**: the appearance time of each word/visual = the **start time** of that spoken word (word-level timestamp), not an estimate. After a re-cut nothing goes out of sync.
-6. **Add sound effects**: one **different** sound per animation, see §6.
-7. **Render + check**: first render stills with the **safe-zone red box** and inspect each layout by eye, then render the full video and measure loudness. See §7.
-8. **No BGM by default.** If the student wants it: `tools/mix_bgm.py` (fade in / duck on the punchline / fade out, −15 LUFS).
+> Commands and measured numbers for sound, captions and tightening: `references/en/audio-pipeline.md`; every script is in `tools/audio/`. **The starter project `remotion/` is where the video gets rendered** (see §9).
+1. **Clean the sound first**: `tools/audio/denoise.py` (ambient noise: cafés / air-con / street; close-mic recordings with a low noise floor don't need it); music / BGM under the speech → `vocals.py` (Demucs).
+2. **Transcribe + proofread**: `tools/audio/transcribe.py` (a normal pass + a filler-word pass, and it lists low-confidence words). **Recognition mishears** (mixed languages, accents, proper nouns; e.g. 「销冠」→「消关」, 「me time」→「秘态」) → every word below 0.6 confidence **must be confirmed with the speaker**; captions use the proofread text. You can't actually "hear" the audio — don't say you did.
+3. **Split into beats + hook**: 8–12 segments by meaning: hook (0–8s) → story/problem → turn → method → punchline → closing action. Read `references/en/essence.md` for the arrangement. **The hook triple (script + picture + sound)**: script = his strongest line, reordered, plus one concrete number (never add things he didn't say); picture = `camera: punch` / `white-flash` / `kinetic-line` / `counter-slam`; sound = automatic.
+4. **Tighten + captions**: `tools/audio/tighten.py` (force-align to characters → delete re-takes / fillers with `[ ]` `{ }` → squeeze pauses → captions ≤12 width → jump-cut points). Speech-rate target 4.5–5.0 syllables/s. Only talkers who read in one breath, too fast, need `tools/build_master.py` to pad pauses (0.2–0.45 s, freeze + silence, with one shot-size change).
+5. **Assign layouts / effects**: apply the rhythm rules in §4 and the selection tables in §5. **Change the picture at most every 5 seconds**; draw every "thing being talked about" (circle avatar / shrink into a phone / TV off / real screenshots), no abstract decoration.
+6. **Pin the timing**: the appearance time of each word/visual = the **start time** of that spoken word. `tighten.py` / `make_captions.py` already give real caption times; look up key words with `make_captions.py --find`.
+7. **Add sound effects**: the `Edit` `autoSfx` (on by default) pairs them per layout / preset / effect using the 34 bundled original synthesised sounds; see §6.
+8. **Render + check**: set `guides` and render stills with the **safe-zone red box** (`node scripts/stills.mjs`), inspect each by eye, then `npm run final`; then `tools/audio/master.sh` (−15 LUFS) + `qa.py`. See §7.
+9. **No BGM by default, and none is bundled** (licensing). If a student wants it: `tools/mix_bgm.py` (fade in / duck on punchlines / fade out, −15 LUFS).
 
 ## 2. Hard rules (break one and you redo the work)
 | Rule | Explanation | Source |
@@ -45,7 +48,7 @@ The rules come from: statistics over 70 JianYing/CapCut (剪映) talking-head pr
 | **Text never covers the face** | When the face is large, text goes only in the "chest band" (胸口带) y≈880–1250; when a card is on screen, push the face up / switch to a portrait window | Finished videos in practice |
 | **One giant word per segment** | Use small captions for everything else; if every block is colored, the emphasis is diluted | Review feedback |
 | **Two layers of rhythm** | **Scene change** (the whole-screen composition changes) every 5–10 seconds; **visual change** (text block pops, push in, footage, small window) every 1.5–3 seconds. About 1/3 of the time is not a full-screen front-facing shot | Review feedback + maintainer "change it every 5–10 seconds"; reference videos "a visual change every 1.5–3 seconds". The two layers are a framing used to reconcile the two rules when writing this up, not a quote from the reference videos|
-| **The hook needs "something"** | Give a visual in the first 3 seconds (card / curve / phone), not captions alone | Review feedback |
+| **The hook needs "something"** | Give a visual in the first 3 seconds (card / curve / phone / punch-in / white flash), not captions alone; script = his strongest line + one concrete number | Review feedback |
 | **Sound sticks to the text** | The sound hits on the **same frame** the text appears (88% of SFX start on the same frame as the text); about 1/3 of text blocks stay silent (room to breathe) | 70-talking-head statistics (see §6) |
 
 ## 3. Picture framework (real-person talking head)
@@ -138,7 +141,7 @@ Rules (statistics over 70 projects): entrance **0.4 seconds** (0.3–0.5; blur/g
 | Correct (✓) / confirmation | `correct` `bowl` |
 | Magic / reveal | `magic` `fairy` `chime` |
 All 57 ids and their semantics: `references/en/sfx-pairing.md`.
-⚠ **This repo does not bundle sound-effect files** (the sources are the JianYing library / paid asset packs and can't be republished). Supply your own commercially usable sound effects, named `lg-<id>.mp3` by id.
+**A set of 34 original synthesised sound effects is bundled (`remotion/public/sfx/`, no licensing issue)**; the `Edit` `autoSfx` pairs them by "preset / layout / effect → sfx id + volume" (`craft/autosfx.ts`), placing each on the text's frame 0 (the text only becomes visible 1–3 frames later because of its entrance animation, so it sounds slightly early, never late); about 1/3 of the text blocks stay silent. **Whether the synthesised sounds sound good has to be judged by ear** — if not, edit `tools/audio/make_sfx.py` and rerun. The 57-id semantic table above is statistics from the JianYing sample; to use your own sounds name them `lg-<id>.mp3`, put them in `public/sfx/` and list them by hand in edit.json's `sfx`.
 
 ## 7. Checklist (go through it item by item before delivering)
 - [ ] Starter project: set `"guides": true` in edit.json and sample one frame per layout with `npx remotion still …` (only the old preview compositions were called `*-guides`). **Set it back to `false` before the final render and use `npm run final` (it runs `scripts/check-edit.mjs` first and refuses to render with the red box still on):** **all text is inside the red box** (x60–1010, y250–1250, where y>900 right edge 950)

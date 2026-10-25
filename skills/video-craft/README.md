@@ -4,8 +4,9 @@
 
 口播剪出网感：给 Claude Code 用的**口播剪辑 skill** + **版式库**（中 / 英双语）。
 
-- 🎬 **版式库**（打开 `docs/library.html`，右上角可切 EN）：56 个预览（17 个文字版式 / 4 个换场 / 4 个抖音精剪 / 18 个文字动画 / 3 个行业主题 / 4 个情绪字 / 3 个抠像·玻璃字 / 3 个骨架：常驻小标题·累加清单·结尾行动）+ 音效配对表，悬停预览，点开看什么时候用、别用在哪、配什么音效、代码。
+- 🎬 **版式库**（打开 `docs/library.html`，右上角可切 EN）：73 个预览（17 个文字版式 / 4 个换场 / 4 个抖音精剪 / 18 个文字动画 / 3 个行业主题 / 4 个情绪字 / 3 个抠像·玻璃字 / 3 个骨架 / 17 个钩子·特效：冲镜·震动·电视关机·缩进手机·圆头像·白闪·逐词弹出·数字砸下·印章·聊天框·截图快闪·剪映文字动画·氛围背景）+ 音效配对表，悬停预览，点开看什么时候用、别用在哪、配什么音效、代码。
 - 🧠 **SKILL.md**（English: `SKILL.en.md`）：节奏数字、安全区规则、版式选用、**字怎么搭配**、**字怎么动**、音效配对、抖音精剪配方、出片检查清单。
+- 🔊 **tools/audio/**：声音流水线（降噪 / 去 BGM / 转写 / 强制对齐精剪 / 字幕 / 母带 / 质检）+ 34 个原创合成音效；**`references/audio-pipeline.md`** 讲清楚「为什么你剪的片普通」和每一步怎么做。
 - 🧱 **remotion/**：可运行的起步项目 + `craft/` 版式组件（`kit` / `layouts` / `scenes` / `gallery` / `skeleton`…）。
 
 ### 安装（Claude Code）
@@ -46,8 +47,9 @@ tools/                   脚本 + 生成网页 build_library.py
 
 **video-craft** — a talking-head editing **skill** for Claude Code, plus a **layout library** (Chinese / English).
 
-- 🎬 **Layout library** (`docs/library.html`, toggle EN at the top right): 56 previews (17 text layouts / 4 scene changes / 4 Douyin-style cuts / 18 text-motion presets / 3 industry themes / 4 emotion words / 3 matte & glass / 3 skeleton: persistent title · stacking list · ending action) + an SFX pairing table. Hover to preview; click for when to use, when not to, which SFX to pair, and the code.
+- 🎬 **Layout library** (`docs/library.html`, toggle EN at the top right): 73 previews (17 text layouts / 4 scene changes / 4 Douyin-style cuts / 18 text-motion presets / 3 industry themes / 4 emotion words / 3 matte & glass / 3 skeleton / 17 hooks & effects: punch-in · shake · TV off · shrink into a phone · circle avatar · white flash · word pop · number slam · stamp · chat box · screenshot flash · JianYing text animations · ambience) + an SFX pairing table. Hover to preview; click for when to use, when not to, which SFX to pair, and the code.
 - 🧠 **SKILL.en.md**: rhythm numbers, safe-zone rules, layout selection, **typography pairing**, **text motion**, SFX pairing, the Douyin-style recipe, a pre-flight checklist.
+- 🔊 **tools/audio/**: the sound pipeline (denoise / strip BGM / transcribe / force-aligned tightening / captions / mastering / QA) + 34 original synthesised sound effects; **`references/en/audio-pipeline.md`** explains why your video looks ordinary and how to do each step.
 - 🧱 **remotion/**: a runnable starter project + the `craft/` layout components (`kit` / `layouts` / `scenes` / `gallery` / `skeleton`…).
 
 ### Install (Claude Code)
