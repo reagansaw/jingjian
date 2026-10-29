@@ -4,6 +4,8 @@
 
 口播剪出网感：给 Claude Code 用的**口播剪辑 skill** + **版式库** + **字幕样式预设**（中 / 英双语）。当前版本 **v0.2.0**。
 
+**在线看：** https://reagansaw.github.io/jingjian/ （版式库 + 字幕样式图鉴）
+
 ## 里面有什么
 - 🎬 **版式库**（打开 `docs/library.html`，右上角可切 EN）：100 张卡 — 文字版式、换场、抖音精剪、文字动画、行业主题、情绪字、抠像 / 玻璃字、骨架，以及 44 个「特效」（冲镜 / 震动 / 故障 / 无限画中画 / 手绘圈标 / 形状放大 / 玻璃图表 / 对比数字牌 / 时间轴 / 色板 / 打勾清单 / 杂志封面 / 环绕文字…）。每张卡点开有**可直接粘进 `edit.json` 的代码**和**一句可以复制给 AI 的话**。预览里站的是占位人形，不是真人。
 - 🔤 **字幕样式预设 657 款**（`docs/caption-presets.html`）：颜色 / 渐变 / 描边 / 阴影 / 入场·出场·循环动画，可按分类和段数筛选，也可筛「真实口播工程里用过」的。怎么选见 `references/caption-guide.md`，**别让 AI 去读整份规格文件**，用 `tools/pick_caption.py`。
@@ -53,6 +55,8 @@ tools/                          脚本：音频 / 字幕 / 量脸 / 检查 / 挑
 ## English
 
 **video-craft** — a talking-head editing **skill** for Claude Code, plus a **layout library** and **caption style presets** (Chinese / English). Current version **v0.2.0**.
+
+**View online:** https://reagansaw.github.io/jingjian/ (layout library + caption style gallery)
 
 ## What is inside
 - 🎬 **Layout library** (`docs/library.html`, toggle EN at the top right): 100 cards — text layouts, scene changes, Douyin-style cuts, text-motion presets, industry themes, emotion words, matte / glass type, skeletons, plus 44 "effects" (punch-in / shake / glitch / infinite picture-in-picture / hand-drawn circle / shape reveal / glass chart / before-after tiles / timeline / palette / tick list / magazine cover / orbiting text…). Each card opens with **code you can paste into `edit.json`** and **a line you can copy to the AI**. Previews use a placeholder figure, not a real person.

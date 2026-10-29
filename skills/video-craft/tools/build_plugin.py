@@ -24,6 +24,15 @@ os.makedirs(os.path.join(OUT, ".claude-plugin"), exist_ok=True)
 dst = os.path.join(OUT, "skills", "video-craft")
 shutil.copytree(ROOT, dst, ignore=EXCLUDE)
 shutil.copy(os.path.join(ROOT, "README.md"), os.path.join(OUT, "README.md"))
+
+# GitHub Pages（仓库根目录当站点根）：根目录放一个导航页，指向两个图鉴
+open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write("""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>video-craft</title>
+<style>:root{--bg:#0b0a10;--ink:#f2eee4;--muted:#9a95a8;--line:#2a2638;--panel:#15131d;--accent:#ff8a3d}@media(prefers-color-scheme:light){:root{--bg:#f6f2ea;--ink:#1b140c;--muted:#6d6558;--line:#e4dccb;--panel:#fff;--accent:#d2622a}}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"PingFang SC",sans-serif}main{max-width:720px;margin:0 auto;padding:48px 16px}h1{margin:0 0 8px}p{color:var(--muted)}a.c{display:block;margin:14px 0;padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);text-decoration:none}a.c b{display:block;font-size:18px;color:var(--accent)}a.c span{color:var(--muted);font-size:14px}</style></head><body><main>
+<h1>video-craft</h1><p>口播剪出网感：给 Claude Code 用的口播剪辑 skill + 版式库 + 字幕样式预设。<br>A talking-head editing skill for Claude Code, with a layout library and caption style presets.</p>
+<a class="c" href="skills/video-craft/docs/library.html"><b>版式库 · Layout library</b><span>100 张卡：文字版式、特效、动画、换场…每张有可复制的代码和给 AI 的指令 / 100 cards with copyable code and an AI prompt</span></a>
+<a class="c" href="skills/video-craft/docs/caption-presets.html"><b>字幕样式预设 · Caption style presets</b><span>657 款，可按分类 / 段数 / 真实使用筛选 / 657 styles, filterable</span></a>
+<a class="c" href="https://github.com/reagansaw/jingjian"><b>GitHub</b><span>安装方法和说明 / install and docs</span></a>
+</main></body></html>""")
 json.dump({"name": "video-craft", "version": VERSION, "description": DESC, "author": {"name": AUTHOR}, "keywords": ["video", "remotion", "talking-head", "douyin", "short-video"]},
           open(os.path.join(OUT, ".claude-plugin", "plugin.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 json.dump({"name": "video-craft", "owner": {"name": AUTHOR}, "metadata": {"description": DESC},
