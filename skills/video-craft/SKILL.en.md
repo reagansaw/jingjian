@@ -45,7 +45,7 @@ The rules come from: statistics over 70 JianYing/CapCut (剪映) talking-head pr
 |---|---|---|
 | **Safe zone** | All text sits entirely inside x 60–1010, y 250–1250; where y>900 the right edge pulls in to 950 | Maintainer's two corrections; the bottom 35% is covered by caption copy + buttons |
 | **Captions: at most two lines, each line ≤12 characters** | If it overflows, break the line at punctuation; the bottom edge sits at y≤1230 | Maintainer "the captions are too long every time" |
-| **Text never covers the face** | When the face is large, text goes only in the "chest band" (胸口带) y≈880–1250; when a card is on screen, push the face up / switch to a portrait window | Finished videos in practice |
+| **Text / effects never cover the face (hard rule)** | No text, card, number or chart may sit on the head or face (hairline to chin). Before delivering run `face_track.py` + `place_check.py`; only all-✓ passes; on ✗ follow §3.2b (tighten framing with `reframe` / text behind the person with `behind` / move above the head or below the chin). Centre the text and stay inside the safe zone too. | Corrected twice by the author (left-aligned text covered the face; the "chest band" was actually the face) |
 | **One giant word per segment** | Use small captions for everything else; if every block is colored, the emphasis is diluted | Review feedback |
 | **Two layers of rhythm** | **Scene change** (the whole-screen composition changes) every 5–10 seconds; **visual change** (text block pops, push in, footage, small window) every 1.5–3 seconds. About 1/3 of the time is not a full-screen front-facing shot | Review feedback + maintainer "change it every 5–10 seconds"; reference videos "a visual change every 1.5–3 seconds". The two layers are a framing used to reconcile the two rules when writing this up, not a quote from the reference videos|
 | **The hook needs "something"** | Give a visual in the first 3 seconds (card / curve / phone / punch-in / white flash), not captions alone; script = his strongest line + one concrete number | Review feedback |
@@ -59,6 +59,16 @@ The rules come from: statistics over 70 JianYing/CapCut (剪映) talking-head pr
 **Data check** (video tracks of 73 JianYing talking-head projects, `template.json.bak`): the clip scale of the portrait has a median of **1.1×** (p10 0.8 / p90 1.4); **54%** of the 1614 video segments are re-scaled (= punch-in jump cuts); **64 of 73 projects use masks** — circle 131, rectangle 120, linear 33, mirror 11, pen 3 (portrait windows are mostly circles and rounded rectangles); 0.9× slow-motion is used 27 times (for dramatic pauses); beauty-type effects are applied to the portrait a lot (about 270 places; this library has none).
 ### 3.2 When the face is large (close-up talking head, chin at about y860–940)
 Shift the whole frame **up 120px and scale it up ≥1.12×** (without scaling, the bottom edge shows), and squeeze the text into the ~370px "chest band" between the chin and y1250. Lay out the layout coordinates starting from y≈1050, and use `<Zone>` to shift the whole thing up 150px.
+### 3.2b When text would cover the face (what pro editors do)
+**Measure, don't guess**: in close-up talking heads the head often fills y≈0–1000, so the "chest band" is really just below the chin and may not exist.
+0. `python3 tools/face_track.py video face.json` (macOS) measures the face every 0.25 s, then `python3 tools/place_check.py edit.json face.json` marks every positioned effect ✓ / ✗ and suggests a y above the head or below the chin; `--fix` writes it back.
+Try in order:
+1. **Centre the text and keep it in the safe zone (x 60–1010, y 250–1250); never left-align.**
+2. **Tighten the framing while the effect plays** (`reframe`): smoothly lift and slightly enlarge the picture (measured on this footage: `zoom 1.1, shiftY -290`); the top of the head is cropped, the chin rises, ~300 px opens between chin and captions. **Don't zoom out (zoom<1)**: the person becomes a small strip with blur all around (tried, looks bad). The exposed edge is filled by a blurred copy of the same video (`fill:'blur'`).
+3. **Text behind the person** (most depth): first `reframe` down (`zoom 1.0, shiftY +150`) for headroom, then `behind:[{text, at, until, matte, from, to, y, size}]`. Matte first with `mk_subject_matte.py video startFrame endFrame public/matte/x` (macOS only, ~1 s/frame, keep the window ≤3 s); hair may cover a little, the rest stays readable; frames without a matte draw no text.
+4. If it must cover the face, only for an instant (≤0.3 s, e.g. flash + slam); never let text sit on eyes or mouth.
+Placement need not be dead centre: upper-middle (above the head) or lower-middle (below the chin) are both fine, follow the checker.
+Font: Smiley Sans for big text (theme `sans-orange`; download `SmileySans.otf` yourself into `public/craft/fonts/`, see that README); a missing file falls back to system PingFang.
 ### 3.3 Ending
 Shrink the person to 0.56× and put them in the center, put the giant word above the head (y≥250), and the signature card below (≤y1240).
 
@@ -125,6 +135,12 @@ Parameters and scenarios to avoid for each: `references/en/layouts.md`; the full
 **How text moves** (18 entrance-animation presets, the `preset` of `MotionText`): `fade` `slide-up` `reveal-up` `curtain` `roll-in` `leap` `grow` `grow-soft` `shrink` `slam` `glow-blur` `blur-left` `rise-random` `wave-bounce` `typewriter` `develop` `tracking-in` `echo`.
 Rules (statistics over 70 projects): entrance **0.4 seconds** (0.3–0.5; blur/glow types 0.7); **52% of text has no animation at all, 45% has only an entrance, 2% has an exit** — save animation for the key words, don't animate every word; change the entrance on each sentence; heavy-hit words get `slam`/`shrink`/`echo` + a heavy sound effect. Choosing an animation by function: `references/en/motion-vocabulary.md` §3.
 
+> **19 UI-style effects** (title tag, pixel text, drop text, glass chart, before/after tiles, photo cards, particle fill, timeline, drop zone, palette, before/after slider…): usage and parameters in `references/ui-effects.md`, previews under "Effects" in the library.
+
+> **657 caption style presets** (colour / stroke / shadow / in-out animation, the `cap-preset` layout): usage and limits in `references/en/caption-presets.md`, gallery `docs/caption-presets.html`.
+
+> **Which caption style to pick**: decide which category the line belongs to (keyword / golden line / question / opening copy / numbering / three-part / numbers…), then run `python3 tools/pick_caption.py --cat … --segs … --chars … --band …` for candidates; rules and per-category usage are in `references/en/caption-guide.md`. Do not read the whole `caption-presets.json`.
+
 ## 6. Sound effects
 **Principle**: one **different** sound per animation; don't use only 10 sounds across the whole video. Set peaks at −11 ~ −20 dBFS; transition sounds lower (≈−22 ~ −26).
 **Pairing** (from the 70-talking-head statistics + real-world use; the id is the semantics, you supply the files yourself):
@@ -144,6 +160,7 @@ All 57 ids and their semantics: `references/en/sfx-pairing.md`.
 **A set of 34 original synthesised sound effects is bundled (`remotion/public/sfx/`, no licensing issue)**; the `Edit` `autoSfx` pairs them by "preset / layout / effect → sfx id + volume" (`craft/autosfx.ts`), placing each on the text's frame 0 (the text only becomes visible 1–3 frames later because of its entrance animation, so it sounds slightly early, never late); about 1/3 of the text blocks stay silent. **Whether the synthesised sounds sound good has to be judged by ear** — if not, edit `tools/audio/make_sfx.py` and rerun. The 57-id semantic table above is statistics from the JianYing sample; to use your own sounds name them `lg-<id>.mp3`, put them in `public/sfx/` and list them by hand in edit.json's `sfx`.
 
 ## 7. Checklist (go through it item by item before delivering)
+- [ ] **No face covered**: `place_check.py` all ✓ (macOS; without macOS, grab a frame per effect and check by eye: no text on head or face)
 - [ ] Starter project: set `"guides": true` in edit.json and sample one frame per layout with `npx remotion still …` (only the old preview compositions were called `*-guides`). **Set it back to `false` before the final render and use `npm run final` (it runs `scripts/check-edit.mjs` first and refuses to render with the red box still on):** **all text is inside the red box** (x60–1010, y250–1250, where y>900 right edge 950)
 - [ ] Captions ≤2 lines, each line ≤12 characters
 - [ ] The hook (first 3 seconds) has a visual, not just captions

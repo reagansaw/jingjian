@@ -81,7 +81,8 @@ export const THEME_BIZ_GOLD_RED = makeTheme({ name: 'biz-gold-red', bg: '#0C0B09
 export const THEME_GUOFENG_CREAM = makeTheme({ name: 'guofeng-cream', bg: '#0D0B09', accent: '#FFF589', accent2: '#B71C1C', soft: '#E9D7A4', onAccent: '#1A1708', fonts: { display: F.song, body: F.song, hand: F.song } });
 /** C 知识明黄：知识付费 / 职场 / 创业 IP。原包常用抖音美好体 + 思源宋体 + 明黄 #fff589 + 深红。 */
 export const THEME_KNOWLEDGE_YELLOW = makeTheme({ name: 'knowledge-yellow', bg: '#0B0A10', accent: '#FFF589', accent2: '#B71C1C', soft: '#FFDC8B', onAccent: '#1A1708', fonts: { display: F.song, body: F.douyin, hand: F.smiley } });
-export const THEMES = { 'dark-lime': THEME_DARK_LIME, 'biz-gold-red': THEME_BIZ_GOLD_RED, 'guofeng-cream': THEME_GUOFENG_CREAM, 'knowledge-yellow': THEME_KNOWLEDGE_YELLOW } as const;
+export const THEME_SANS_ORANGE = makeTheme({ name: 'sans-orange', bg: '#0B0A0C', accent: '#FF8A3D', accent2: '#E5783A', soft: '#FFD2B0', onAccent: '#1A0E05', fonts: { display: F.smiley, body: F.smiley, hand: F.smiley } });
+export const THEMES = { 'sans-orange': THEME_SANS_ORANGE, 'dark-lime': THEME_DARK_LIME, 'biz-gold-red': THEME_BIZ_GOLD_RED, 'guofeng-cream': THEME_GUOFENG_CREAM, 'knowledge-yellow': THEME_KNOWLEDGE_YELLOW } as const;
 
 /* ---------- 字体（全部可商用：思源宋体 OFL / 得意黑 OFL / 抖音美好体 免费商用）---------- */
 export const FONT_FILES: [string, string][] = [

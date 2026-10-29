@@ -6,6 +6,8 @@
 | `personmatte.swift` + `mk_matte.py` | 逐帧抠像（仅 macOS，Apple Vision） | 先 `swiftc -O personmatte.swift -o personmatte` |
 | `register_sfx.py` | 登记你自己的音效 → `sfx-lib.json` | 文件命名 `lg-<id>.mp3`；**只用你有权使用的音效** |
 | `subjectlift.swift` + `mk_subject_matte.py` | 逐帧**主体**抠像（人 / 猫 / 产品…，仅 macOS） | 先 `swiftc -O subjectlift.swift -o subjectlift`；约 2 秒/帧 |
+| `facebox.swift` + `face_track.py` | 每 0.25 秒量一次人脸框（仅 macOS） | 先 `swiftc -O facebox.swift -o facebox` |
+| `place_check.py` | 不遮脸检查：edit.json × 人脸时间线，✗ 的给出头顶上方 / 下巴下面的建议 y，`--fix` 写回 | `python3 place_check.py edit.json face.json [--fix]` |
 | `audio/setup.sh` | 一键装声音流水线依赖（两个独立虚拟环境，装在 `~/.cache/video-craft/`；版本钉死） | 只做过 `--dry-run` 解析，干净机器上的完整安装没验证 |
 | `audio/denoise.py` | 降噪（DeepFilterNet3 全力 / `--atten N`） | 环境杂音才有用；底噪低的近距离收音几乎没差别 |
 | `audio/vocals.py` | 去 BGM，只留人声（Demucs，前后多切 1 秒） | 讲话下面有音乐才用 |

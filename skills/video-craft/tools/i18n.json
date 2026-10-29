@@ -437,6 +437,168 @@
    "use": "A transition between two segments: a blob of ink spreads from the centre to cover the screen, then recedes (blot / brush sweep / splash / rise). Traditional / story feel.",
    "avoid": "At most 3 per video; 0.9 s long, don't put it over a key word.",
    "sfx": "Long whoosh"
+  },
+  "title-tag": {
+   "title": "Title + tag + caption",
+   "use": "Series-style opening: a title fades in at the top, an orange tag expands beside it (\"Part 2\", \"Ep. 3\"), plus a small caption line.",
+   "avoid": "Title ≤ 8 characters, tag ≤ 4; use `y` to keep it off the face.",
+   "sfx": "Swish + pop"
+  },
+  "pixel-text": {
+   "title": "Pixel text (dot-matrix)",
+   "use": "For AI / code / data / tech lines: the picture dims, the word types out in a dot-matrix, each new letter with a red/cyan split, then a small subtitle.",
+   "avoid": "≤ 6 characters; once per video; the dimmed picture means it may sit over the body but keep it off the face.",
+   "sfx": "Typing ticks"
+  },
+  "drop-text": {
+   "title": "Drop text",
+   "use": "For \"fell / collapsed / crashed\": big letters drop one by one with gravity, rotate and bounce, ending in a small pile.",
+   "avoid": "≤ 4 characters; once per video.",
+   "sfx": "Thud × N"
+  },
+  "huge-caption": {
+   "title": "Huge word + small tag",
+   "use": "One huge word with a small accent-colour word popping at its lower right (e.g. \"Top / seller\").",
+   "avoid": "Big word ≤ 3 characters, small word ≤ 3; centred, use `y`.",
+   "sfx": "Punch + pop"
+  },
+  "title-card": {
+   "title": "Full-screen title card",
+   "use": "Chapter turn: a colour card slides up over the picture, two or three big lines appear in turn, then it slides away.",
+   "avoid": "At most 2 per video; ≤ 8 characters a line; change the colour with `color`.",
+   "sfx": "Whoosh + ding"
+  },
+  "prompt-box": {
+   "title": "Prompt box",
+   "use": "For \"one instruction does it\": a pill input box grows from its send button, the instruction types out, the send button lights up.",
+   "avoid": "≤ 10 characters; place below the chin (use `y`).",
+   "sfx": "Typing + pop"
+  },
+  "glass-chart": {
+   "title": "Glass chart",
+   "use": "For \"views / growth\": a frosted-glass card, the big number eases up to the target while a green line draws left to right.",
+   "avoid": "Numbers must be what the speaker really said; 1–2 per video.",
+   "sfx": "Ticks + ding"
+  },
+  "compare-tiles": {
+   "title": "Before / after tiles",
+   "use": "For \"was 180 min, now 3 min\": two tiles, one fixed, one counts to the target, turns accent and shows the verdict line.",
+   "avoid": "Numbers must be real; verdict ≤ 10 characters.",
+   "sfx": "Ticks + success"
+  },
+  "photo-cards": {
+   "title": "Photo cards",
+   "use": "For \"material / cases / screenshots\": white-bordered cards fly in from the edges, overshoot and settle.",
+   "avoid": "Put images in `srcs`; without them colour blocks are drawn.",
+   "sfx": "Camera × N"
+  },
+  "side-sticker": {
+   "title": "Side sticker",
+   "use": "For a result number: a small card flies beside the head, then a white number sticker with a red tag pops up.",
+   "avoid": "Sticker text ≤ 5 characters.",
+   "sfx": "Pop + thud"
+  },
+  "particle-fill": {
+   "title": "Particles fill a container",
+   "use": "For \"accumulating bit by bit\": a cream panel slides down, orange particles fall into a U-shaped container and pile up.",
+   "avoid": "Title ≤ 8 characters; the panel covers the top part of the picture.",
+   "sfx": "Ticks"
+  },
+  "side-doc": {
+   "title": "Document + step highlight",
+   "use": "For \"process / steps\": a white document card slides in from the left and a highlight bar steps down the list.",
+   "avoid": "≤ 4 steps, ≤ 8 characters each; push the person right with `reframe`/`zoom`.",
+   "sfx": "Tick per step"
+  },
+  "thumb-wall": {
+   "title": "Collection wall",
+   "use": "For \"a collection of N\": dark background, big title + pill, a thumbnail grid fills in column by column.",
+   "avoid": "Thumbnails via `srcs`.",
+   "sfx": "Pop × N"
+  },
+  "comment-card": {
+   "title": "Comment CTA card",
+   "use": "Ending: dark background, \"Comment X\" title fades in and an orange pill pops up.",
+   "avoid": "Only at the end; keyword ≤ 4 characters.",
+   "sfx": "Ding"
+  },
+  "timeline-panel": {
+   "title": "Timeline panel",
+   "use": "For \"auto-edit / piece by piece\": a dark panel slides in, the timecode ticks per frame, thumbnails fill in, waveforms and a red playhead sweep across.",
+   "avoid": "Once per video; place below the chin (`y`), keep it off the face.",
+   "sfx": "Ticks + swish"
+  },
+  "drop-zone": {
+   "title": "Drop in footage",
+   "use": "For \"drop your footage in\": a dashed card, a thumbnail flies in along an arc, the text turns to \"imported\" and a yellow check appears.",
+   "avoid": "Write the label from what he really says; once per video.",
+   "sfx": "Whoosh + pop"
+  },
+  "palette": {
+   "title": "Colour picker palette",
+   "use": "For \"colour / grade / style\": a cream card slides up, an eyedropper lands on points in the picture, swatches fill with colour and hex code.",
+   "avoid": "Land x, y where the picture really has that colour; ≤3 swatches.",
+   "sfx": "Pop × N"
+  },
+  "before-after": {
+   "title": "Before / after slider",
+   "use": "For \"before and after the grade\": the picture goes grey, a white line with a handle sweeps left to right, warm graded picture on the right.",
+   "avoid": "Only changes colour, never the person; once per video.",
+   "sfx": "Whoosh + ding"
+  },
+  "app-icons": {
+   "title": "App icon row",
+   "use": "For \"which tools\": rounded icons pop in one by one with small names; optionally remove one.",
+   "avoid": "Fill in your own names and colours, no brand logos; ≤5.",
+   "sfx": "Pop × N"
+  },
+  "camera-glitch": {
+   "title": "Glitch",
+   "use": "For \"glitch / error / broken\": 2–3 frame bursts: the picture splits into horizontal bands, shifts sideways, red/cyan channels separate, scanlines, then snaps back clean. Irregular bursts; the last on the key word.",
+   "avoid": "Bursts are only 2–3 frames, never continuous; 1–2 per video.",
+   "sfx": "Flash"
+  },
+  "camera-droste": {
+   "title": "Infinite picture-in-picture",
+   "use": "For \"infinite / loop / nested\": a picture frame appears above, showing the same video, which contains another frame (3 levels); finally the camera pushes into the frame.",
+   "avoid": "Put the frame above the head, off the face; once per video.",
+   "sfx": "Pop + whoosh"
+  },
+  "camera-handmark": {
+   "title": "Hand-drawn circle mark",
+   "use": "For \"look here / this expression\": the picture goes grey, an orange hand-drawn ellipse circles the face in one stroke, inside stays in colour, a handwritten label types out bottom-left.",
+   "avoid": "Aim the ellipse at the face (measure with face_track.py); label ≤6 characters.",
+   "sfx": "Whoosh + pop"
+  },
+  "camera-shape": {
+   "title": "Shape reveal (circle window + ripples)",
+   "use": "For \"focus / zoom in / the point\": cream background, the speaker shrinks into a circle with an orange ring and expanding concentric ripples, big title below. With ring=false it is a title card with a round window.",
+   "avoid": "Full-screen scene change: at most 1–2 per video; title ≤6 characters.",
+   "sfx": "Whoosh + rising chime"
+  },
+  "checklist": {
+   "title": "Tick list",
+   "use": "For \"steps / to-dos / three things\": a cream sticky card pops in at top left, empty boxes get ticked one by one with an orange check.",
+   "avoid": "≤4 rows, ≤8 characters each; top left, off the face; set `at` to when he says each row.",
+   "sfx": "Paper + tick"
+  },
+  "magazine-cover": {
+   "title": "Magazine cover",
+   "use": "For \"on the cover / issue N\": the video becomes the cover photo with a huge masthead on top, big orange number + white headline bottom left, barcode and tag.",
+   "avoid": "Full-screen cover, the masthead outside the safe zone is an exception; 1–1.5 s only; not together with captions.",
+   "sfx": "Camera shutter"
+  },
+  "orbit-text": {
+   "title": "Orbiting text",
+   "use": "For \"around / surrounding\": a ring of small text circles the head along an ellipse about once per 2.4 s; the lower part is bigger and brighter.",
+   "avoid": "The ellipse must be larger than the head (use the face box); ≤20 characters.",
+   "sfx": "Shimmer"
+  },
+  "scatter-text": {
+   "title": "Scattering text",
+   "use": "For \"fell apart / chaos\": a neat line of text breaks after ~0.6 s; each letter falls with gravity, spins and drifts, then piles at the bottom.",
+   "avoid": "≤12 characters; unlike drop-text this is a whole line breaking up.",
+   "sfx": "Thud"
   }
  },
  "ui": {
@@ -460,7 +622,7 @@
    "useH": "什么时候用",
    "avoidH": "别用在",
    "sfxH": "配什么音效",
-   "codeH": "代码",
+   "codeH": "组件代码",
    "cpPrompt": "复制给 AI 的指令",
    "cpCode": "复制代码",
    "toastPrompt": "已复制，粘贴给 Claude Code",
@@ -477,7 +639,7 @@
     "没有自动越界检测：靠渲染时自动缩小推回 + 安全区红框目视检查。",
     "文字动画预览是循环播放的示例；只核对了动到一半的静帧，没有逐帧核对速度曲线。"
    ],
-   "prompt": "用 video-craft skill 剪我的口播。在合适的一句用「{zh}」（{kind}，id: {id}）：{use}\n注意：{avoid}\n所有字守安全区（x60–1010、y250–1250，y>900 右边 950），字幕最多两行、每行≤12 字。音效参考：{sfx}。",
+   "prompt": "用 video-craft skill 剪我的口播。在我说到【这里填那个词】的那一刻，用「{zh}」（{kind}，id: {id}）：{use}\n注意：{avoid}\n位置：先跑 face_track.py + place_check.py，字放在下巴下面或头顶上方，不能遮住我的脸；所有字守安全区（x60–1010、y250–1250，y>900 右边 950），字幕最多两行、每行≤12 字。音效参考：{sfx}。",
    "kinds": {
     "layout": "文字版式",
     "scene": "换场",
@@ -513,7 +675,8 @@
    "chipSk": "骨架",
    "badgeSk": "骨架",
    "chipFx": "钩子 · 特效",
-   "badgeFx": "特效"
+   "badgeFx": "特效",
+   "codeBeat": "代码（粘进 edit.json 的 beats 数组）"
   },
   "en": {
    "htmlLang": "en",
@@ -535,7 +698,7 @@
    "useH": "When to use",
    "avoidH": "Avoid when",
    "sfxH": "Sound effects",
-   "codeH": "Code",
+   "codeH": "Component code",
    "cpPrompt": "Copy prompt for AI",
    "cpCode": "Copy code",
    "toastPrompt": "Copied — paste into Claude Code",
@@ -552,7 +715,7 @@
     "No automatic out-of-bounds detection: relies on shrink-and-nudge at render time plus visual checks with the safe-zone guides.",
     "Text-motion previews are looping examples; only mid-animation stills were checked — easing curves were not verified frame by frame."
    ],
-   "prompt": "Use the video-craft skill to edit my talking-head video. On a suitable line, use \"{zh}\" ({kind}, id: {id}): {use}\nNote: {avoid}\nAll text must stay in the safe zone (x60–1010, y250–1250; right edge 950 below y900); captions max two lines, ≤12 characters each. SFX reference: {sfx}.",
+   "prompt": "Use the video-craft skill to edit my talking-head video. At the moment I say [fill in the word], use \"{zh}\" ({kind}, id: {id}): {use}\nNote: {avoid}\nPlacement: first run face_track.py + place_check.py; put the text below the chin or above the head, never over my face. Keep all text in the safe zone (x60–1010, y250–1250; right edge 950 below y900); captions max two lines, ≤12 characters each. SFX reference: {sfx}.",
    "kinds": {
     "layout": "text layout",
     "scene": "scene change",
@@ -588,7 +751,8 @@
    "chipSk": "Skeleton",
    "badgeSk": "Skeleton",
    "chipFx": "Hooks & FX",
-   "badgeFx": "FX"
+   "badgeFx": "FX",
+   "codeBeat": "Code (paste into the beats array of edit.json)"
   }
  }
 }

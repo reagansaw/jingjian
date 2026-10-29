@@ -16,6 +16,9 @@
 | `captions` | 字幕：`[{ from, to, text }]`（秒）。用 `python3 ../tools/make_captions.py --words 转写.json --text 校对后的文字.txt [--offset 起点秒] [--length 本段长度秒]` 生成；每条 ≤12 字宽（中文 1、英文数字 0.55），`npm run check` 会检查 |
 | `captionHl` | 字幕里要换强调色的词，如 `["销冠", "AI 自动化"]` |
 | `captionSize` | 字幕字号，默认 54（底边贴 y≤1230）。有字幕时，`end-cta` 的 `cy` 要往上挪（如 1020），别和字幕撞 |
+| `reframe` | 局部改镜头：`[{ at, until, shiftY?, zoom? }]`，窗口内 0.2 秒缓入缓出切到另一个 shiftY / zoom。特效出现时收紧构图 / 给头顶腾位置用 |
+| `behind` | 字在人后：`[{ text, at, until, matte, from, to, y?, size?, small?, tone? }]`，抠像目录 `matte`（public 下）+ 帧号范围 `from`–`to`（源视频帧号）；没抠像的帧不画字 |
+| `fill` | `'blur'`（默认）/ `'none'`：视频下移或缩小后露出的边怎么补 |
 | `camera` | 镜头特效（包住视频层，字不受影响）：`[{ kind, at, … }]`。`punch`（`at?` `dur?` `from?`）· `shake`（`hits:[秒…]`）· `tvoff`（`at` `until?`，**要给 until**）· `send`（`at` `until?`）· `circle`（`at` `until` `cy?` `R?` `face?:[x,y]` `peers?` `popAt?`） |
 | `autoSfx` / `sfxGain` | 自动配音效（默认开）/ 总音量（默认 0.5）。表在 `craft/autosfx.ts`；某个版式不要就在它的 props 里写 `"sfx": false` |
 | `sfx` | `[{ "t": 秒, "file": "xx.mp3", "volume"?: 0.8 }]`，文件放 `public/sfx/`；没有就写 `[]` |

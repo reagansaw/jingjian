@@ -10,7 +10,7 @@
 import json, os, shutil, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(os.path.dirname(ROOT), "video-craft-plugin")
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 AUTHOR = "Reagan Saw"        # 只放名字，不放邮箱等个人联系方式（会公开）
 DESC = "把真人口播竖屏短视频剪出「网感」：Remotion 版式库（文字版式 / 换场 / 精剪 / 动画 / 情绪字 / 骨架）、安全区规则、音效配对、可运行的起步项目。中英双语。"
 EXCLUDE = shutil.ignore_patterns("node_modules", "out", ".DS_Store", "edit.json", "input*", "*.local.*", "__pycache__")

@@ -6,7 +6,8 @@
   "use": "一句铺垫 + 一个要点词。最常用，每支口播至少 3 次。",
   "avoid": "连续 3 句都这样，会变成「全是重点＝没有重点」。",
   "sfx": "缩小 + 咚 / 撞击光",
-  "snippet": "<ChestBig th={th} small=\"剪出网感的第一步\" big=\"删停顿\" at={0.4} until={3.4} />"
+  "snippet": "<ChestBig th={th} small=\"剪出网感的第一步\" big=\"删停顿\" at={0.4} until={3.4} />",
+  "beat": "{\n \"kind\": \"chest-big\",\n \"props\": {\n  \"small\": \"剪出网感的第一步\",\n  \"big\": \"删停顿\",\n  \"at\": 0.4,\n  \"until\": 3.4\n }\n}"
  },
  {
   "id": "strike-swap",
@@ -15,7 +16,8 @@
   "use": "纠正一个常见误区：旧说法被划掉，新说法砸出来。",
   "avoid": "旧说法太长——划线要一笔划完，字数 ≤6。",
   "sfx": "划线=纸张抖动 · 新词=咚",
-  "snippet": "<StrikeSwap th={th} lead=\"很多人以为\" old=\"特效越多越好\" at={0.3} strikeAt={1.3} next=\"节奏\" nextAt={2.0} until={3.5} />"
+  "snippet": "<StrikeSwap th={th} lead=\"很多人以为\" old=\"特效越多越好\" at={0.3} strikeAt={1.3} next=\"节奏\" nextAt={2.0} until={3.5} />",
+  "beat": "{\n \"kind\": \"strike-swap\",\n \"props\": {\n  \"lead\": \"很多人以为\",\n  \"old\": \"特效越多越好\",\n  \"at\": 0.3,\n  \"strikeAt\": 1.3,\n  \"next\": \"节奏\",\n  \"nextAt\": 2.0,\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "left-stair",
@@ -24,7 +26,8 @@
   "use": "三步递进：原因 → 过程 → 结果。每行比上一行缩进，上一行变暗。",
   "avoid": "超过 3 行；每行字要短，关键词用大字。",
   "sfx": "每行一个「叮」，最后一行换重音",
-  "snippet": "<LeftStair th={th} until={3.5} rows={[{ pre: '画面太', key: '平', at: 0.3 }, { pre: '字幕一直', key: '不变', at: 1.1 }, { pre: '观众', key: '划走了', at: 1.9, big: true }]} />"
+  "snippet": "<LeftStair th={th} until={3.5} rows={[{ pre: '画面太', key: '平', at: 0.3 }, { pre: '字幕一直', key: '不变', at: 1.1 }, { pre: '观众', key: '划走了', at: 1.9, big: true }]} />",
+  "beat": "{\n \"kind\": \"left-stair\",\n \"props\": {\n  \"until\": 3.5,\n  \"rows\": [\n   {\n    \"pre\": \"画面太\",\n    \"key\": \"平\",\n    \"at\": 0.3\n   },\n   {\n    \"pre\": \"字幕一直\",\n    \"key\": \"不变\",\n    \"at\": 1.1\n   },\n   {\n    \"pre\": \"观众\",\n    \"key\": \"划走了\",\n    \"at\": 1.9,\n    \"big\": true\n   }\n  ]\n }\n}"
  },
  {
   "id": "a-to-b",
@@ -33,7 +36,8 @@
   "use": "「越 A 越 B」「因为 A 所以 B」，用一个箭头把前后连起来。",
   "avoid": "A 和 B 各不超过 4 个字，否则箭头放不下。",
   "sfx": "A=轻 · 箭头=呼 · B=咚",
-  "snippet": "<AtoB th={th} a=\"越乱\" b=\"越慢\" at={0.3} bAt={1.6} until={3.5} />"
+  "snippet": "<AtoB th={th} a=\"越乱\" b=\"越慢\" at={0.3} bAt={1.6} until={3.5} />",
+  "beat": "{\n \"kind\": \"a-to-b\",\n \"props\": {\n  \"a\": \"越乱\",\n  \"b\": \"越慢\",\n  \"at\": 0.3,\n  \"bAt\": 1.6,\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "two-column",
@@ -42,7 +46,8 @@
   "use": "两个方案 / 两种做法对照。中线先划下来，左右各出一组。",
   "avoid": "两边字数差太多会失衡；每栏 ≤ 3 行。",
   "sfx": "中线=嗖 · 左右各一个叮",
-  "snippet": "<TwoColumn th={th} until={3.5} lineAt={0.3} left={{ pre: '新手一上来就', key: 'effect', tail: '加满', at: 0.5 }} right={{ pre: '高手先把', key: 'timing', tail: '对齐', at: 1.8 }} />"
+  "snippet": "<TwoColumn th={th} until={3.5} lineAt={0.3} left={{ pre: '新手一上来就', key: 'effect', tail: '加满', at: 0.5 }} right={{ pre: '高手先把', key: 'timing', tail: '对齐', at: 1.8 }} />",
+  "beat": "{\n \"kind\": \"two-column\",\n \"props\": {\n  \"until\": 3.5,\n  \"lineAt\": 0.3,\n  \"left\": {\n   \"pre\": \"新手一上来就\",\n   \"key\": \"effect\",\n   \"tail\": \"加满\",\n   \"at\": 0.5\n  },\n  \"right\": {\n   \"pre\": \"高手先把\",\n   \"key\": \"timing\",\n   \"tail\": \"对齐\",\n   \"at\": 1.8\n  }\n }\n}"
  },
  {
   "id": "bars",
@@ -51,7 +56,8 @@
   "use": "两个并列要点，像荧光笔划过的重点（卖点、结果）。",
   "avoid": "条里只放 2–5 个字；超过 2 条会抢走人脸。",
   "sfx": "每条一个「叮」或收银机",
-  "snippet": "<Bars th={th} until={3.5} lead=\"想要\" leadAt={0.3} bars={[{ text: '有节奏', at: 0.9 }, { text: '有重点', at: 1.8 }]} />"
+  "snippet": "<Bars th={th} until={3.5} lead=\"想要\" leadAt={0.3} bars={[{ text: '有节奏', at: 0.9 }, { text: '有重点', at: 1.8 }]} />",
+  "beat": "{\n \"kind\": \"bars\",\n \"props\": {\n  \"until\": 3.5,\n  \"lead\": \"想要\",\n  \"leadAt\": 0.3,\n  \"bars\": [\n   {\n    \"text\": \"有节奏\",\n    \"at\": 0.9\n   },\n   {\n    \"text\": \"有重点\",\n    \"at\": 1.8\n   }\n  ]\n }\n}"
  },
  {
   "id": "vertical-wall",
@@ -60,7 +66,8 @@
   "use": "2–4 个字的重点词竖着贴右边，不挡脸，适合「情绪词 / 结论词」。",
   "avoid": "超过 4 个字；脸在右边时要换左墙。",
   "sfx": "每个字一下重音",
-  "snippet": "<VerticalWall th={th} until={3.5} chars={[{ c: '别', at: 0.5 }, { c: '再', at: 0.9 }, { c: '乱', at: 1.3, tone: 'accent2' }, { c: '剪', at: 1.7, tone: 'accent2' }]} />"
+  "snippet": "<VerticalWall th={th} until={3.5} chars={[{ c: '别', at: 0.5 }, { c: '再', at: 0.9 }, { c: '乱', at: 1.3, tone: 'accent2' }, { c: '剪', at: 1.7, tone: 'accent2' }]} />",
+  "beat": "{\n \"kind\": \"vertical-wall\",\n \"props\": {\n  \"until\": 3.5,\n  \"chars\": [\n   {\n    \"c\": \"别\",\n    \"at\": 0.5\n   },\n   {\n    \"c\": \"再\",\n    \"at\": 0.9\n   },\n   {\n    \"c\": \"乱\",\n    \"at\": 1.3,\n    \"tone\": \"accent2\"\n   },\n   {\n    \"c\": \"剪\",\n    \"at\": 1.7,\n    \"tone\": \"accent2\"\n   }\n  ]\n }\n}"
  },
  {
   "id": "dark-question",
@@ -69,7 +76,8 @@
   "use": "低声、反问、悬念。四周压暗，只留一个问句，镜头同时慢慢推近。",
   "avoid": "一支片最多 1–2 次，多了失去分量。",
   "sfx": "疑惑音，或完全静音",
-  "snippet": "<DarkQuestion th={th} small=\"是不是我的素材\" big=\"不够好？\" at={0.3} bigAt={0.8} until={3.5} />"
+  "snippet": "<DarkQuestion th={th} small=\"是不是我的素材\" big=\"不够好？\" at={0.3} bigAt={0.8} until={3.5} />",
+  "beat": "{\n \"kind\": \"dark-question\",\n \"props\": {\n  \"small\": \"是不是我的素材\",\n  \"big\": \"不够好？\",\n  \"at\": 0.3,\n  \"bigAt\": 0.8,\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "chapter",
@@ -78,7 +86,8 @@
   "use": "讲方法、讲步骤：大数字 + 标题 + 打勾的小卡片，画面上移让字放在胸口。",
   "avoid": "一次只讲一个编号；卡片 ≤ 2 张。",
   "sfx": "数字=咚 · 每张卡片=叮",
-  "snippet": "<Chapter th={th} until={3.5} num=\"01\" title=\"先定节奏\" at={0.3} chips={[{ text: '字块 ≤ 1.5 秒', at: 1.1 }, { text: '留 1 拍呼吸', at: 1.7 }]} punch={{ text: '两个都要做', at: 2.4 }} />"
+  "snippet": "<Chapter th={th} until={3.5} num=\"01\" title=\"先定节奏\" at={0.3} chips={[{ text: '字块 ≤ 1.5 秒', at: 1.1 }, { text: '留 1 拍呼吸', at: 1.7 }]} punch={{ text: '两个都要做', at: 2.4 }} />",
+  "beat": "{\n \"kind\": \"chapter\",\n \"props\": {\n  \"until\": 3.5,\n  \"num\": \"01\",\n  \"title\": \"先定节奏\",\n  \"at\": 0.3,\n  \"chips\": [\n   {\n    \"text\": \"字块 ≤ 1.5 秒\",\n    \"at\": 1.1\n   },\n   {\n    \"text\": \"留 1 拍呼吸\",\n    \"at\": 1.7\n   }\n  ],\n  \"punch\": {\n   \"text\": \"两个都要做\",\n   \"at\": 2.4\n  }\n }\n}"
  },
  {
   "id": "giant-fill",
@@ -87,7 +96,8 @@
   "use": "落点金句：头顶一个巨大的空心字，讲到关键句从下往上填满。",
   "avoid": "只用 1 个字；全片最多 1 次，留给最后一句。",
   "sfx": "空心出现=呼 · 填满=综艺咚",
-  "snippet": "<GiantFill th={th} char=\"稳\" at={0.3} fillAt={1.6} until={3.5} />"
+  "snippet": "<GiantFill th={th} char=\"稳\" at={0.3} fillAt={1.6} until={3.5} />",
+  "beat": "{\n \"kind\": \"giant-fill\",\n \"props\": {\n  \"char\": \"稳\",\n  \"at\": 0.3,\n  \"fillAt\": 1.6,\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "typed-quote",
@@ -96,7 +106,8 @@
   "use": "金句 / 引用：黑底，上面圆形人像窗，下面一个字一个字打出你讲的话。",
   "avoid": "每行 ≤ 9 个字；字出现的时间要对上你讲那个字的时间。",
   "sfx": "打字声（每字一下）",
-  "snippet": "<TypedQuote th={th} at={0.2} until={3.5} lines={[{ toks: toks('剪辑不是加特效', 0.5), size: 88 }, { toks: toks('是删掉多余的', 1.8, 0.12), size: 88 }, { toks: toks('废话', 2.7, 0.14), size: 170, tone: 'accent', pre: '「', post: '」' }]} />"
+  "snippet": "<TypedQuote th={th} at={0.2} until={3.5} lines={[{ toks: toks('剪辑不是加特效', 0.5), size: 88 }, { toks: toks('是删掉多余的', 1.8, 0.12), size: 88 }, { toks: toks('废话', 2.7, 0.14), size: 170, tone: 'accent', pre: '「', post: '」' }]} />",
+  "beat": ""
  },
  {
   "id": "signature",
@@ -105,7 +116,8 @@
   "use": "片尾：名字 + 人设一句话 + 系列名。压暗底，不加重音效，留干净收尾。",
   "avoid": "别放多于 3 行；别再出新信息。",
   "sfx": "无（或一声很轻的叮）",
-  "snippet": "<SignatureCard th={th} at={0.4} name=\"我是示例\" slogan={['不吹 AI，只讲', '真', 'AI']} tag=\"示例系列 · #1\" />"
+  "snippet": "<SignatureCard th={th} at={0.4} name=\"我是示例\" slogan={['不吹 AI，只讲', '真', 'AI']} tag=\"示例系列 · #1\" />",
+  "beat": "{\n \"kind\": \"signature\",\n \"props\": {\n  \"at\": 0.4,\n  \"name\": \"我是示例\",\n  \"slogan\": [\n   \"不吹 AI，只讲\",\n   \"真\",\n   \"AI\"\n  ],\n  \"tag\": \"示例系列 · #1\"\n }\n}"
  },
  {
   "id": "split-retention",
@@ -114,7 +126,8 @@
   "use": "钩子 / 讲「没人看完」：上面一张曲线卡画出来，下面是你的人像窗。开头 3 秒给观众一个「画面钩子」，不要只有字幕。",
   "avoid": "卡里别放整段字，只放一个图 + 一个词；整支最多 2 次。",
   "sfx": "嗖 → 高科技显示 → 无奈（划走那一下）",
-  "snippet": "<SplitScene th={th} a={0.2} b={SU - 0.2} src={faceVideo}>{(tt) => <RetentionCard th={th} t={tt} title=\"总是没人看完？\" />}</SplitScene>"
+  "snippet": "<SplitScene th={th} a={0.2} b={SU - 0.2} src={faceVideo}>{(tt) => <RetentionCard th={th} t={tt} title=\"总是没人看完？\" />}</SplitScene>",
+  "beat": ""
  },
  {
   "id": "split-compare",
@@ -123,7 +136,8 @@
   "use": "「乱 vs 齐」「新手 vs 高手」：上面左右两个小图对比（✗ / ✓），下面是你在讲。",
   "avoid": "左右两边视觉量要差得明显（乱 vs 齐），不然看不出对比。",
   "sfx": "嗖 → 疑惑（乱）→ 正确（齐）",
-  "snippet": "<SplitScene th={th} a={0.2} b={SU - 0.2} src={faceVideo}>{(tt) => <CompareCard th={th} t={tt} leftLabel=\"effect 加满\" rightLabel=\"timing 对齐\" leftAt={0.4} rightAt={1.7} />}</SplitScene>"
+  "snippet": "<SplitScene th={th} a={0.2} b={SU - 0.2} src={faceVideo}>{(tt) => <CompareCard th={th} t={tt} leftLabel=\"effect 加满\" rightLabel=\"timing 对齐\" leftAt={0.4} rightAt={1.7} />}</SplitScene>",
+  "beat": ""
  },
  {
   "id": "phone-swipe",
@@ -132,7 +146,8 @@
   "use": "讲「观众划走」「没人看」：黑底里一部手机放着你的口播，右边三行字递进，说到关键句手机往上划走。",
   "avoid": "字最多三行、每行 ≤6 字（右边只剩 ~360px 宽）；别和左齐阶梯连着用。",
   "sfx": "气泡 → 点击 → 悬疑（不对劲）→ 刷（划走）",
-  "snippet": "<PhoneSwipe th={th} a={0.2} b={SU - 0.1} src={faceVideo} swipeAt={3.3} lines={[{ text: '画面太平', at: 0.5 }, { text: '字幕一直不变', at: 1.3 }, { text: '观众就划走了', at: 2.3, big: true }]} />"
+  "snippet": "<PhoneSwipe th={th} a={0.2} b={SU - 0.1} src={faceVideo} swipeAt={3.3} lines={[{ text: '画面太平', at: 0.5 }, { text: '字幕一直不变', at: 1.3 }, { text: '观众就划走了', at: 2.3, big: true }]} />",
+  "beat": ""
  },
  {
   "id": "reporter",
@@ -141,7 +156,8 @@
   "use": "讲步骤 / 清单：黑底，上面一张章节卡，你被抠出来站在前面。需要逐帧抠像（macOS：Apple Vision）。",
   "avoid": "没有抠像就别用（预览里是占位人形）；卡片里一次只讲一个编号。",
   "sfx": "忽然出现 → 碗叮 → 提示音 → 正确",
-  "snippet": "<Reporter th={th} a={0.2} b={SU - 0.1} matteRange={[-1, -1]} standIn>{(tt) => <ChapterCardBody th={th} t={tt} num=\"01\" title=\"先定节奏\" chips={[{ text: '字块 ≤ 1.5 秒', at: 1.0 }, { text: '留 1 拍呼吸', at: 1.8 }]} punch={{ text: '两个都要做', at: 2.6 }} />}</Reporter>"
+  "snippet": "<Reporter th={th} a={0.2} b={SU - 0.1} matteRange={[-1, -1]} standIn>{(tt) => <ChapterCardBody th={th} t={tt} num=\"01\" title=\"先定节奏\" chips={[{ text: '字块 ≤ 1.5 秒', at: 1.0 }, { text: '留 1 拍呼吸', at: 1.8 }]} punch={{ text: '两个都要做', at: 2.6 }} />}</Reporter>",
+  "beat": ""
  },
  {
   "id": "pip-broll",
@@ -150,7 +166,8 @@
   "use": "讲到一个具体名词 / 画面（产品、场景、动物…）：素材铺满全屏，你缩成白边小圆窗继续讲。小窗位置 右上 / 左上 / 底中 轮换，别遮素材主体。",
   "avoid": "素材没有主体时别用（看起来空）；小窗别压住标签牌；同一位置别连用 3 次。",
   "sfx": "嗖（素材进）→ 气泡（小窗弹出）",
-  "snippet": "<PipBroll th={th} a={0.2} b={SU - 0.1} src={faceVideo} pos=\"tr\" label=\"3 号清理装置\" />"
+  "snippet": "<PipBroll th={th} a={0.2} b={SU - 0.1} src={faceVideo} pos=\"tr\" label=\"3 号清理装置\" />",
+  "beat": ""
  },
  {
   "id": "split-broll",
@@ -159,7 +176,8 @@
   "use": "要一边讲、一边给观众看东西：上面是你（脸不动），下面一条素材，用黄色标签牌给素材命名。",
   "avoid": "素材条别放字幕（字幕放在你身上 y≤1230）；下面素材要有运动，静图就加慢推。",
   "sfx": "刷（素材升起）→ 提示音（标签牌）",
-  "snippet": "<SplitBroll th={th} a={0.2} b={SU - 0.1} src={faceVideo} label=\"3 号清理装置\" />"
+  "snippet": "<SplitBroll th={th} a={0.2} b={SU - 0.1} src={faceVideo} label=\"3 号清理装置\" />",
+  "beat": ""
  },
  {
   "id": "broll-bottom",
@@ -168,7 +186,8 @@
   "use": "你全屏不动，素材从底部滑上来盖住下半屏（~45%）。最轻的一种素材插入，适合名词一闪而过。",
   "avoid": "素材条会盖住胸口带——此时字幕必须让开（放到条的上沿之上或暂时隐藏）。",
   "sfx": "嗖（滑入）→ 无（让声音干净）",
-  "snippet": "<BrollBottom th={th} a={0.4} b={SU - 0.1} label=\"素材命名\" />"
+  "snippet": "<BrollBottom th={th} a={0.4} b={SU - 0.1} label=\"素材命名\" />",
+  "beat": ""
  },
  {
   "id": "poster-hero",
@@ -177,7 +196,8 @@
   "use": "关键名词 / 痛点词：整屏海报或 AI 图压暗 40%，一个金（利益）或红（痛点）大字砸出来，并在镜头里慢慢长大。",
   "avoid": "一支片只用在最关键的 2–3 个词；大字不超过 4 个字（否则字号被压得太小）。",
   "sfx": "嘭（砸出）→ 影视咚（长到最大）",
-  "snippet": "<PosterHero th={th} a={0.2} b={SU - 0.1} word=\"天敌\" tone=\"pain\" sub=\"引来天敌\" />"
+  "snippet": "<PosterHero th={th} a={0.2} b={SU - 0.1} word=\"天敌\" tone=\"pain\" sub=\"引来天敌\" />",
+  "beat": ""
  },
  {
   "id": "label-hero",
@@ -186,7 +206,8 @@
   "use": "一个小标签和一个大字叠在一起（如「GMV」压在「2000万」上），数字 / 关键词一眼看清；可再加一个白底红字的小标。",
   "avoid": "标签和大字别用同色；大字 ≤ 4 个字，否则被压得太小。",
   "sfx": "叮 → 嘭（盖章 / 撞击）",
-  "snippet": "<LabelHero th={th} label=\"GMV\" hero=\"2000万\" at={0.4} tag=\"三年做到\" tagAt={1.3} until={3.5} />"
+  "snippet": "<LabelHero th={th} label=\"GMV\" hero=\"2000万\" at={0.4} tag=\"三年做到\" tagAt={1.3} until={3.5} />",
+  "beat": "{\n \"kind\": \"label-hero\",\n \"props\": {\n  \"label\": \"GMV\",\n  \"hero\": \"2000万\",\n  \"at\": 0.4,\n  \"tag\": \"三年做到\",\n  \"tagAt\": 1.3,\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "spread-hero",
@@ -195,7 +216,8 @@
   "use": "1–3 个字的主角词把字距拉开，横跨整个宽度，像海报标题（「不要 / 赌博」「黑马」「放弃」）。上一行黄、下一行白或红。",
   "avoid": "超过 3 个字拉开会散；只用在最狠的一句，全片 1–2 次。",
   "sfx": "嘭 / 拳击 / 重音",
-  "snippet": "<SpreadHero th={th} top=\"不要\" bottom=\"赌博\" at={0.4} until={3.5} />"
+  "snippet": "<SpreadHero th={th} top=\"不要\" bottom=\"赌博\" at={0.4} until={3.5} />",
+  "beat": "{\n \"kind\": \"spread-hero\",\n \"props\": {\n  \"top\": \"不要\",\n  \"bottom\": \"赌博\",\n  \"at\": 0.4,\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "ghost-word",
@@ -204,7 +226,8 @@
   "use": "一个巨大的半透明字当背景（「烦」「为什么」「100%」），前面叠一句小字点题——像把主题词垫在画面底下。",
   "avoid": "别压在脸上（本库放在胸口带）；巨字别超过 3 个，否则糊成一团。",
   "sfx": "呼 → 咚",
-  "snippet": "<GhostWord th={th} ghost=\"为什么\" line=\"明明工作那么努力\" at={0.3} until={3.5} />"
+  "snippet": "<GhostWord th={th} ghost=\"为什么\" line=\"明明工作那么努力\" at={0.3} until={3.5} />",
+  "beat": "{\n \"kind\": \"ghost-word\",\n \"props\": {\n  \"ghost\": \"为什么\",\n  \"line\": \"明明工作那么努力\",\n  \"at\": 0.3,\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "quote-card",
@@ -213,7 +236,8 @@
   "use": "背景压暗并虚化，编号白底小标 +「引文」，关键词换黄，出处小字右对齐。适合数据、名言、研究结论。",
   "avoid": "最多 2 条引文、每条 ≤ 2 行；出处别写太长；不要在没有出处的主观句上用。",
   "sfx": "提示音 / 打字",
-  "snippet": "<QuoteCard th={th} until={3.6} items={[{ tag: '第一', at: 0.3, lines: [[{ t: '同一个话题' }], [{ t: '你的' }, { t: '不同价值观', hl: true }, { t: '是什么' }]] }, { tag: '第二', at: 1.5, lines: [[{ t: '不要做别人的' }, { t: '平替', hl: true }]] }]} source=\"来源：示例研究\" sourceAt={2.4} />"
+  "snippet": "<QuoteCard th={th} until={3.6} items={[{ tag: '第一', at: 0.3, lines: [[{ t: '同一个话题' }], [{ t: '你的' }, { t: '不同价值观', hl: true }, { t: '是什么' }]] }, { tag: '第二', at: 1.5, lines: [[{ t: '不要做别人的' }, { t: '平替', hl: true }]] }]} source=\"来源：示例研究\" sourceAt={2.4} />",
+  "beat": "{\n \"kind\": \"quote-card\",\n \"props\": {\n  \"until\": 3.6,\n  \"items\": [\n   {\n    \"tag\": \"第一\",\n    \"at\": 0.3,\n    \"lines\": [\n     [\n      {\n       \"t\": \"同一个话题\"\n      }\n     ],\n     [\n      {\n       \"t\": \"你的\"\n      },\n      {\n       \"t\": \"不同价值观\",\n       \"hl\": true\n      },\n      {\n       \"t\": \"是什么\"\n      }\n     ]\n    ]\n   },\n   {\n    \"tag\": \"第二\",\n    \"at\": 1.5,\n    \"lines\": [\n     [\n      {\n       \"t\": \"不要做别人的\"\n      },\n      {\n       \"t\": \"平替\",\n       \"hl\": true\n      }\n     ]\n    ]\n   }\n  ],\n  \"source\": \"来源：示例研究\",\n  \"sourceAt\": 2.4\n }\n}"
  },
  {
   "id": "chapter-tag",
@@ -222,7 +246,8 @@
   "use": "「01 ▶ 价值观导向」那种黄色圆角块 + 虚线框标题，标出第几点；比大数字更轻。",
   "avoid": "一次只出一个编号；和「章节清单」二选一，别叠着用。",
   "sfx": "叮 / 提示音",
-  "snippet": "<ChapterTag th={th} num=\"01\" title=\"先定节奏\" at={0.3} until={3.5} />"
+  "snippet": "<ChapterTag th={th} num=\"01\" title=\"先定节奏\" at={0.3} until={3.5} />",
+  "beat": "{\n \"kind\": \"chapter-tag\",\n \"props\": {\n  \"num\": \"01\",\n  \"title\": \"先定节奏\",\n  \"at\": 0.3,\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "top-title",
@@ -231,7 +256,8 @@
   "use": "整片挂在顶部的两行栏目名（白 + 强调色）：晚点划到的人也知道在讲什么。开头就出现，一直到结尾前。",
   "avoid": "头顶有空间才放；脸太大（头顶 ≈ y230）会被盖住，要先把画面下移或腾出头顶。别写成句子，8 个字以内。",
   "sfx": "无（它是背景信息，不响）",
-  "snippet": "<TopTitle th={th} line1=\"口播剪辑\" line2=\"三步剪出网感\" at={0.2} until={3.7} />"
+  "snippet": "<TopTitle th={th} line1=\"口播剪辑\" line2=\"三步剪出网感\" at={0.2} until={3.7} />",
+  "beat": "{\n \"kind\": \"top-title\",\n \"props\": {\n  \"line1\": \"口播剪辑\",\n  \"line2\": \"三步剪出网感\",\n  \"at\": 0.2,\n  \"until\": 3.7\n }\n}"
  },
  {
   "id": "stack-list",
@@ -240,7 +266,8 @@
   "use": "讲 2–3 个要点：一条一条出现，新的一条出来时旧的变暗；最后一句金句大字压上去。",
   "avoid": "超过 3 条（带金句）或 4 条（不带）会超出胸口带；每条 ≤8 个字。",
   "sfx": "每条一个「叮」，金句一个重音",
-  "snippet": "<StackList th={th} until={3.6} items={[{ text: '先删停顿', at: 0.4 }, { text: '再对节奏', at: 1.1 }, { text: '最后配音效', at: 1.8 }]} punch={{ text: '三步就够', at: 2.6 }} />"
+  "snippet": "<StackList th={th} until={3.6} items={[{ text: '先删停顿', at: 0.4 }, { text: '再对节奏', at: 1.1 }, { text: '最后配音效', at: 1.8 }]} punch={{ text: '三步就够', at: 2.6 }} />",
+  "beat": "{\n \"kind\": \"stack-list\",\n \"props\": {\n  \"until\": 3.6,\n  \"items\": [\n   {\n    \"text\": \"先删停顿\",\n    \"at\": 0.4\n   },\n   {\n    \"text\": \"再对节奏\",\n    \"at\": 1.1\n   },\n   {\n    \"text\": \"最后配音效\",\n    \"at\": 1.8\n   }\n  ],\n  \"punch\": {\n   \"text\": \"三步就够\",\n   \"at\": 2.6\n  }\n }\n}"
  },
  {
   "id": "end-cta",
@@ -249,7 +276,8 @@
   "use": "片尾告诉他下一步点哪里：蓝色胶囊按钮 + 指向左下角的箭头。几乎每条行业成片的结尾都有。",
   "avoid": "文案由用户给；没有账号 / 联系方式就别编。别和签名卡叠在一起（二选一，或胶囊在上、签名在下）。",
   "sfx": "一声很轻的「叮」，不要重音效",
-  "snippet": "<EndCta th={th} label=\"找我聊聊\" hint=\"点左下角\" at={0.4} until={3.6} />"
+  "snippet": "<EndCta th={th} label=\"找我聊聊\" hint=\"点左下角\" at={0.4} until={3.6} />",
+  "beat": "{\n \"kind\": \"end-cta\",\n \"props\": {\n  \"label\": \"找我聊聊\",\n  \"hint\": \"点左下角\",\n  \"at\": 0.4,\n  \"until\": 3.6\n }\n}"
  },
  {
   "id": "camera-punch",
@@ -258,7 +286,8 @@
   "use": "视频第一秒：画面从 1.28 倍冲到 1.0 倍并回弹，带动态模糊。钩子的第一下，配一个嗖。",
   "avoid": "全片只用 1 次，放在开头；脸要在画面中间偏上，否则冲镜时脸会被推出去。",
   "sfx": "嗖 上扬（whoosh_up）",
-  "snippet": "<Cam th={th} fx={[{ kind: 'punch', at: 0.1, dur: 1.2 }]}>\n<ChestBig th={th} small=\"开场第一秒\" big=\"冲进来\" at={0.5} until={3.4} />\n</Cam>"
+  "snippet": "<Cam th={th} fx={[{ kind: 'punch', at: 0.1, dur: 1.2 }]}>\n<ChestBig th={th} small=\"开场第一秒\" big=\"冲进来\" at={0.5} until={3.4} />\n</Cam>",
+  "beat": ""
  },
  {
   "id": "camera-shake",
@@ -267,7 +296,8 @@
   "use": "重点词砸下的那一下，画面跟着震动 + 放大 1.06 回弹（剪映「抖动」）。只震画面，字不震。",
   "avoid": "一支片里最多 4–6 次，每次要对着一个重击点；别连续震。",
   "sfx": "撞击（hit）/ 轰（boom）",
-  "snippet": "<Cam th={th} fx={[{ kind: 'shake', hits: [0.9, 2.2] }]}>\n<ChestBig th={th} small=\"第一击\" big=\"砸!\" at={0.9} until={2.1} />\n<ChestBig th={th} small=\"第二击\" big=\"再砸!\" at={2.2} until={3.5} />\n</Cam>"
+  "snippet": "<Cam th={th} fx={[{ kind: 'shake', hits: [0.9, 2.2] }]}>\n<ChestBig th={th} small=\"第一击\" big=\"砸!\" at={0.9} until={2.1} />\n<ChestBig th={th} small=\"第二击\" big=\"再砸!\" at={2.2} until={3.5} />\n</Cam>",
+  "beat": ""
  },
  {
   "id": "camera-tvoff",
@@ -276,7 +306,8 @@
   "use": "讲「广告一停，生意就停了」「一下子全没了」：画面压成一条线 → 一个点 → 黑，黑场一直到下一句。",
   "avoid": "黑场要给 until，不然一路黑到片尾；只在「消失 / 结束」的句子用。",
   "sfx": "低频下沉（sub_drop）",
-  "snippet": "<Cam th={th} fx={[{ kind: 'tvoff', at: 1.2, until: 3.0 }]}>\n<ChestBig th={th} small=\"广告一停\" big=\"生意就停\" at={0.2} until={1.2} />\n</Cam>"
+  "snippet": "<Cam th={th} fx={[{ kind: 'tvoff', at: 1.2, until: 3.0 }]}>\n<ChestBig th={th} small=\"广告一停\" big=\"生意就停\" at={0.2} until={1.2} />\n</Cam>",
+  "beat": ""
  },
  {
   "id": "camera-send",
@@ -285,7 +316,8 @@
   "use": "讲「把这条视频发给他」「转发」：整个画面缩进一支手机 → 停一下 → 往右上飞走。",
   "avoid": "背景用深色星空（Backdrop），别用白底；全片最多 1 次，留给转发 / 分享的号召。",
   "sfx": "嗖 上扬 + 拉链上滑",
-  "snippet": "<Cam th={th} fx={[{ kind: 'send', at: 1.0, until: 3.2 }]}>\n<ChestBig th={th} small=\"发给身边的人\" big=\"转发\" at={0.1} until={1.0} />\n</Cam>"
+  "snippet": "<Cam th={th} fx={[{ kind: 'send', at: 1.0, until: 3.2 }]}>\n<ChestBig th={th} small=\"发给身边的人\" big=\"转发\" at={0.1} until={1.0} />\n</Cam>",
+  "beat": ""
  },
  {
   "id": "camera-circle",
@@ -294,7 +326,8 @@
   "use": "讲「身边的同行 / 团队 / 客户」：说话的人缩成圆头像，周围圆圈一个个弹出、连线连上他。「讲什么就画什么」的典型。",
   "avoid": "脸的位置要告诉它（face）；圆圈最多 6 个；别和字幕、大字同时出现太多。",
   "sfx": "啵 × N",
-  "snippet": "<Cam th={th} fx={[{ kind: 'circle', at: 0.6, until: 4.0, popAt: 1.3, cy: 800, R: 220 }]} />"
+  "snippet": "<Cam th={th} fx={[{ kind: 'circle', at: 0.6, until: 4.0, popAt: 1.3, cy: 800, R: 220 }]} />",
+  "beat": ""
  },
  {
   "id": "white-flash",
@@ -303,7 +336,8 @@
   "use": "钩子那一下、换场、重击点：整屏白一下（0.22 秒）再退掉。常和冲镜、大字同帧。",
   "avoid": "一支片里最多 3–4 次；别用在安静的句子。",
   "sfx": "闪光（flash）",
-  "snippet": "<ChestBig th={th} small=\"结果他开了\" big=\"8 单\" at={0.6} until={3.4} />\n<WhiteFlash at={0.6} />"
+  "snippet": "<ChestBig th={th} small=\"结果他开了\" big=\"8 单\" at={0.6} until={3.4} />\n<WhiteFlash at={0.6} />",
+  "beat": "{\n \"kind\": \"white-flash\",\n \"props\": {\n  \"small\": \"结果他开了\",\n  \"big\": \"8 单\",\n  \"at\": 0.6,\n  \"until\": 3.4\n }\n}"
  },
  {
   "id": "kinetic-line",
@@ -312,7 +346,8 @@
   "use": "一句话一拍一词：新词放大弹入，上一词缩小变暗留在上面；重点词用强调色 + 更大。适合开头的金句。",
   "avoid": "一句 ≤6 个词；每个词要对着他讲那个词的时间；别和字幕同时挤在胸口带。",
   "sfx": "啵 / 重点词用撞击",
-  "snippet": "<KineticLine th={th} y={1010} words={[{ t: 0.3, text: '你的' }, { t: 0.8, text: '下一张单' }, { t: 1.5, text: '就在' }, { t: 2.0, text: '同行那里', hot: true }]} until={3.5} />"
+  "snippet": "<KineticLine th={th} y={1010} words={[{ t: 0.3, text: '你的' }, { t: 0.8, text: '下一张单' }, { t: 1.5, text: '就在' }, { t: 2.0, text: '同行那里', hot: true }]} until={3.5} />",
+  "beat": "{\n \"kind\": \"kinetic-line\",\n \"props\": {\n  \"y\": 1010,\n  \"words\": [\n   {\n    \"t\": 0.3,\n    \"text\": \"你的\"\n   },\n   {\n    \"t\": 0.8,\n    \"text\": \"下一张单\"\n   },\n   {\n    \"t\": 1.5,\n    \"text\": \"就在\"\n   },\n   {\n    \"t\": 2.0,\n    \"text\": \"同行那里\",\n    \"hot\": true\n   }\n  ],\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "counter-slam",
@@ -321,7 +356,8 @@
   "use": "具体数字（8 单、50 万、10 年）：从 0 滚到目标，越滚越慢，落地放大砸下 + 光晕。比直接出数字强很多。",
   "avoid": "一支片 1–3 个数字；数字要是他真讲的，不要编；后缀小字写单位。",
   "sfx": "嘀嘀 + 撞击",
-  "snippet": "<CounterSlam th={th} to={8} at={0.2} land={1.7} top={420} suffix=\"单\" until={3.5} />"
+  "snippet": "<CounterSlam th={th} to={8} at={0.2} land={1.7} top={420} suffix=\"单\" until={3.5} />",
+  "beat": "{\n \"kind\": \"counter-slam\",\n \"props\": {\n  \"to\": 8,\n  \"at\": 0.2,\n  \"land\": 1.7,\n  \"top\": 420,\n  \"suffix\": \"单\",\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "stamp",
@@ -330,7 +366,8 @@
   "use": "「全部都是 X」「已成交」「重点」：字像印章从大盖下来（2.2 倍 → 1 倍）+ 微倾。",
   "avoid": "字 ≤6 个；颜色用红 / 强调色，别和大字同色；一支片 1–2 次。",
   "sfx": "印章（stamp）",
-  "snippet": "<Stamp th={th} text=\"全部成交\" at={0.8} until={3.4} y={1050} />"
+  "snippet": "<Stamp th={th} text=\"全部成交\" at={0.8} until={3.4} y={1050} />",
+  "beat": "{\n \"kind\": \"stamp\",\n \"props\": {\n  \"text\": \"全部成交\",\n  \"at\": 0.8,\n  \"until\": 3.4,\n  \"y\": 1050\n }\n}"
  },
  {
   "id": "chat-dm",
@@ -339,7 +376,8 @@
   "use": "讲「私信我 X」「留言 X」：底部弹出输入框 → 打字 → 发送 → 强调色气泡飞上去。号召动作的画面化。",
   "avoid": "字写他真讲的关键词（≤6 个字）；放在结尾引导；别再叠结尾胶囊。",
   "sfx": "打字 + 啵 + 提示",
-  "snippet": "<ChatDM th={th} text=\"GPS\" at={0.2} sendAt={1.5} until={4.0} y={1000} />"
+  "snippet": "<ChatDM th={th} text=\"GPS\" at={0.2} sendAt={1.5} until={4.0} y={1000} />",
+  "beat": "{\n \"kind\": \"chat-dm\",\n \"props\": {\n  \"text\": \"GPS\",\n  \"at\": 0.2,\n  \"sendAt\": 1.5,\n  \"until\": 4.0,\n  \"y\": 1000\n }\n}"
  },
  {
   "id": "slot-row",
@@ -348,7 +386,8 @@
   "use": "讲「至少 7 单」「十个名额」「目标」：下面摆出 N 个虚线空位，一个个弹出。",
   "avoid": "N ≤ 10；放在胸口带（y≈1050）；别压字幕。",
   "sfx": "啵 × N",
-  "snippet": "<SlotRow th={th} n={7} y={1050} at={0.3} until={3.5} />"
+  "snippet": "<SlotRow th={th} n={7} y={1050} at={0.3} until={3.5} />",
+  "beat": "{\n \"kind\": \"slot-row\",\n \"props\": {\n  \"n\": 7,\n  \"y\": 1050,\n  \"at\": 0.3,\n  \"until\": 3.5\n }\n}"
  },
  {
   "id": "rapid-montage",
@@ -357,7 +396,8 @@
   "use": "用真截图当证据：每张 0.2 秒放大入 + 左右轻倾，最后一张停住，上面写「第 N 个」。真截图比任何动画有说服力。",
   "avoid": "截图要你自己准备（public 里，写路径和原图像素）；遮掉别人的名字和电话；别超过 12 张。",
   "sfx": "快门（camera）",
-  "snippet": "<RapidMontage th={th} at={0.3} until={3.5} step={0.45} label=\"第 {n} 个\" images={[1, 2, 3, 4].map((i) => ({ src: `craft/ph/shot${i}.png`, w: 540, h: 960 }))} />"
+  "snippet": "<RapidMontage th={th} at={0.3} until={3.5} step={0.45} label=\"第 {n} 个\" images={[1, 2, 3, 4].map((i) => ({ src: `craft/ph/shot${i}.png`, w: 540, h: 960 }))} />",
+  "beat": ""
  },
  {
   "id": "jy-text-a",
@@ -366,7 +406,8 @@
   "use": "24 个剪映文字预设里的 4 个：向上露出 / 随机上升 / 模糊发光 / 呐喊声波。每个预设的位移 / 缩放 / 亮度 / 模糊都按剪映样片逐帧量出来的表写成，音效自动配。",
   "avoid": "不是每个字都要动（原包 52% 的字没有动画）；一句一个预设，别连续同一个。",
   "sfx": "预设自带（见 autosfx）",
-  "snippet": "<JyTextBeat th={th} text=\"向上露出\" at={0.1} dur={1.0} preset=\"向上露出\" y={980} size={130} tone=\"white\" />\n<JyTextBeat th={th} text=\"随机上升\" at={1.2} dur={1.0} preset=\"随机上升\" y={980} size={130} tone=\"white\" />\n<JyTextBeat th={th} text=\"模糊发光\" at={2.3} dur={1.0} preset=\"模糊发光\" y={980} size={130} tone=\"accent\" />\n<JyTextBeat th={th} text=\"呐喊声波\" at={3.4} dur={1.1} preset=\"呐喊声波\" y={980} size={130} tone=\"accent\" />"
+  "snippet": "<JyTextBeat th={th} text=\"向上露出\" at={0.1} dur={1.0} preset=\"向上露出\" y={980} size={130} tone=\"white\" />\n<JyTextBeat th={th} text=\"随机上升\" at={1.2} dur={1.0} preset=\"随机上升\" y={980} size={130} tone=\"white\" />\n<JyTextBeat th={th} text=\"模糊发光\" at={2.3} dur={1.0} preset=\"模糊发光\" y={980} size={130} tone=\"accent\" />\n<JyTextBeat th={th} text=\"呐喊声波\" at={3.4} dur={1.1} preset=\"呐喊声波\" y={980} size={130} tone=\"accent\" />",
+  "beat": ""
  },
  {
   "id": "jy-text-b",
@@ -375,7 +416,8 @@
   "use": "缩小 II（先大后砸）/ 波浪弹入 / 打字光标 / 跃进。「弹」类预设有回弹，配综艺音；其余基本是缓出。",
   "avoid": "弹类只给轻松的词；打字光标只给「定义 / 关键词」；别全片都弹。",
   "sfx": "预设自带（见 autosfx）",
-  "snippet": "<JyTextBeat th={th} text=\"缩小二\" at={0.1} dur={1.0} preset=\"缩小II\" y={980} size={130} tone=\"white\" />\n<JyTextBeat th={th} text=\"波浪弹入\" at={1.2} dur={1.0} preset=\"波浪弹入\" y={980} size={130} tone=\"white\" />\n<JyTextBeat th={th} text=\"打字光标\" at={2.3} dur={1.0} preset=\"打字光标\" y={980} size={130} tone=\"accent\" />\n<JyTextBeat th={th} text=\"跃进\" at={3.4} dur={1.1} preset=\"跃进\" y={980} size={150} tone=\"accent\" />"
+  "snippet": "<JyTextBeat th={th} text=\"缩小二\" at={0.1} dur={1.0} preset=\"缩小II\" y={980} size={130} tone=\"white\" />\n<JyTextBeat th={th} text=\"波浪弹入\" at={1.2} dur={1.0} preset=\"波浪弹入\" y={980} size={130} tone=\"white\" />\n<JyTextBeat th={th} text=\"打字光标\" at={2.3} dur={1.0} preset=\"打字光标\" y={980} size={130} tone=\"accent\" />\n<JyTextBeat th={th} text=\"跃进\" at={3.4} dur={1.1} preset=\"跃进\" y={980} size={150} tone=\"accent\" />",
+  "beat": ""
  },
  {
   "id": "backdrop-cosmos",
@@ -384,7 +426,8 @@
   "use": "人缩成圆头像 / 手机时露出来的那层：深色星空三层视差 + 慢转的九宫格线，颜色来自主题。不需要任何图片。",
   "avoid": "不要整片都用它当背景（会抢人）；只在「黑底页」场景用。",
   "sfx": "无",
-  "snippet": "<Cam th={th} fx={[]}>\n<Backdrop th={th} kind=\"cosmos\" />\n<ChestBig th={th} small=\"黑底页\" big=\"星空\" at={0.4} until={3.4} />\n</Cam>"
+  "snippet": "<Cam th={th} fx={[]}>\n<Backdrop th={th} kind=\"cosmos\" />\n<ChestBig th={th} small=\"黑底页\" big=\"星空\" at={0.4} until={3.4} />\n</Cam>",
+  "beat": ""
  },
  {
   "id": "particles",
@@ -393,7 +436,8 @@
   "use": "压在画面上的氛围层：gold = 光尘往上飘，firefly = 暖色萤火会闪。给国风 / 故事感的画面一点空气。",
   "avoid": "粒子别太密（n≤60）；快节奏的片别用，会显脏。",
   "sfx": "无",
-  "snippet": "<Particles th={th} kind=\"gold\" n={46} at={0} until={3.6} area={[0, 700, 1080, 1700]} />\n<ChestBig th={th} small=\"氛围层\" big=\"光尘\" at={0.4} until={3.4} />"
+  "snippet": "<Particles th={th} kind=\"gold\" n={46} at={0} until={3.6} area={[0, 700, 1080, 1700]} />\n<ChestBig th={th} small=\"氛围层\" big=\"光尘\" at={0.4} until={3.4} />",
+  "beat": "{\n \"kind\": \"particles\",\n \"props\": {\n  \"kind\": \"gold\",\n  \"n\": 46,\n  \"at\": 0,\n  \"until\": 3.6,\n  \"area\": [\n   0,\n   700,\n   1080,\n   1700\n  ]\n }\n}"
  },
  {
   "id": "ink-wipe",
@@ -402,7 +446,8 @@
   "use": "两段之间的转场：一团墨从中心晕开盖满再退开（blot / brush 一笔横扫 / splash 四溅 / rise 上涌）。国风、故事感。",
   "avoid": "一支片最多 3 次；时长 0.9 秒，别压在重点词上。",
   "sfx": "长嗖（whoosh_long）",
-  "snippet": "<ChestBig th={th} small=\"第一段\" big=\"之前\" at={0.1} until={1.5} />\n<ChestBig th={th} small=\"第二段\" big=\"之后\" at={1.9} until={3.6} />\n<InkWipe at={1.0} dur={1.2} kind=\"brush\" />"
+  "snippet": "<ChestBig th={th} small=\"第一段\" big=\"之前\" at={0.1} until={1.5} />\n<ChestBig th={th} small=\"第二段\" big=\"之后\" at={1.9} until={3.6} />\n<InkWipe at={1.0} dur={1.2} kind=\"brush\" />",
+  "beat": "{\n \"kind\": \"ink-wipe\",\n \"props\": {\n  \"small\": \"第一段\",\n  \"big\": \"之前\",\n  \"at\": 0.1,\n  \"until\": 1.5\n }\n}"
  },
  {
   "id": "motion-fade",
@@ -411,7 +456,8 @@
   "use": "最常用的底：知识、叙述、一般句子；不抢戏（原包 110 次，第一名）。",
   "avoid": "要强调时别用（没有冲击）；别句句都用。",
   "sfx": "纸张 / 呼（轻），或不加",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"fade\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"fade\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-slide-up",
@@ -420,7 +466,8 @@
   "use": "温和的信息出现：标题、条目逐行出现，上滑一点点 + 渐显。",
   "avoid": "连续很多行同一个方向会呆板。",
   "sfx": "呼 / 刷（轻）",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"slide-up\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"slide-up\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-reveal-up",
@@ -429,7 +476,8 @@
   "use": "从下往上「擦出来」：定义、结论句，有仪式感。",
   "avoid": "字太小会看不清擦的过程。",
   "sfx": "刷",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"reveal-up\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"reveal-up\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-curtain",
@@ -438,7 +486,8 @@
   "use": "从中间向两边展开：开场标题、章节名；知识 / 国风气质。",
   "avoid": "快节奏连续用会拖。",
   "sfx": "纸张抖动 / 呼",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"curtain\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"curtain\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-grow",
@@ -447,7 +496,8 @@
   "use": "数字、要点出现：从一半大小放大到位，有「长出来」的感觉。",
   "avoid": "别和「砸下」在同一句里一起用。",
   "sfx": "点击 / 叮 / 弹簧",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"grow\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"grow\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-grow-soft",
@@ -456,7 +506,8 @@
   "use": "字幕级的轻动：关键词不抢戏地强调（6% 的缩放）。",
   "avoid": "想要冲击时别用（太轻）。",
   "sfx": "叮（轻）",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"grow-soft\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"grow-soft\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-shrink",
@@ -465,7 +516,8 @@
   "use": "强调、反转：从略大缩到正常，有「落下来」的感觉（原包 80 次，第二名）。",
   "avoid": "别给整句长句（缩放会让长句出界）。",
   "sfx": "咚 / 撞击 / 水滴",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"shrink\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"shrink\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-slam",
@@ -474,7 +526,8 @@
   "use": "全片最重的一个词：从 3 倍大砸到 1 倍，必须配重音。",
   "avoid": "全片最多 2–3 次；没有重击音效会很空。",
   "sfx": "嘭 / 影视咚",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"slam\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"slam\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-glow-blur",
@@ -483,7 +536,8 @@
   "use": "情感、玄、柔和的句子：模糊 → 清晰，带一点辉光（原包 106 次：模糊发光 + 雪光模糊 + 发光模糊）。",
   "avoid": "快节奏的词用会糊（0.7 秒偏慢）。",
   "sfx": "水滴 / 响铃 / 魔法",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"glow-blur\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"glow-blur\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-blur-left",
@@ -492,7 +546,8 @@
   "use": "换话题、有转场感的句子：从右向左带运动模糊滑入。",
   "avoid": "放在画面右侧的字别用。",
   "sfx": "呼 / 嗖",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"blur-left\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"blur-left\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-rise-random",
@@ -501,7 +556,8 @@
   "use": "知识 / 读书类的句子：每个字从不同的高度浮上来。",
   "avoid": "字太多会乱（≤8 字）。",
   "sfx": "纸张抖动",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"rise-random\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"rise-random\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-wave-bounce",
@@ -510,7 +566,8 @@
   "use": "轻松、俏皮、有趣的词：逐字弹起像波浪。",
   "avoid": "严肃 / 法律 / 金融类内容不适合。",
   "sfx": "气泡 / 啵",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"wave-bounce\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"wave-bounce\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-typewriter",
@@ -519,7 +576,8 @@
   "use": "定义、关键词、「正在输入」的感觉；配打字声最稳（原包 68 次）。",
   "avoid": "长句太慢（每字 0.075 秒，12 字就 0.9 秒）。",
   "sfx": "打字声（每字一下）",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"typewriter\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"typewriter\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-develop",
@@ -528,7 +586,8 @@
   "use": "沉稳、文艺的句子：逐字从模糊灰色变清晰。",
   "avoid": "整句 0.7 秒以上会拖，≤8 字。",
   "sfx": "无，或水滴 / 空灵",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"develop\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"develop\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-leap",
@@ -537,7 +596,8 @@
   "use": "有力的短词：从下方跃起到位，带一点回弹。",
   "avoid": "不要给长句。",
   "sfx": "叮 / 弹簧",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"leap\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"leap\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-roll-in",
@@ -546,7 +606,8 @@
   "use": "数字、钱、成交：像老虎机一样滚上来。",
   "avoid": "文字过长时滚动看不清。",
   "sfx": "收银机 / 金币",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"roll-in\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"roll-in\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-tracking-in",
@@ -555,7 +616,8 @@
   "use": "标题、金句：字从分散收拢到位，有「聚焦」感（向右集合 + 收拢，共 52 次）。",
   "avoid": "字少于 3 个时收拢幅度不明显。",
   "sfx": "嗖（轻）/ 呼",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"tracking-in\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"tracking-in\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "motion-echo",
@@ -564,7 +626,8 @@
   "use": "喊话、强烈情绪、「注意！」：字弹出并向外扩出回声圈（呐喊声波）。",
   "avoid": "全片最多一两次；别给长句。",
   "sfx": "重咚 / 撞击",
-  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"echo\" at={0.4} until={2.4} y={1040} size={150} />"
+  "snippet": "<MotionText th={th} text=\"剪出网感\" preset=\"echo\" at={0.4} until={2.4} y={1040} size={150} />",
+  "beat": ""
  },
  {
   "id": "theme-biz-gold-red",
@@ -573,7 +636,8 @@
   "use": "法律、金融、贷款、房产、教育、商业认知、汽车、留学——要「可信、利落」。得意黑为主 + 金 #ffbf17 / 深红 #b71c1c（52% 的行业成片）。动画偏 渐显 / 放大 / 缩小 / 发光模糊，音效偏「呼」和撞击。",
   "avoid": "一个版式里金 = 利益、红 = 痛点；别再加第三种强调色。",
   "sfx": "呼 → 撞击光 / 旋风",
-  "snippet": "<ChestBig th={THEME_BIZ_GOLD_RED} small=\"合同里最重要的一句\" big=\"先看条款\" at={0.3} until={2.0} />\n<LabelHero th={THEME_BIZ_GOLD_RED} label=\"记住\" hero=\"条款\" at={2.2} until={3.5} />"
+  "snippet": "<ChestBig th={THEME_BIZ_GOLD_RED} small=\"合同里最重要的一句\" big=\"先看条款\" at={0.3} until={2.0} />\n<LabelHero th={THEME_BIZ_GOLD_RED} label=\"记住\" hero=\"条款\" at={2.2} until={3.5} />",
+  "beat": ""
  },
  {
   "id": "theme-guofeng-cream",
@@ -582,7 +646,8 @@
   "use": "养生、女性情感 / 成长、心理、情感、瑜伽、全屋定制——要「温和、有质感」。衬线体 + 米黄 #fff589 / 深红。动画偏 渐显 / 轻微放大 / 开幕 / 逐字显影，音效偏纸张和「呼」。",
   "avoid": "原包用古典体 / 金陵体（不随仓库），本库退回思源 Heavy，质感会弱一些。",
   "sfx": "纸张抖动 → 呼",
-  "snippet": "<ChestBig th={THEME_GUOFENG_CREAM} small=\"睡前只做这一件事\" big=\"放松\" at={0.3} until={2.0} />\n<LabelHero th={THEME_GUOFENG_CREAM} label=\"慢慢来\" hero=\"呼吸\" at={2.2} until={3.5} />"
+  "snippet": "<ChestBig th={THEME_GUOFENG_CREAM} small=\"睡前只做这一件事\" big=\"放松\" at={0.3} until={2.0} />\n<LabelHero th={THEME_GUOFENG_CREAM} label=\"慢慢来\" hero=\"呼吸\" at={2.2} until={3.5} />",
+  "beat": ""
  },
  {
   "id": "theme-knowledge-yellow",
@@ -591,7 +656,8 @@
   "use": "知识付费、职场、创业 IP、商业导师、二手车、房产中介、读书、财税——要「明快、讲干货」。抖音美好体做配角 + 明黄 #fff589 / 深红。动画偏 缩小 / 渐显 / 开幕 / 向左模糊，音效偏刷、纸张、打字声。",
   "avoid": "节奏最密（约 78 字块/分、54 音效/分，15–60 秒短片的中位数）；别照搬到长片。",
   "sfx": "刷 → 打字声",
-  "snippet": "<ChestBig th={THEME_KNOWLEDGE_YELLOW} small=\"涨粉的第一步\" big=\"选题\" at={0.3} until={2.0} />\n<LabelHero th={THEME_KNOWLEDGE_YELLOW} label=\"先想清楚\" hero=\"定位\" at={2.2} until={3.5} />"
+  "snippet": "<ChestBig th={THEME_KNOWLEDGE_YELLOW} small=\"涨粉的第一步\" big=\"选题\" at={0.3} until={2.0} />\n<LabelHero th={THEME_KNOWLEDGE_YELLOW} label=\"先想清楚\" hero=\"定位\" at={2.2} until={3.5} />",
+  "beat": ""
  },
  {
   "id": "emo-cry",
@@ -600,7 +666,8 @@
   "use": "一个词就是一个负面情绪：字先是白色，红色像液体一样从下往上灌满（约 0.7 秒），字距拉开横跨宽度。适合「崩溃、痛、哭」这类词。",
   "avoid": "全片 1–2 次；别给长句；红色是「痛点」色，别和本来就用红做强调的版式叠着用。",
   "sfx": "重咚 / 叹气（无奈）",
-  "snippet": "<EmotionWord th={th} text=\"哭泣\" kind=\"cry\" at={0.3} until={3.3} />"
+  "snippet": "<EmotionWord th={th} text=\"哭泣\" kind=\"cry\" at={0.3} until={3.3} />",
+  "beat": ""
  },
  {
   "id": "emo-surprise",
@@ -609,7 +676,8 @@
   "use": "惊讶、意外、转折词：两个字一上一下错开地摆动，各带 ±8° 倾斜，循环约 1 秒，金黄色。",
   "avoid": "字多了摆动会乱（2–3 个字最好）；严肃内容不适合。",
   "sfx": "惊讶音 / 啵",
-  "snippet": "<EmotionWord th={th} text=\"惊讶\" kind=\"surprise\" at={0.3} until={3.3} />"
+  "snippet": "<EmotionWord th={th} text=\"惊讶\" kind=\"surprise\" at={0.3} until={3.3} />",
+  "beat": ""
  },
  {
   "id": "emo-joy",
@@ -618,7 +686,8 @@
   "use": "开心、好消息、成功：淡黄字，背后放射状光芒随节拍明暗脉动，约 1 秒一周期。",
   "avoid": "光芒会盖住脸后面的画面，别和大面积素材同时用；全片 1–2 次。",
   "sfx": "叮 / 魔法 / 欢呼",
-  "snippet": "<EmotionWord th={th} text=\"非常开心\" kind=\"joy\" at={0.3} until={3.3} />"
+  "snippet": "<EmotionWord th={th} text=\"非常开心\" kind=\"joy\" at={0.3} until={3.3} />",
+  "beat": ""
  },
  {
   "id": "emo-shout",
@@ -627,7 +696,8 @@
   "use": "喊话、求救、「注意！」：两个字向外倾斜，先淡入再轻轻摆动，并向外扩出回声。",
   "avoid": "只给 2–3 个字的短词；扩出的回声会超出字本身，留够左右空间。",
   "sfx": "重咚 / 撞击",
-  "snippet": "<EmotionWord th={th} text=\"救命\" kind=\"shout\" at={0.3} until={3.3} />"
+  "snippet": "<EmotionWord th={th} text=\"救命\" kind=\"shout\" at={0.3} until={3.3} />",
+  "beat": ""
  },
  {
   "id": "glass-hero",
@@ -636,7 +706,8 @@
   "use": "一个主角词做成「玻璃字」：金黄渐层，但背后画面的明暗纹理会透进字里，像毛玻璃。适合开场标题、品牌词、一条片里唯一的大字。",
   "avoid": "背后画面要有明暗起伏（木纹 / 砖墙 / 窗帘），一整片平的深色墙几乎看不出来；不能放进带 transform / opacity / filter 的外层（强光混合会失效）。",
   "sfx": "呼 → 魔法 / 闪光",
-  "snippet": "<Raw>\n<WallDemo person={false}>\n<GlassWord th={th} text=\"剪出网感\" size={230} at={0.3} until={3.4} y={760} />\n</WallDemo>\n</Raw>"
+  "snippet": "<Raw>\n<WallDemo person={false}>\n<GlassWord th={th} text=\"剪出网感\" size={230} at={0.3} until={3.4} y={760} />\n</WallDemo>\n</Raw>",
+  "beat": ""
  },
  {
   "id": "text-behind",
@@ -645,7 +716,8 @@
   "use": "大字放在人的后面：背景 → 字 → 抠像 PNG 盖在最上面，人把字挡住一点，画面有层次感。需要逐帧抠像（macOS：Apple Vision）。",
   "avoid": "没有抠像就别用；字要放在和视频同一个镜头容器里（才跟着手持晃动 / 推近对齐）；没有抠像的那一帧不画字，宁可没字也别盖在脸上；窗口控制在 ~3 秒内（抠像逐帧很慢）。",
   "sfx": "咚 / 撞击",
-  "snippet": "<Raw>\n<WallDemo dy={200}>\n<Txt th={th} at={0.3} until={3.4} y={340} size={250} tone=\"white\" anim=\"slam\">剪出网感</Txt>\n</WallDemo>\n</Raw>"
+  "snippet": "<Raw>\n<WallDemo dy={200}>\n<Txt th={th} at={0.3} until={3.4} y={340} size={250} tone=\"white\" anim=\"slam\">剪出网感</Txt>\n</WallDemo>\n</Raw>",
+  "beat": ""
  },
  {
   "id": "glass-behind",
@@ -654,6 +726,277 @@
   "use": "两者结合：金黄玻璃字放在人后面，纹理透进字里，人挡住字的一部分。最有「高级感」的一种大字。",
   "avoid": "同「玻璃字」+「字在人后」的限制；全片最多 1 次，留给开场或最关键的一句。",
   "sfx": "呼 → 咚 / 魔法",
-  "snippet": "<Raw>\n<WallDemo dy={200}>\n<GlassWord th={th} text=\"剪出网感\" size={250} at={0.3} until={3.4} y={340} />\n</WallDemo>\n</Raw>"
+  "snippet": "<Raw>\n<WallDemo dy={200}>\n<GlassWord th={th} text=\"剪出网感\" size={250} at={0.3} until={3.4} y={340} />\n</WallDemo>\n</Raw>",
+  "beat": ""
+ },
+ {
+  "id": "title-tag",
+  "no": "特效",
+  "zh": "顶部标题 + 标签 + 底说明",
+  "use": "系列感开场：顶部栏目名淡入，橙色小标签横向展开（「第二弹」「第 3 集」），底部一行小说明。",
+  "avoid": "和 top-title 二选一；标题 ≤8 字，标签 ≤4 字。",
+  "sfx": "轻划（swish）",
+  "snippet": "<TitleTag th={th} title=\"剪辑特效\" tag=\"第二弹\" caption=\"一句话叫出来的剪辑特效\" at={0.2} until={3.5} />",
+  "beat": "{\n \"kind\": \"title-tag\",\n \"props\": {\n  \"title\": \"剪辑特效\",\n  \"tag\": \"第二弹\",\n  \"caption\": \"一句话叫出来的剪辑特效\",\n  \"at\": 0.2,\n  \"until\": 3.5\n }\n}"
+ },
+ {
+  "id": "pixel-text",
+  "no": "特效",
+  "zh": "像素字（点阵屏）",
+  "use": "讲「AI / 代码 / 数据 / 科技」：画面压暗，字一个个打出，新字带红青分离，打完下面出一行小的点阵副标题。",
+  "avoid": "字 ≤6 个；全片 1 次；背景别太亮否则点阵不明显。",
+  "sfx": "打字 + 故障",
+  "snippet": "<PixelText th={th} text=\"像素字\" sub=\"PIXEL WORDS\" at={0.2} until={3.6} />",
+  "beat": "{\n \"kind\": \"pixel-text\",\n \"props\": {\n  \"text\": \"像素字\",\n  \"sub\": \"PIXEL WORDS\",\n  \"at\": 0.2,\n  \"until\": 3.6\n }\n}"
+ },
+ {
+  "id": "drop-text",
+  "no": "特效",
+  "zh": "掉落字",
+  "use": "强调「掉下来 / 崩了 / 塌了」：大字一个个带重力掉下、旋转、落地回弹，叠成一堆。",
+  "avoid": "字 ≤4 个；一支片 1 次；别压脸（默认在左上）。",
+  "sfx": "咚 × N（thud）",
+  "snippet": "<DropText th={th} text=\"掉落字\" small=\"gravity\" label=\"drop\" at={0.2} until={3.2} />",
+  "beat": "{\n \"kind\": \"drop-text\",\n \"props\": {\n  \"text\": \"掉落字\",\n  \"small\": \"gravity\",\n  \"label\": \"drop\",\n  \"at\": 0.2,\n  \"until\": 3.2\n }\n}"
+ },
+ {
+  "id": "huge-caption",
+  "no": "特效",
+  "zh": "巨大字 + 小修饰词",
+  "use": "一个大词 + 右下角冒一个小的强调色词（「巨大 / 字幕」「爆款 / 标题」）。",
+  "avoid": "大词 ≤3 字；小词 ≤3 字。",
+  "sfx": "撞击 + 啵",
+  "snippet": "<HugeCaption th={th} big=\"巨大\" small=\"字幕\" at={0.2} until={3.2} />",
+  "beat": "{\n \"kind\": \"huge-caption\",\n \"props\": {\n  \"big\": \"巨大\",\n  \"small\": \"字幕\",\n  \"at\": 0.2,\n  \"until\": 3.2\n }\n}"
+ },
+ {
+  "id": "title-card",
+  "no": "特效",
+  "zh": "电影字卡（整屏色块）",
+  "use": "章节转场：整屏橙色卡从下往上滑入，两三行大字依次出现，停一会儿向下滑走。",
+  "avoid": "一支片最多 2 张；每行 ≤8 字；背景色用 color 换。",
+  "sfx": "嗖 + 叮",
+  "snippet": "<TitleCard th={th} lines={[\"自动剪辑\",\"超级简单\"]} at={0.2} until={3.3} />",
+  "beat": "{\n \"kind\": \"title-card\",\n \"props\": {\n  \"lines\": [\n   \"自动剪辑\",\n   \"超级简单\"\n  ],\n  \"at\": 0.2,\n  \"until\": 3.3\n }\n}"
+ },
+ {
+  "id": "prompt-box",
+  "no": "特效",
+  "zh": "提示词输入框",
+  "use": "讲「一句指令搞定」：顶部药丸输入框从发送钮展开，逐字打出指令，打完发送钮亮起。",
+  "avoid": "字 ≤10；放在顶部不挡脸。",
+  "sfx": "打字 + 啵",
+  "snippet": "<PromptBox th={th} text=\"帮我自动上特效\" at={0.2} until={3.5} sendAt={2.4} />",
+  "beat": "{\n \"kind\": \"prompt-box\",\n \"props\": {\n  \"text\": \"帮我自动上特效\",\n  \"at\": 0.2,\n  \"until\": 3.5,\n  \"sendAt\": 2.4\n }\n}"
+ },
+ {
+  "id": "glass-chart",
+  "no": "特效",
+  "zh": "玻璃图表（数字 + 折线）",
+  "use": "讲「观看数 / 增长」：毛玻璃卡里大数字缓动数到目标，同时绿线左→右画出。",
+  "avoid": "数据必须是他真讲的；一支片 1–2 次。",
+  "sfx": "嘀嘀 + 叮",
+  "snippet": "<GlassChart th={th} label=\"观看数\" from={3.6} to={14.5} unit=\"万\" at={0.2} until={3.5} />",
+  "beat": "{\n \"kind\": \"glass-chart\",\n \"props\": {\n  \"label\": \"观看数\",\n  \"from\": 3.6,\n  \"to\": 14.5,\n  \"unit\": \"万\",\n  \"at\": 0.2,\n  \"until\": 3.5\n }\n}"
+ },
+ {
+  "id": "compare-tiles",
+  "no": "特效",
+  "zh": "对比数字牌（以前 / 现在）",
+  "use": "讲「以前 180 分钟，现在 3 分钟」：两块牌，一块固定，一块数字缓入缓出数到目标，变强调色并出结论。",
+  "avoid": "数字必须真实；结论句 ≤10 字。",
+  "sfx": "嘀嘀 + 叮",
+  "snippet": "<CompareTiles th={th} chip=\"01 对比\" before={180} to={3} unit=\"分\" verdict=\"省下 98% 时间\" at={0.2} until={3.6} />",
+  "beat": "{\n \"kind\": \"compare-tiles\",\n \"props\": {\n  \"chip\": \"01 对比\",\n  \"before\": 180,\n  \"to\": 3,\n  \"unit\": \"分\",\n  \"verdict\": \"省下 98% 时间\",\n  \"at\": 0.2,\n  \"until\": 3.6\n }\n}"
+ },
+ {
+  "id": "photo-cards",
+  "no": "特效",
+  "zh": "快门卡（拍立得飞入）",
+  "use": "讲「素材 / 案例 / 截图」：白边拍立得卡片从角落飞入，冲过头后落定。",
+  "avoid": "srcs 放 public 里的图；没有就画色块。",
+  "sfx": "咔嚓 × N",
+  "snippet": "<PhotoCards th={th} at={0.2} until={3.3} />",
+  "beat": "{\n \"kind\": \"photo-cards\",\n \"props\": {\n  \"at\": 0.2,\n  \"until\": 3.3\n }\n}"
+ },
+ {
+  "id": "side-sticker",
+  "no": "特效",
+  "zh": "头旁贴纸",
+  "use": "讲数字结果：小卡飞到头左边，右边弹出白色数字贴纸 + 小红标签。",
+  "avoid": "贴纸字 ≤5。",
+  "sfx": "啵 + 咚",
+  "snippet": "<SideSticker th={th} value=\"14.5万\" tag=\"播放\" at={0.2} until={3.3} />",
+  "beat": "{\n \"kind\": \"side-sticker\",\n \"props\": {\n  \"value\": \"14.5万\",\n  \"tag\": \"播放\",\n  \"at\": 0.2,\n  \"until\": 3.3\n }\n}"
+ },
+ {
+  "id": "particle-fill",
+  "no": "特效",
+  "zh": "粒子装满容器",
+  "use": "讲「一点一点累积」：上方滑下奶油色面板，橙色颗粒落进 U 形容器堆满。",
+  "avoid": "标题 ≤8 字；面板占上 40%，视频留下半。",
+  "sfx": "颗粒 tick 连打",
+  "snippet": "<ParticleFill th={th} title=\"一点一点累积\" at={0.2} until={3.5} />",
+  "beat": "{\n \"kind\": \"particle-fill\",\n \"props\": {\n  \"title\": \"一点一点累积\",\n  \"at\": 0.2,\n  \"until\": 3.5\n }\n}"
+ },
+ {
+  "id": "side-doc",
+  "no": "特效",
+  "zh": "左文件卡 + 步骤高亮",
+  "use": "讲「流程 / 步骤」：白色文件卡从左滑入，浅橙高亮条逐项下移；人像在右。",
+  "avoid": "步骤 ≤4 项，每项 ≤8 字。",
+  "sfx": "每步一个 tick",
+  "snippet": "<SideDoc th={th} title=\"剪辑流程\" items={[\"录一段口播\",\"打一句指令\",\"自动上特效\",\"直接发布\"]} at={0.2} until={3.6} />",
+  "beat": "{\n \"kind\": \"side-doc\",\n \"props\": {\n  \"title\": \"剪辑流程\",\n  \"items\": [\n   \"录一段口播\",\n   \"打一句指令\",\n   \"自动上特效\",\n   \"直接发布\"\n  ],\n  \"at\": 0.2,\n  \"until\": 3.6\n }\n}"
+ },
+ {
+  "id": "thumb-wall",
+  "no": "特效",
+  "zh": "合集墙",
+  "use": "讲「合集 / 一共 N 个」：深色底，大标题 + 橙色药丸，下面缩略图格按列填满。",
+  "avoid": "srcs 可放 public 里的图。",
+  "sfx": "啵 × N",
+  "snippet": "<ThumbWall th={th} title=\"合集墙\" pill=\"15 个特效・一句话叫出来\" at={0.2} until={3.5} />",
+  "beat": "{\n \"kind\": \"thumb-wall\",\n \"props\": {\n  \"title\": \"合集墙\",\n  \"pill\": \"15 个特效・一句话叫出来\",\n  \"at\": 0.2,\n  \"until\": 3.5\n }\n}"
+ },
+ {
+  "id": "comment-card",
+  "no": "特效",
+  "zh": "留言卡（结尾 CTA）",
+  "use": "结尾：深色底，标题「留言 X」淡入，橙色药丸「送你 XX」弹出；人像缩成卡（用 camera 缩小）。",
+  "avoid": "只放结尾；关键词 ≤4 字。",
+  "sfx": "叮",
+  "snippet": "<CommentCard th={th} title=\"留言「第二弹」\" pill=\"送你免费特效技能包\" at={0.2} until={3.6} />",
+  "beat": "{\n \"kind\": \"comment-card\",\n \"props\": {\n  \"title\": \"留言「第二弹」\",\n  \"pill\": \"送你免费特效技能包\",\n  \"at\": 0.2,\n  \"until\": 3.6\n }\n}"
+ },
+ {
+  "id": "timeline-panel",
+  "no": "特效",
+  "zh": "时间轴面板",
+  "use": "讲「自动剪辑 / 一条条拼起来」：深色面板滑入，时间码逐帧跳，缩略图铺满，波形 + 红色播放头扫过。",
+  "avoid": "全片 1 次；放在下巴下面（用 y），别压脸。",
+  "sfx": "滴答 + 轻划",
+  "snippet": "<TimelinePanel th={th} at={0.2} until={3.4} />",
+  "beat": "{\n \"kind\": \"timeline-panel\",\n \"props\": {\n  \"at\": 0.2,\n  \"until\": 3.4\n }\n}"
+ },
+ {
+  "id": "drop-zone",
+  "no": "特效",
+  "zh": "拖入素材",
+  "use": "讲「把素材丢进去」：虚线卡 + 缩略图沿弧线飞入，文字变「已导入」，出现黄色对勾。",
+  "avoid": "label 写他真讲的动作；全片 1 次。",
+  "sfx": "嗖 + 啵",
+  "snippet": "<DropZone th={th} at={0.2} until={3.4} />",
+  "beat": "{\n \"kind\": \"drop-zone\",\n \"props\": {\n  \"at\": 0.2,\n  \"until\": 3.4\n }\n}"
+ },
+ {
+  "id": "palette",
+  "no": "特效",
+  "zh": "色板取色",
+  "use": "讲「取色 / 配色 / 风格」：奶油卡片上滑，吸管依次落到画面上的点，色块填上颜色和色号。",
+  "avoid": "落点 x、y 要落在画面里真有那个颜色的位置；色块 ≤3 个。",
+  "sfx": "啵 × N",
+  "snippet": "<Palette th={th} at={0.2} until={3.6} colors={[{ hex: \"#4A3731\", at: 1.0, x: 300, y: 500 }, { hex: \"#BABBB6\", at: 1.7, x: 700, y: 560 }, { hex: \"#E5783A\", at: 2.4, x: 540, y: 800 }]} />",
+  "beat": "{\n \"kind\": \"palette\",\n \"props\": {\n  \"at\": 0.2,\n  \"until\": 3.6,\n  \"colors\": [\n   {\n    \"hex\": \"#4A3731\",\n    \"at\": 1.0,\n    \"x\": 300,\n    \"y\": 500\n   },\n   {\n    \"hex\": \"#BABBB6\",\n    \"at\": 1.7,\n    \"x\": 700,\n    \"y\": 560\n   },\n   {\n    \"hex\": \"#E5783A\",\n    \"at\": 2.4,\n    \"x\": 540,\n    \"y\": 800\n   }\n  ]\n }\n}"
+ },
+ {
+  "id": "before-after",
+  "no": "特效",
+  "zh": "前后对比滑杆",
+  "use": "讲「调色前后 / 改之前改之后」：画面变灰，白色竖线把手从左扫到右，右边是调色后。",
+  "avoid": "只改画面颜色，不改人；全片 1 次。",
+  "sfx": "嗖 + 叮",
+  "snippet": "<BeforeAfter th={th} at={0.2} until={3.4} />",
+  "beat": "{\n \"kind\": \"before-after\",\n \"props\": {\n  \"at\": 0.2,\n  \"until\": 3.4\n }\n}"
+ },
+ {
+  "id": "app-icons",
+  "no": "特效",
+  "zh": "应用图标一排",
+  "use": "讲「用什么工具」：圆角图标一个个弹出，下面小字写名字；可选删掉其中一个。",
+  "avoid": "自己填名字和颜色，不放任何品牌 logo；≤5 个。",
+  "sfx": "啵 × N",
+  "snippet": "<AppIconRow th={th} at={0.2} until={3.5} icons={[{ label: \"工具一\", color: \"#D2622A\" }, { label: \"工具二\", color: \"#3F6FD2\" }, { label: \"工具三\", color: \"#2A8F5B\" }, { label: \"工具四\", color: \"#8A4FD2\" }]} />",
+  "beat": "{\n \"kind\": \"app-icons\",\n \"props\": {\n  \"at\": 0.2,\n  \"until\": 3.5,\n  \"icons\": [\n   {\n    \"label\": \"工具一\",\n    \"color\": \"#D2622A\"\n   },\n   {\n    \"label\": \"工具二\",\n    \"color\": \"#3F6FD2\"\n   },\n   {\n    \"label\": \"工具三\",\n    \"color\": \"#2A8F5B\"\n   },\n   {\n    \"label\": \"工具四\",\n    \"color\": \"#8A4FD2\"\n   }\n  ]\n }\n}"
+ },
+ {
+  "id": "camera-glitch",
+  "no": "特效",
+  "zh": "故障（画面切片错位）",
+  "use": "讲「故障 / 出错 / 崩了 / 被打断」：2–3 帧的爆发，画面切成横带错位 + 红青分离 + 扫描线，立刻恢复。多次爆发间隔不规律，最后一次和重点词同帧。",
+  "avoid": "爆发只要 2–3 帧，别连续抖；全片 1–2 处。",
+  "sfx": "闪光（flash）",
+  "snippet": "<Cam th={th} fx={[{ kind: 'glitch', bursts: [0.6, 1.5, 2.4] }]}>\n</Cam>",
+  "beat": ""
+ },
+ {
+  "id": "camera-droste",
+  "no": "特效",
+  "zh": "无限画中画",
+  "use": "讲「无限 / 循环 / 套娃 / 递归」：画面上方出现相框，框里还是这支视频，框里又有框（3 层）；最后镜头往相框里推进。",
+  "avoid": "相框放头顶上方，别压脸；全片 1 次。",
+  "sfx": "啵 + 嗖",
+  "snippet": "<Cam th={th} fx={[{ kind: 'droste', at: 0.3, until: 3.4 }]}>\n</Cam>",
+  "beat": ""
+ },
+ {
+  "id": "camera-handmark",
+  "no": "特效",
+  "zh": "手绘圈标",
+  "use": "讲「看这里 / 重点是这个人 / 这个表情」：画面变灰，橙色手绘椭圆一笔圈住脸，圈里保持原色，左下角手写标签逐字写出。",
+  "avoid": "椭圆位置要对准脸（face_track.py 量）；标签 ≤6 字。",
+  "sfx": "嗖 + 啵",
+  "snippet": "<Cam th={th} fx={[{ kind: 'handmark', at: 0.3, until: 3.4, label: '手绘标注' }]}>\n</Cam>",
+  "beat": ""
+ },
+ {
+  "id": "camera-shape",
+  "no": "特效",
+  "zh": "形状放大（圆窗 + 光圈）",
+  "use": "讲「聚焦 / 放大 / 重点」：奶油色底，人像缩进圆窗，橙色实线圈 + 向外扩散的同心圆，下方大标题。ring=false 时就是「标题字卡 + 圆形小窗」。",
+  "avoid": "全屏换景，一支片最多 1–2 次；标题 ≤6 字。",
+  "sfx": "嗖 + 上扬",
+  "snippet": "<Cam th={th} fx={[{ kind: 'shape', at: 0.3, until: 3.4, title: '形状放大', sub: '20 / 20 · SHAPE REVEAL' }]}>\n</Cam>",
+  "beat": ""
+ },
+ {
+  "id": "checklist",
+  "no": "特效",
+  "zh": "打勾清单",
+  "use": "讲「步骤 / 待办 / 三件事」：奶油便签卡从左上角弹出，空方框逐行被橙色勾打上。",
+  "avoid": "≤4 行，每行 ≤8 字；放左上，别压脸；at＝打勾的秒数要对着他讲到那一行。",
+  "sfx": "纸张 + 滴答",
+  "snippet": "<Checklist th={th} title=\"打勾清单\" items={[{ text: \"写好脚本\", at: 1.0 }, { text: \"录好口播\", at: 1.6 }, { text: \"交给 AI 剪\", at: 2.2 }]} at={0.2} until={3.5} />",
+  "beat": "{\n \"kind\": \"checklist\",\n \"props\": {\n  \"title\": \"打勾清单\",\n  \"items\": [\n   {\n    \"text\": \"写好脚本\",\n    \"at\": 1.0\n   },\n   {\n    \"text\": \"录好口播\",\n    \"at\": 1.6\n   },\n   {\n    \"text\": \"交给 AI 剪\",\n    \"at\": 2.2\n   }\n  ],\n  \"at\": 0.2,\n  \"until\": 3.5\n }\n}"
+ },
+ {
+  "id": "magazine-cover",
+  "no": "特效",
+  "zh": "杂志封面",
+  "use": "讲「登上封面 / 年度 / 第 N 期」：视频当封面照，顶部超大刊头，左下橙色大数字 + 白色标题，条形码和小标签。",
+  "avoid": "整屏封面，刊头在安全区外是例外；只放 1–1.5 秒；别和字幕同时出现。",
+  "sfx": "快门（camera）",
+  "snippet": "<MagazineCover th={th} masthead=\"MAGAZINE\" issue=\"NO.01 · OCT 2026\" big=\"20 个\" title=\"口播特效\" sub=\"一句指令就能做\" tag=\"特辑\" at={0.2} until={3.4} />",
+  "beat": "{\n \"kind\": \"magazine-cover\",\n \"props\": {\n  \"masthead\": \"MAGAZINE\",\n  \"issue\": \"NO.01 · OCT 2026\",\n  \"big\": \"20 个\",\n  \"title\": \"口播特效\",\n  \"sub\": \"一句指令就能做\",\n  \"tag\": \"特辑\",\n  \"at\": 0.2,\n  \"until\": 3.4\n }\n}"
+ },
+ {
+  "id": "orbit-text",
+  "no": "特效",
+  "zh": "环绕文字",
+  "use": "讲「环绕 / 围绕 / 包围」：一圈小字沿椭圆绕着头转，约 2.4 秒一圈，下方的字更大更亮。",
+  "avoid": "椭圆要比头大一圈（用人脸框算）；字别超过 20 个。",
+  "sfx": "微光",
+  "snippet": "<OrbitText th={th} text=\"AROUND · 环绕文字 · \" at={0.2} until={3.5} />",
+  "beat": "{\n \"kind\": \"orbit-text\",\n \"props\": {\n  \"text\": \"AROUND · 环绕文字 · \",\n  \"at\": 0.2,\n  \"until\": 3.5\n }\n}"
+ },
+ {
+  "id": "scatter-text",
+  "no": "特效",
+  "zh": "散落文字（整行打散）",
+  "use": "讲「散了 / 崩了 / 一团乱」：一行字排整齐，约 0.6 秒后每个字母带重力掉落、旋转、飘开，落到下面堆着。",
+  "avoid": "字 ≤12 个；和 drop-text 不同，这个是一整行被打散。",
+  "sfx": "咚",
+  "snippet": "<ScatterText th={th} text=\"版本 2.0\" at={0.2} until={3.5} />",
+  "beat": "{\n \"kind\": \"scatter-text\",\n \"props\": {\n  \"text\": \"版本 2.0\",\n  \"at\": 0.2,\n  \"until\": 3.5\n }\n}"
  }
 ]

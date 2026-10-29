@@ -11,6 +11,10 @@ import { ChapterTag, GhostWord, LabelHero, QuoteCard, SpreadHero } from './typo'
 import { EndCta, StackList, TopTitle } from './skeleton';
 import { CameraStack, CamFx, ChatDM, CounterSlam, KineticLine, RapidMontage, SlotRow, Stamp, WhiteFlash } from './fx';
 import { JyTextBeat } from './jytext';
+import { DropText, HugeCaption, PixelText, PromptBox, TitleCard, TitleTag } from './ui-text';
+import { Checklist, MagazineCover, OrbitText, ScatterText } from './fx2';
+import { AppIconRow, BeforeAfter, DropZone, Palette, TimelinePanel } from './ui-meta';
+import { CommentCard, CompareTiles, GlassChart, ParticleFill, PhotoCards, SideDoc, SideSticker, ThumbWall } from './ui-data';
 import { Backdrop, InkWipe, Particles } from './backdrop';
 import { AtoB, Bars, Chapter, ChestBig, DarkQuestion, GiantFill, LeftStair, SignatureCard, StrikeSwap, TwoColumn, TypedQuote, VerticalWall } from './layouts';
 
@@ -219,3 +223,61 @@ export const CRAFT_MATTE: CraftLayout[] = [
   { id: 'glass-behind', no: '抠像', zh: '玻璃字在人后', use: '两者结合：金黄玻璃字放在人后面，纹理透进字里，人挡住字的一部分。最有「高级感」的一种大字。', avoid: '同「玻璃字」+「字在人后」的限制；全片最多 1 次，留给开场或最关键的一句。', sfx: '呼 → 咚 / 魔法',
     dur: 3.8, comp: () => <Raw><WallDemo dy={200}><GlassWord th={th} text="剪出网感" size={250} at={0.3} until={3.4} y={340} /></WallDemo></Raw> },
 ];
+
+/* 参考「特效演示」逐帧观察后重写的 UI 类特效（文字 + 数据 + 卡片），见 references/ui-effects.md。 */
+CRAFT_FX.push(
+  { id: 'title-tag', no: '特效', zh: '顶部标题 + 标签 + 底说明', use: '系列感开场：顶部栏目名淡入，橙色小标签横向展开（「第二弹」「第 3 集」），底部一行小说明。', avoid: '和 top-title 二选一；标题 ≤8 字，标签 ≤4 字。', sfx: '轻划（swish）',
+    dur: U, comp: () => <Scene th={th}><TitleTag th={th} title="剪辑特效" tag="第二弹" caption="一句话叫出来的剪辑特效" at={0.2} until={3.5} /></Scene> },
+  { id: 'pixel-text', no: '特效', zh: '像素字（点阵屏）', use: '讲「AI / 代码 / 数据 / 科技」：画面压暗，字一个个打出，新字带红青分离，打完下面出一行小的点阵副标题。', avoid: '字 ≤6 个；全片 1 次；背景别太亮否则点阵不明显。', sfx: '打字 + 故障',
+    dur: 4.0, comp: () => <Scene th={th}><PixelText th={th} text="像素字" sub="PIXEL WORDS" at={0.2} until={3.6} /></Scene> },
+  { id: 'drop-text', no: '特效', zh: '掉落字', use: '强调「掉下来 / 崩了 / 塌了」：大字一个个带重力掉下、旋转、落地回弹，叠成一堆。', avoid: '字 ≤4 个；一支片 1 次；别压脸（默认在左上）。', sfx: '咚 × N（thud）',
+    dur: U, comp: () => <Scene th={th}><DropText th={th} text="掉落字" small="gravity" label="drop" at={0.2} until={3.2} /></Scene> },
+  { id: 'huge-caption', no: '特效', zh: '巨大字 + 小修饰词', use: '一个大词 + 右下角冒一个小的强调色词（「巨大 / 字幕」「爆款 / 标题」）。', avoid: '大词 ≤3 字；小词 ≤3 字。', sfx: '撞击 + 啵',
+    dur: U, comp: () => <Scene th={th}><HugeCaption th={th} big="巨大" small="字幕" at={0.2} until={3.2} /></Scene> },
+  { id: 'title-card', no: '特效', zh: '电影字卡（整屏色块）', use: '章节转场：整屏橙色卡从下往上滑入，两三行大字依次出现，停一会儿向下滑走。', avoid: '一支片最多 2 张；每行 ≤8 字；背景色用 color 换。', sfx: '嗖 + 叮',
+    dur: U, comp: () => <Scene th={th}><TitleCard th={th} lines={["自动剪辑","超级简单"]} at={0.2} until={3.3} /></Scene> },
+  { id: 'prompt-box', no: '特效', zh: '提示词输入框', use: '讲「一句指令搞定」：顶部药丸输入框从发送钮展开，逐字打出指令，打完发送钮亮起。', avoid: '字 ≤10；放在顶部不挡脸。', sfx: '打字 + 啵',
+    dur: U, comp: () => <Scene th={th}><PromptBox th={th} text="帮我自动上特效" at={0.2} until={3.5} sendAt={2.4} /></Scene> },
+  { id: 'glass-chart', no: '特效', zh: '玻璃图表（数字 + 折线）', use: '讲「观看数 / 增长」：毛玻璃卡里大数字缓动数到目标，同时绿线左→右画出。', avoid: '数据必须是他真讲的；一支片 1–2 次。', sfx: '嘀嘀 + 叮',
+    dur: U, comp: () => <Scene th={th}><GlassChart th={th} label="观看数" from={3.6} to={14.5} unit="万" at={0.2} until={3.5} /></Scene> },
+  { id: 'compare-tiles', no: '特效', zh: '对比数字牌（以前 / 现在）', use: '讲「以前 180 分钟，现在 3 分钟」：两块牌，一块固定，一块数字缓入缓出数到目标，变强调色并出结论。', avoid: '数字必须真实；结论句 ≤10 字。', sfx: '嘀嘀 + 叮',
+    dur: 4.0, comp: () => <Scene th={th}><CompareTiles th={th} chip="01 对比" before={180} to={3} unit="分" verdict="省下 98% 时间" at={0.2} until={3.6} /></Scene> },
+  { id: 'photo-cards', no: '特效', zh: '快门卡（拍立得飞入）', use: '讲「素材 / 案例 / 截图」：白边拍立得卡片从角落飞入，冲过头后落定。', avoid: 'srcs 放 public 里的图；没有就画色块。', sfx: '咔嚓 × N',
+    dur: U, comp: () => <Scene th={th}><PhotoCards th={th} at={0.2} until={3.3} /></Scene> },
+  { id: 'side-sticker', no: '特效', zh: '头旁贴纸', use: '讲数字结果：小卡飞到头左边，右边弹出白色数字贴纸 + 小红标签。', avoid: '贴纸字 ≤5。', sfx: '啵 + 咚',
+    dur: U, comp: () => <Scene th={th}><SideSticker th={th} value="14.5万" tag="播放" at={0.2} until={3.3} /></Scene> },
+  { id: 'particle-fill', no: '特效', zh: '粒子装满容器', use: '讲「一点一点累积」：上方滑下奶油色面板，橙色颗粒落进 U 形容器堆满。', avoid: '标题 ≤8 字；面板占上 40%，视频留下半。', sfx: '颗粒 tick 连打',
+    dur: U, comp: () => <Scene th={th}><ParticleFill th={th} title="一点一点累积" at={0.2} until={3.5} /></Scene> },
+  { id: 'side-doc', no: '特效', zh: '左文件卡 + 步骤高亮', use: '讲「流程 / 步骤」：白色文件卡从左滑入，浅橙高亮条逐项下移；人像在右。', avoid: '步骤 ≤4 项，每项 ≤8 字。', sfx: '每步一个 tick',
+    dur: 4.0, comp: () => <Scene th={th}><SideDoc th={th} title="剪辑流程" items={["录一段口播","打一句指令","自动上特效","直接发布"]} at={0.2} until={3.6} /></Scene> },
+  { id: 'thumb-wall', no: '特效', zh: '合集墙', use: '讲「合集 / 一共 N 个」：深色底，大标题 + 橙色药丸，下面缩略图格按列填满。', avoid: 'srcs 可放 public 里的图。', sfx: '啵 × N',
+    dur: U, comp: () => <Scene th={th}><ThumbWall th={th} title="合集墙" pill="15 个特效・一句话叫出来" at={0.2} until={3.5} /></Scene> },
+  { id: 'comment-card', no: '特效', zh: '留言卡（结尾 CTA）', use: '结尾：深色底，标题「留言 X」淡入，橙色药丸「送你 XX」弹出；人像缩成卡（用 camera 缩小）。', avoid: '只放结尾；关键词 ≤4 字。', sfx: '叮',
+    dur: U, comp: () => <Scene th={th}><CommentCard th={th} title="留言「第二弹」" pill="送你免费特效技能包" at={0.2} until={3.6} /></Scene> },
+  { id: 'timeline-panel', no: '特效', zh: '时间轴面板', use: '讲「自动剪辑 / 一条条拼起来」：深色面板滑入，时间码逐帧跳，缩略图铺满，波形 + 红色播放头扫过。', avoid: '全片 1 次；放在下巴下面（用 y），别压脸。', sfx: '滴答 + 轻划',
+    dur: U, comp: () => <Scene th={th}><TimelinePanel th={th} at={0.2} until={3.4} /></Scene> },
+  { id: 'drop-zone', no: '特效', zh: '拖入素材', use: '讲「把素材丢进去」：虚线卡 + 缩略图沿弧线飞入，文字变「已导入」，出现黄色对勾。', avoid: 'label 写他真讲的动作；全片 1 次。', sfx: '嗖 + 啵',
+    dur: U, comp: () => <Scene th={th}><DropZone th={th} at={0.2} until={3.4} /></Scene> },
+  { id: 'palette', no: '特效', zh: '色板取色', use: '讲「取色 / 配色 / 风格」：奶油卡片上滑，吸管依次落到画面上的点，色块填上颜色和色号。', avoid: '落点 x、y 要落在画面里真有那个颜色的位置；色块 ≤3 个。', sfx: '啵 × N',
+    dur: 4.0, comp: () => <Scene th={th}><Palette th={th} at={0.2} until={3.6} colors={[{ hex: "#4A3731", at: 1.0, x: 300, y: 500 }, { hex: "#BABBB6", at: 1.7, x: 700, y: 560 }, { hex: "#E5783A", at: 2.4, x: 540, y: 800 }]} /></Scene> },
+  { id: 'before-after', no: '特效', zh: '前后对比滑杆', use: '讲「调色前后 / 改之前改之后」：画面变灰，白色竖线把手从左扫到右，右边是调色后。', avoid: '只改画面颜色，不改人；全片 1 次。', sfx: '嗖 + 叮',
+    dur: U, comp: () => <Scene th={th}><BeforeAfter th={th} at={0.2} until={3.4} /></Scene> },
+  { id: 'app-icons', no: '特效', zh: '应用图标一排', use: '讲「用什么工具」：圆角图标一个个弹出，下面小字写名字；可选删掉其中一个。', avoid: '自己填名字和颜色，不放任何品牌 logo；≤5 个。', sfx: '啵 × N',
+    dur: U, comp: () => <Scene th={th}><AppIconRow th={th} at={0.2} until={3.5} icons={[{ label: "工具一", color: "#D2622A" }, { label: "工具二", color: "#3F6FD2" }, { label: "工具三", color: "#2A8F5B" }, { label: "工具四", color: "#8A4FD2" }]} /></Scene> },
+  { id: 'camera-glitch', no: '特效', zh: '故障（画面切片错位）', use: '讲「故障 / 出错 / 崩了 / 被打断」：2–3 帧的爆发，画面切成横带错位 + 红青分离 + 扫描线，立刻恢复。多次爆发间隔不规律，最后一次和重点词同帧。', avoid: '爆发只要 2–3 帧，别连续抖；全片 1–2 处。', sfx: '闪光（flash）',
+    dur: U, comp: () => <Cam th={th} fx={[{ kind: 'glitch', bursts: [0.6, 1.5, 2.4] }]}></Cam> },
+  { id: 'camera-droste', no: '特效', zh: '无限画中画', use: '讲「无限 / 循环 / 套娃 / 递归」：画面上方出现相框，框里还是这支视频，框里又有框（3 层）；最后镜头往相框里推进。', avoid: '相框放头顶上方，别压脸；全片 1 次。', sfx: '啵 + 嗖',
+    dur: U, comp: () => <Cam th={th} fx={[{ kind: 'droste', at: 0.3, until: 3.4 }]}></Cam> },
+  { id: 'camera-handmark', no: '特效', zh: '手绘圈标', use: '讲「看这里 / 重点是这个人 / 这个表情」：画面变灰，橙色手绘椭圆一笔圈住脸，圈里保持原色，左下角手写标签逐字写出。', avoid: '椭圆位置要对准脸（face_track.py 量）；标签 ≤6 字。', sfx: '嗖 + 啵',
+    dur: U, comp: () => <Cam th={th} fx={[{ kind: 'handmark', at: 0.3, until: 3.4, label: '手绘标注' }]}></Cam> },
+  { id: 'camera-shape', no: '特效', zh: '形状放大（圆窗 + 光圈）', use: '讲「聚焦 / 放大 / 重点」：奶油色底，人像缩进圆窗，橙色实线圈 + 向外扩散的同心圆，下方大标题。ring=false 时就是「标题字卡 + 圆形小窗」。', avoid: '全屏换景，一支片最多 1–2 次；标题 ≤6 字。', sfx: '嗖 + 上扬',
+    dur: U, comp: () => <Cam th={th} fx={[{ kind: 'shape', at: 0.3, until: 3.4, title: '形状放大', sub: '20 / 20 · SHAPE REVEAL' }]}></Cam> },
+  { id: 'checklist', no: '特效', zh: '打勾清单', use: '讲「步骤 / 待办 / 三件事」：奶油便签卡从左上角弹出，空方框逐行被橙色勾打上。', avoid: '≤4 行，每行 ≤8 字；放左上，别压脸；at＝打勾的秒数要对着他讲到那一行。', sfx: '纸张 + 滴答',
+    dur: U, comp: () => <Scene th={th}><Checklist th={th} title="打勾清单" items={[{ text: "写好脚本", at: 1.0 }, { text: "录好口播", at: 1.6 }, { text: "交给 AI 剪", at: 2.2 }]} at={0.2} until={3.5} /></Scene> },
+  { id: 'magazine-cover', no: '特效', zh: '杂志封面', use: '讲「登上封面 / 年度 / 第 N 期」：视频当封面照，顶部超大刊头，左下橙色大数字 + 白色标题，条形码和小标签。', avoid: '整屏封面，刊头在安全区外是例外；只放 1–1.5 秒；别和字幕同时出现。', sfx: '快门（camera）',
+    dur: U, comp: () => <Scene th={th}><MagazineCover th={th} masthead="MAGAZINE" issue="NO.01 · OCT 2026" big="20 个" title="口播特效" sub="一句指令就能做" tag="特辑" at={0.2} until={3.4} /></Scene> },
+  { id: 'orbit-text', no: '特效', zh: '环绕文字', use: '讲「环绕 / 围绕 / 包围」：一圈小字沿椭圆绕着头转，约 2.4 秒一圈，下方的字更大更亮。', avoid: '椭圆要比头大一圈（用人脸框算）；字别超过 20 个。', sfx: '微光',
+    dur: U, comp: () => <Scene th={th}><OrbitText th={th} text="AROUND · 环绕文字 · " at={0.2} until={3.5} /></Scene> },
+  { id: 'scatter-text', no: '特效', zh: '散落文字（整行打散）', use: '讲「散了 / 崩了 / 一团乱」：一行字排整齐，约 0.6 秒后每个字母带重力掉落、旋转、飘开，落到下面堆着。', avoid: '字 ≤12 个；和 drop-text 不同，这个是一整行被打散。', sfx: '咚',
+    dur: U, comp: () => <Scene th={th}><ScatterText th={th} text="版本 2.0" at={0.2} until={3.5} /></Scene> },
+);

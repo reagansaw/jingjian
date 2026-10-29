@@ -14,7 +14,7 @@ These are the rules for "text layout"; for motion see `motion-vocabulary.md`.
 ⚠ Limitations:
 - The font sizes in the statistics are JianYing's **relative font-size units**; only the "ratios" can be trusted, the absolute values cannot be used directly as pixels.
 - Positions: JianYing's y is converted to frame height (1080×1920) with **y_px = 960 × (1 − y)**. **Checked against the first demo of 1-1**: in the project y = −0.422 ↔ the first line's centre at about y 1365 px, and y = −0.544 ↔ the second line at about 1483 px — matching the screenshot.
-- "40 款一创" and "30 款小鼎" were not viewed (the projects are encrypted, only preview videos exist).
+- "the 40 Yichuang projects" and "the 30 creator breakdowns" were not viewed (the projects are encrypted, only preview videos exist).
 - Frame numbers follow the order of the catalog video (1-2 #N); they may differ by ±1 from the layout numbers in your project, **go by the picture**.
 
 ## 1. The four layout principles (1-1)

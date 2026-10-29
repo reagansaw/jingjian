@@ -16,6 +16,9 @@ Written from the real types in `remotion/craft/*.tsx`; **`?` = optional**. `tone
 | `captions` | Subtitles: `[{ from, to, text }]` (seconds). Generate with `python3 ../tools/make_captions.py --words transcript.json --text proofread.txt [--offset start-seconds] [--length segment-seconds]`; each ≤12 width (CJK 1, Latin/digits 0.55), checked by `npm run check` |
 | `captionHl` | words in the subtitles to colour with the accent, e.g. `["销冠", "AI 自动化"]` |
 | `captionSize` | subtitle size, default 54 (bottom edge ≤ y1230). With subtitles, move the `end-cta` `cy` up (e.g. 1020) so they don't collide |
+| `reframe` | local re-framing: `[{ at, until, shiftY?, zoom? }]`, eases (0.2 s) to another shiftY / zoom inside the window; tighten the shot or open headroom while an effect plays |
+| `behind` | text behind the person: `[{ text, at, until, matte, from, to, y?, size?, small?, tone? }]`; `matte` dir under public + source frame range `from`–`to`; frames without a matte draw no text |
+| `fill` | `'blur'` (default) / `'none'`: how the edge exposed by shifting/shrinking the video is filled |
 | `camera` | Camera effects (wrap the video layer; text is unaffected): `[{ kind, at, … }]`. `punch` (`at?` `dur?` `from?`) · `shake` (`hits:[seconds…]`) · `tvoff` (`at` `until?`, **give `until`**) · `send` (`at` `until?`) · `circle` (`at` `until` `cy?` `R?` `face?:[x,y]` `peers?` `popAt?`) |
 | `autoSfx` / `sfxGain` | Automatic sound effects (on by default) / master gain (default 0.5). The table is in `craft/autosfx.ts`; to turn one layout off write `"sfx": false` in its props |
 | `sfx` | `[{ "t": seconds, "file": "xx.mp3", "volume"?: 0.8 }]`, files in `public/sfx/`; write `[]` if none |

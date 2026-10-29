@@ -7,6 +7,7 @@ import React from 'react';
 import { AbsoluteFill, Easing, Img, interpolate, staticFile } from 'remotion';
 import { FitBox, SAFE, Theme, useT } from './kit';
 import { Backdrop } from './backdrop';
+import { DrosteCam, GlitchCam, HandMarkCam, ShapeCam } from './fx2';
 
 const C = { extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const };
 const W = 1080, H = 1920;
@@ -246,7 +247,7 @@ export const RapidMontage: React.FC<{ th: Theme; images: { src: string; w: numbe
 };
 
 /* ============ 镜头层的统一入口（Edit 的 camera 数组） ============ */
-export type CamFx = { kind: 'punch' | 'shake' | 'tvoff' | 'send' | 'circle'; at?: number; until?: number; dur?: number; from?: number; hits?: number[]; cy?: number; R?: number; face?: [number, number]; peers?: number; popAt?: number };
+export type CamFx = { kind: 'punch' | 'shake' | 'tvoff' | 'send' | 'circle' | 'glitch' | 'droste' | 'handmark' | 'shape'; bursts?: number[]; frames?: number; strength?: number; frame?: [number, number, number]; depth?: number; ellipse?: [number, number, number, number]; label?: string; labelY?: number; cx?: number; title?: string; sub?: string; titleAt?: [number, number]; titleSize?: number; ring?: boolean; bg?: string; ink?: string; at?: number; until?: number; dur?: number; from?: number; hits?: number[]; cy?: number; R?: number; face?: [number, number]; peers?: number; popAt?: number };
 export const CameraStack: React.FC<{ th: Theme; fx: CamFx[]; children: React.ReactNode }> = ({ th, fx, children }) => (
   <>{[...fx].reverse().reduce<React.ReactNode>((acc, f) => {
     switch (f.kind) {
@@ -255,6 +256,10 @@ export const CameraStack: React.FC<{ th: Theme; fx: CamFx[]; children: React.Rea
       case 'tvoff': return <TvOff at={f.at ?? 0} until={f.until}>{acc}</TvOff>;
       case 'send': return <SendFly th={th} at={f.at ?? 0} until={f.until}>{acc}</SendFly>;
       case 'circle': return <CircleCam th={th} at={f.at ?? 0} until={f.until} cy={f.cy} R={f.R} face={f.face} peers={f.peers} popAt={f.popAt}>{acc}</CircleCam>;
+      case 'glitch': return <GlitchCam bursts={f.bursts ?? []} frames={f.frames} strength={f.strength}>{acc}</GlitchCam>;
+      case 'droste': return <DrosteCam at={f.at ?? 0} until={f.until ?? (f.at ?? 0) + 2} frame={f.frame} depth={f.depth}>{acc}</DrosteCam>;
+      case 'handmark': return <HandMarkCam th={th} at={f.at ?? 0} until={f.until ?? (f.at ?? 0) + 2} ellipse={f.ellipse} label={f.label} labelY={f.labelY}>{acc}</HandMarkCam>;
+      case 'shape': return <ShapeCam th={th} at={f.at ?? 0} until={f.until ?? (f.at ?? 0) + 2} cx={f.cx} cy={f.cy} R={f.R} title={f.title} sub={f.sub} titleAt={f.titleAt} titleSize={f.titleSize} ring={f.ring} bg={f.bg} ink={f.ink}>{acc}</ShapeCam>;
       default: return acc;
     }
   }, children)}</>

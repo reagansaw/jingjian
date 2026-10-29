@@ -1,6 +1,6 @@
 {
   "name": "video-craft",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "把真人口播竖屏短视频剪出「网感」：Remotion 版式库（文字版式 / 换场 / 精剪 / 动画 / 情绪字 / 骨架）、安全区规则、音效配对、可运行的起步项目。中英双语。",
   "author": {
     "name": "Reagan Saw"

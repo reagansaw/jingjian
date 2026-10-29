@@ -228,7 +228,7 @@ document.addEventListener('pointerleave', (e) => {
 function fill(d) {
   $('#mid').textContent = (kindOf(d) === 'layout' ? U().idPre + d.no : badge(d)) + ' · ' + d.id;
   $('#mt').textContent = tx(d, 'zh'); $('#muse').textContent = tx(d, 'use'); $('#mavoid').textContent = tx(d, 'avoid'); $('#msfx').textContent = tx(d, 'sfx');
-  $('#mcode').textContent = d.snippet;
+  $('#mcode').textContent = d.beat || d.snippet; $('#h-code').textContent = d.beat ? U().codeBeat : U().codeH;
 }
 function open(i) {
   cur = i; const d = list[i]; if (!d) return;
@@ -254,7 +254,7 @@ $('#dlg').addEventListener('close', () => $('#mv').pause());
 $('#prev').addEventListener('click', () => open(cur - 1));
 $('#next').addEventListener('click', () => open(cur + 1));
 $('#cp-prompt').addEventListener('click', () => copy(promptFor(list[cur]), U().toastPrompt));
-$('#cp-code').addEventListener('click', () => copy(list[cur].snippet, U().toastCode));
+$('#cp-code').addEventListener('click', () => copy(list[cur].beat || list[cur].snippet, U().toastCode));
 $('#lang').addEventListener('click', () => {
   lang = lang === 'zh' ? 'en' : 'zh'; try { localStorage.setItem('vc-lang', lang); } catch (e) {}
   applyUI(); render(); if ($('#dlg').open && list[cur]) fill(list[cur]);

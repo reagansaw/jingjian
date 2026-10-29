@@ -67,6 +67,30 @@ export const autoSfx = (beats: Beat[], camera: CamFx[] = []): AutoSfx[] => {
       case 'chat-dm': add(at !== undefined ? at + 0.35 : undefined, 'typing', 0.6); add(n(p.sendAt) ?? (at !== undefined ? at + 1.0 : undefined), 'pop', 0.7); add((n(p.sendAt) ?? (at ?? 0) + 1.0) + 0.45, 'notify', 0.4); break;
       case 'slot-row': for (let i = 0; i < (n(p.n) ?? 0) && i < 12; i++) add((at ?? 0) + 0.1 + i * 0.07, 'pop', 0.4); break;
       case 'rapid-montage': for (let i = 0; i < arr(p.images).length && i < 12; i++) add((at ?? 0) + i * (n(p.step) ?? 0.2), 'camera', 0.5); break;
+      case 'title-tag': add(at ?? 0.2, 'swish', 0.4); add(at !== undefined ? at + 0.3 : undefined, 'pop', 0.4); break;
+      case 'pixel-text': for (let i = 0; i < [...String(p.text ?? '')].length && i < 8; i++) add((at ?? 0) + 0.22 + i * 0.07, 'tick', 0.4); break;
+      case 'drop-text': for (let i = 0; i < [...String(p.text ?? '')].length && i < 6; i++) add((at ?? 0) + 0.4 + i * 0.18, 'thud', 0.6); break;
+      case 'huge-caption': add(at, 'punch', 0.7); add(at !== undefined ? at + 0.35 : undefined, 'pop', 0.5); break;
+      case 'title-card': add(at, 'whoosh_up', 0.6); add(at !== undefined ? at + 0.55 : undefined, 'ding', 0.4); break;
+      case 'prompt-box': add(at !== undefined ? at + 0.3 : undefined, 'typing', 0.6); add(n(p.sendAt), 'pop', 0.7); break;
+      case 'glass-chart': add(at !== undefined ? at + 0.1 : undefined, 'tick', 0.5); add(at !== undefined ? at + 0.9 : undefined, 'ding', 0.6); break;
+      case 'compare-tiles': add(at !== undefined ? at + 0.25 : undefined, 'tick', 0.5); add(at !== undefined ? at + 0.95 : undefined, 'success', 0.6); break;
+      case 'photo-cards': for (let i = 0; i < 3; i++) add((at ?? 0) + i * (n(p.gap) ?? 0.27), 'camera', 0.5); break;
+      case 'side-sticker': add(at, 'whoosh_short', 0.5); add(at !== undefined ? at + 0.35 : undefined, 'pop', 0.7); break;
+      case 'particle-fill': add(at, 'whoosh_short', 0.5); for (let i = 0; i < 10; i++) add((at ?? 0) + 0.4 + i * 0.1, 'tick', 0.3); break;
+      case 'side-doc': add(at, 'whoosh_short', 0.5); for (let i = 0; i < arr(p.items).length && i < 6; i++) add((at ?? 0) + 0.3 + i * (n(p.stepSec) ?? 0.55), 'tick', 0.5); break;
+      case 'thumb-wall': add(at !== undefined ? at + 0.15 : undefined, 'pop', 0.6); add(at !== undefined ? at + 0.5 : undefined, 'shimmer', 0.5); break;
+      case 'comment-card': add(at !== undefined ? at + 0.4 : undefined, 'ding', 0.7); break;
+      case 'timeline-panel': add(at, 'whoosh_short', 0.5); for (let i = 0; i < 8; i++) add((at ?? 0) + 0.2 + i * 0.3, 'tick', 0.25); break;
+      case 'drop-zone': add(at !== undefined ? at + 0.25 : undefined, 'whoosh_short', 0.5); add(at !== undefined ? at + 0.85 : undefined, 'success', 0.6); break;
+      case 'palette': arr(p.colors).forEach((c) => add(n(c.at), 'pop', 0.6)); break;
+      case 'before-after': add(at, 'whoosh_up', 0.5); add(at !== undefined ? at + 1.0 : undefined, 'ding', 0.4); break;
+      case 'app-icons': for (let i = 0; i < arr(p.icons).length && i < 6; i++) add((at ?? 0) + 0.1 + i * 0.17, 'pop', 0.5); break;
+      case 'cap-preset': add(at, 'pop', 0.5); break;
+      case 'checklist': add(at, 'paper', 0.5); arr(p.items).forEach((it) => add(n(it.at), 'tick', 0.7)); break;
+      case 'magazine-cover': add(at, 'camera', 0.7); break;
+      case 'orbit-text': add(at, 'shimmer', 0.4); break;
+      case 'scatter-text': add(at !== undefined ? at + (n(p.breakAt) ?? 0.6) : undefined, 'thud', 0.6); break;
       case 'ink-wipe': add(at, 'whoosh_long', 0.5); break;
       default: if (b.kind in MOTION_SFX) { const m = MOTION_SFX[b.kind]; add(at, m.id, m.vol); }
     }
@@ -76,6 +100,10 @@ export const autoSfx = (beats: Beat[], camera: CamFx[] = []): AutoSfx[] => {
     if (c.kind === 'punch') add(at, 'whoosh_up', 0.6);
     else if (c.kind === 'tvoff') add(at, 'sub_drop', 0.6);
     else if (c.kind === 'send') { add(at, 'whoosh_up', 0.5); add(at + 0.7, 'zip_up', 0.5); }
+    else if (c.kind === 'glitch') { for (const b of c.bursts ?? []) add(b, 'flash', 0.5); }
+    else if (c.kind === 'droste') { add(at, 'pop', 0.6); add(c.until !== undefined ? c.until - 0.35 : undefined, 'whoosh_up', 0.6); }
+    else if (c.kind === 'handmark') { add(at, 'whoosh_short', 0.5); add(at + 0.5, 'pop', 0.5); }
+    else if (c.kind === 'shape') { add(at, 'whoosh_short', 0.5); add(at + 0.3, 'chime_up', 0.4); }
     else if (c.kind === 'circle') { for (let i = 0; i < (c.peers ?? 6); i++) add((c.popAt ?? at + 0.6) + 0.12 + i * 0.13, 'pop', 0.5); }
   }
   return out.sort((a, b) => a.t - b.t);
