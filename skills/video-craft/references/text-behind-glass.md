@@ -42,13 +42,13 @@
 ```
 - 检查遮挡：`python3 tools/check_text_visible.py <抠像目录> <起始帧> <结束帧> 126 150 954 350`（字块的矩形，视频坐标）。
 
-## 三、抠像怎么出（仅 macOS）
+## 三、抠像怎么出
 | 要抠什么 | 工具 | 速度（这台机器） | 说明 |
 |---|---|---|---|
 | **人** | `tools/mk_matte.py`（`personmatte.swift`，Apple Vision 人像分割） | 75 帧约 1 分钟 | 只抠人，边缘经过「往里收 1px + 羽化」处理 |
 | **任意主体**（人、猫、产品…） | `tools/mk_subject_matte.py`（`subjectlift.swift`，Vision 前景主体） | 5 帧 11 秒（机器正忙），约 2 秒/帧 | 按「前景主体」抠；这一帧没抠到主体就不出文件，合成里就不画字 |
 产出都是 `<输出目录>/<帧号>.webp`（RGBA）。帧号 = 视频里的第几帧，要和 Remotion 的 `useCurrentFrame()` 对得上（底片就是这条视频）。
-**其他平台**：本库没有验证过。理论上任何能出「逐帧 RGBA」的抠像工具（如 rembg、MediaPipe、SAM）都能接上同样的文件格式（RGBA webp、文件名 = 帧号），**但没有试过**，不能保证质量。
+**Windows / Linux**：两个脚本没找到编译好的 Swift 工具就自动改用 rembg（`tools/vision_fallback.py`）：人 = `u2net_human_seg`（约 0.6 秒/帧，CPU），主体 = `isnet-general-use`（约 1.4 秒/帧，偶尔带进杆子之类的杂物）。先 `pip install "rembg[cpu]"`。产出格式一样。边缘比 Mac Vision 粗，抽几帧看；有 NVIDIA 可设 `VC_MATTE_MODEL=birefnet-portrait`（边缘最好，CPU 上一帧要几分钟）。在 Mac 上强制走后备测过，**没在 Windows 实机跑过**。
 
 ## 四、什么时候用 / 别用
 - **用**：开场标题、品牌词、一条片里唯一的大字；人像背景有明暗起伏。

@@ -16,8 +16,8 @@ uvx --from mlx-whisper mlx_whisper "video.mp4" --model mlx-community/whisper-lar
 - 输出 `rec-map.json`：每个切点 `{c, p}`；合成里用 `M(t) = t + Σ(p for c ≤ t)` 把原片时间换算成补停顿后的时间。
 - 补多少：钩子后 0.35、重点词前 0.3–0.45、其余 0.2–0.3，共约 3–4 秒/分钟。
 
-## 3. 抠像（仅 macOS，可选）
-`tools/mk_matte.py <视频> <起始帧> <结束帧> <输出目录>`（先编译 `tools/personmatte.swift`；Swift + Apple Vision `VNGeneratePersonSegmentationRequest`）→ 逐帧 RGBA webp，**只抠要用的那一段**（75 帧约 1 分钟，300 帧约 4 分钟）。
+## 3. 抠像（可选；Windows / Linux 走 rembg，较慢）
+`tools/mk_matte.py <视频> <起始帧> <结束帧> <输出目录>`（先编译 `tools/personmatte.swift`；Swift + Apple Vision `VNGeneratePersonSegmentationRequest`）→ 逐帧 RGBA webp，**只抠要用的那一段**（75 帧约 1 分钟，300 帧约 4 分钟）。没编译 Swift 工具（Windows / Linux）会自动改用 rembg `u2net_human_seg`，每帧约 0.6 秒（CPU），先 `pip install "rembg[cpu]"`。
 
 ## 4. 渲染
 ```bash

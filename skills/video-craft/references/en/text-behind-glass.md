@@ -42,13 +42,13 @@ Layers: **background picture → text → matte PNG (person = opaque, everything
 ```
 - Check the cover: `python3 tools/check_text_visible.py <matte dir> <start frame> <end frame> 126 150 954 350` (the text block's rectangle, video coordinates).
 
-## 3. How to produce the matte (macOS only)
+## 3. How to produce the matte
 | What to cut out | Tool | Speed (on this machine) | Notes |
 |---|---|---|---|
 | **A person** | `tools/mk_matte.py` (`personmatte.swift`, Apple Vision person segmentation) | about 1 minute for 75 frames | cuts out people only; edges get "shrink 1 px + feather" |
 | **Any subject** (person, cat, product…) | `tools/mk_subject_matte.py` (`subjectlift.swift`, Vision foreground subject) | 11 s for 5 frames (machine busy), about 2 s/frame | cuts the "foreground subject"; if no subject is found for a frame no file is written, so the composition draws no text there |
 Both write `<out dir>/<frame number>.webp` (RGBA). The frame number is the frame index in the video and must match Remotion's `useCurrentFrame()` (the base video is this video).
-**Other platforms**: not verified in this library. In principle any tool that produces per-frame RGBA mattes (e.g. rembg, MediaPipe, SAM) can feed the same file format (RGBA webp, filename = frame number), **but this has not been tried**, so quality is not guaranteed.
+**Windows / Linux**: when the compiled Swift tool is missing, both scripts fall back to rembg (`tools/vision_fallback.py`): people = `u2net_human_seg` (about 0.6 s per frame on CPU), any subject = `isnet-general-use` (about 1.4 s per frame; sometimes pulls in stray objects such as poles). First `pip install "rembg[cpu]"`. Same output format. Edges are rougher than Mac Vision, so check a few frames; with an NVIDIA GPU set `VC_MATTE_MODEL=birefnet-portrait` (best edges, minutes per frame on CPU). Tested on a Mac with the fallback forced, **not yet run on a real Windows machine**.
 
 ## 4. When to use / when not to
 - **Use**: opening titles, brand words, the one big word in a video; a portrait background with light/dark variation.

@@ -104,7 +104,7 @@ Put them in `remotion/public/craft/fonts/` (file names in the README there); if 
 | `mlx_whisper` transcription | Apple Silicon only | faster-whisper (CPU / CUDA, slower; **untested**) |
 | MMS_FA forced alignment | cross-platform (pip) | — |
 | DeepFilterNet3 / Demucs | cross-platform, versions pinned; **Windows untested** | — |
-| Transparent-person matting (text behind the person) | **macOS only** (Vision) | RobustVideoMatting / MediaPipe / rembg (**not done**) |
+| Transparent-person matting (text behind the person) | macOS (Vision) | rembg (`tools/vision_fallback.py`, automatic; not yet run on a real Windows machine) |
 | Depth-parallax backgrounds (any image + depth map → real 2.5D) | needs three.js + a depth model; Depth Anything V2 **Large is non-commercial (CC-BY-NC, to be verified)**, Small is Apache | **not moved over** |
 | 2.5D photo parallax (`make_parallax`), the Qimen nine-palace chart, the eight-deities report etc. | tied to Qimen / Ivy content | not moved over |
 | Leftover-filler QA | needs another transcription of the result | use the disf pass of `transcribe.py` by hand |

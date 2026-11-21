@@ -3,10 +3,11 @@
 | 脚本 | 做什么 | 备注 |
 |---|---|---|
 | `build_master.py` | 在句间补停顿（定帧 + 静音），输出底片 + `rec-map.json` | 参数化：`--video --words --pauses --out` |
-| `personmatte.swift` + `mk_matte.py` | 逐帧抠像（仅 macOS，Apple Vision） | 先 `swiftc -O personmatte.swift -o personmatte` |
+| `personmatte.swift` + `mk_matte.py` | 逐帧抠像（macOS：Apple Vision；Windows / Linux：rembg u2net_human_seg） | macOS 先 `swiftc -O personmatte.swift -o personmatte`；其它先 `pip install "rembg[cpu]"` |
 | `register_sfx.py` | 登记你自己的音效 → `sfx-lib.json` | 文件命名 `lg-<id>.mp3`；**只用你有权使用的音效** |
-| `subjectlift.swift` + `mk_subject_matte.py` | 逐帧**主体**抠像（人 / 猫 / 产品…，仅 macOS） | 先 `swiftc -O subjectlift.swift -o subjectlift`；约 2 秒/帧 |
-| `facebox.swift` + `face_track.py` | 每 0.25 秒量一次人脸框（仅 macOS） | 先 `swiftc -O facebox.swift -o facebox` |
+| `subjectlift.swift` + `mk_subject_matte.py` | 逐帧**主体**抠像（人 / 猫 / 产品…；macOS：Vision，Windows / Linux：rembg isnet-general-use） | macOS 先 `swiftc -O subjectlift.swift -o subjectlift`；约 2 秒/帧 |
+| `facebox.swift` + `face_track.py` | 每 0.25 秒量一次人脸框（macOS：Vision；Windows / Linux：MediaPipe） | macOS 先 `swiftc -O facebox.swift -o facebox`；其它先 `pip install mediapipe` |
+| `vision_fallback.py` | 上面三个的 Windows / Linux 后备（MediaPipe 量脸 + rembg 抠像）；Mac 上设 `VC_VISION=fallback` 可强制走后备测试；`VC_MATTE_MODEL` 换抠像模型（有 NVIDIA 可用 `birefnet-portrait`，边缘最好；CPU 上一帧要几分钟） | 自动被调用，不用自己跑 |
 | `place_check.py` | 不遮脸检查：edit.json × 人脸时间线，✗ 的给出头顶上方 / 下巴下面的建议 y，`--fix` 写回 | `python3 place_check.py edit.json face.json [--fix]` |
 | `audio/setup.sh` | 一键装声音流水线依赖（两个独立虚拟环境，装在 `~/.cache/video-craft/`；版本钉死） | 只做过 `--dry-run` 解析，干净机器上的完整安装没验证 |
 | `audio/denoise.py` | 降噪（DeepFilterNet3 全力 / `--atten N`） | 环境杂音才有用；底噪低的近距离收音几乎没差别 |

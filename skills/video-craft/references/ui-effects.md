@@ -22,7 +22,7 @@
 
 注意：`side-doc` / `comment-card` 只画底和面板，要把人像推到右边 / 缩成卡，用 `zoom` / `shiftY` 或 camera 层。
 数字类（glass-chart、compare-tiles）必须是说话人真讲过的数字。
-已自动配音效（autosfx.ts）。还没做：抠像类（换背景、字躲人后需要 matte，仅 macOS）、拖入素材 / 时间轴 / 色板 / 手机框 / 调色滑杆等「界面比喻」第二批。
+已自动配音效（autosfx.ts）。还没做：抠像类（换背景、字躲人后需要 matte，Windows 走 rembg 较慢）、拖入素材 / 时间轴 / 色板 / 手机框 / 调色滑杆等「界面比喻」第二批。
 
 ## 用法要点（实测）
 - 特效默认居中、放胸口带；盖脸时的处理见 SKILL.md §3.2b（`behind` 字在人后、`shiftY`+虚化补边）。

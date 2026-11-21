@@ -16,8 +16,8 @@ Idea: at the "start time of the next word" between sentences, freeze the last fr
 - Output `rec-map.json`: each cut point `{c, p}`; in the composition use `M(t) = t + Σ(p for c ≤ t)` to convert original-video time to time after pause padding.
 - How much to pad: 0.35 after the hook, 0.3–0.45 before key words, 0.2–0.3 elsewhere, about 3–4 seconds per minute in total.
 
-## 3. Matting (macOS only, optional)
-`tools/mk_matte.py <video> <start_frame> <end_frame> <out_dir>` (compile `tools/personmatte.swift` first; Swift + Apple Vision `VNGeneratePersonSegmentationRequest`) → per-frame RGBA webp, **matte only the segment you will use** (75 frames takes about 1 minute, 300 frames about 4 minutes).
+## 3. Matting (optional; Windows / Linux use rembg, slower)
+`tools/mk_matte.py <video> <start_frame> <end_frame> <out_dir>` (compile `tools/personmatte.swift` first; Swift + Apple Vision `VNGeneratePersonSegmentationRequest`) → per-frame RGBA webp, **matte only the segment you will use** (75 frames takes about 1 minute, 300 frames about 4 minutes). Without the compiled Swift tool (Windows / Linux) it falls back to rembg `u2net_human_seg`, about 0.6 s per frame on CPU; first `pip install "rembg[cpu]"`.
 
 ## 4. Render
 ```bash

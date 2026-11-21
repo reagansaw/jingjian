@@ -30,7 +30,7 @@
 |---|---|---|
 | 版式库 / 字幕预设 / 起步项目 / `check` / `place_check` | ✔（作者验证） | 理论上能，**没试过** |
 | 声音流水线 | ✔（Apple Silicon，作者验证） | **没试过**；转写在非 Apple 芯片走 faster-whisper（未验证） |
-| 量脸 `face_track.py`、抠像 `mk_subject_matte.py` / 字在人后 | ✔（用系统自带 Vision） | ✘（需要自己换方案） |
+| 量脸 `face_track.py`、抠像 `mk_matte.py` / `mk_subject_matte.py` / 字在人后 | ✔（用系统自带 Vision） | 自动改用 MediaPipe + rembg（先 `python -m pip install mediapipe "rembg[cpu]"`；抠像较慢、边缘较粗；在 Mac 上测过后备，**没在 Windows 实机跑过**） |
 
 ## 诚实的限制（v0.2.0）
 - **动画手感**：5 个文字动画和一批剪映文字动画是逐帧量过的；**新加的特效和 657 款字幕预设的 84 种动画，是按名字归类后用通用曲线近似的**，方向对、细节不保证和参考一致。出片前自己看一遍动态。
@@ -82,7 +82,7 @@ Then **open a new session** and say: "Use video-craft to edit this talking-head 
 |---|---|---|
 | Layout library / caption presets / starter project / `check` / `place_check` | ✔ (verified by the author) | should work, **not tried** |
 | Sound pipeline | ✔ (Apple Silicon, verified by the author) | **not tried**; transcription falls back to faster-whisper on non-Apple chips (unverified) |
-| Face tracking `face_track.py`, matting `mk_subject_matte.py` / text behind person | ✔ (uses the built-in Vision framework) | ✘ (bring your own solution) |
+| Face tracking `face_track.py`, matting `mk_matte.py` / `mk_subject_matte.py` / text behind person | ✔ (uses the built-in Vision framework) | falls back to MediaPipe + rembg automatically (first `python -m pip install mediapipe "rembg[cpu]"`; slower matting, rougher edges; fallback tested on a Mac, **not yet run on a real Windows machine**) |
 
 ## Honest limits (v0.2.0)
 - **Motion feel**: 5 text motions and a set of JianYing text animations were measured frame by frame; **the newly added effects and the 84 animations of the 657 caption presets are name-based approximations with generic curves** — right direction, details not guaranteed to match the reference. Watch the motion yourself before delivering.

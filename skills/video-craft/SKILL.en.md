@@ -26,7 +26,7 @@ The rules come from: statistics over 70 JianYing/CapCut (剪映) talking-head pr
 2. Platform: Douyin / Reels / Shorts (decides the safe zone; default is the set below).
 3. Is there a script? Yes → use it to proofread typos; no → transcribe first.
 4. Is the face very large (close-up)? Yes → shift the frame up and scale up first, see §3.2.
-5. Can matting be used? Matting only runs on macOS (Apple Vision); if it can't run, don't pick "reporter" (记者出镜).
+5. Can matting be used? macOS uses the built-in Vision; Windows / Linux fall back to rembg (first `python -m pip install mediapipe "rembg[cpu]"`; about 0.6 s per frame for people, 1.4 s for any subject, rougher edges than on a Mac). If it can't be installed, don't pick "reporter" (记者出镜) or text behind the person.
 
 ## 1. Workflow (in order, don't skip)
 > Commands and measured numbers for sound, captions and tightening: `references/en/audio-pipeline.md`; every script is in `tools/audio/`. **The starter project `remotion/` is where the video gets rendered** (see §9).
@@ -61,11 +61,11 @@ The rules come from: statistics over 70 JianYing/CapCut (剪映) talking-head pr
 Shift the whole frame **up 120px and scale it up ≥1.12×** (without scaling, the bottom edge shows), and squeeze the text into the ~370px "chest band" between the chin and y1250. Lay out the layout coordinates starting from y≈1050, and use `<Zone>` to shift the whole thing up 150px.
 ### 3.2b When text would cover the face (what pro editors do)
 **Measure, don't guess**: in close-up talking heads the head often fills y≈0–1000, so the "chest band" is really just below the chin and may not exist.
-0. `python3 tools/face_track.py video face.json` (macOS) measures the face every 0.25 s, then `python3 tools/place_check.py edit.json face.json` marks every positioned effect ✓ / ✗ and suggests a y above the head or below the chin; `--fix` writes it back.
+0. `python3 tools/face_track.py video face.json` (Vision on macOS; MediaPipe automatically on Windows / Linux) measures the face every 0.25 s, then `python3 tools/place_check.py edit.json face.json` marks every positioned effect ✓ / ✗ and suggests a y above the head or below the chin; `--fix` writes it back.
 Try in order:
 1. **Centre the text and keep it in the safe zone (x 60–1010, y 250–1250); never left-align.**
 2. **Tighten the framing while the effect plays** (`reframe`): smoothly lift and slightly enlarge the picture (measured on this footage: `zoom 1.1, shiftY -290`); the top of the head is cropped, the chin rises, ~300 px opens between chin and captions. **Don't zoom out (zoom<1)**: the person becomes a small strip with blur all around (tried, looks bad). The exposed edge is filled by a blurred copy of the same video (`fill:'blur'`).
-3. **Text behind the person** (most depth): first `reframe` down (`zoom 1.0, shiftY +150`) for headroom, then `behind:[{text, at, until, matte, from, to, y, size}]`. Matte first with `mk_subject_matte.py video startFrame endFrame public/matte/x` (macOS only, ~1 s/frame, keep the window ≤3 s); hair may cover a little, the rest stays readable; frames without a matte draw no text.
+3. **Text behind the person** (most depth): first `reframe` down (`zoom 1.0, shiftY +150`) for headroom, then `behind:[{text, at, until, matte, from, to, y, size}]`. Matte first with `mk_subject_matte.py video startFrame endFrame public/matte/x` (~1 s/frame on a Mac, about 0.6–1.4 s/frame with rembg on Windows, keep the window ≤3 s); hair may cover a little, the rest stays readable; frames without a matte draw no text.
 4. If it must cover the face, only for an instant (≤0.3 s, e.g. flash + slam); never let text sit on eyes or mouth.
 Placement need not be dead centre: upper-middle (above the head) or lower-middle (below the chin) are both fine, follow the checker.
 Font: Smiley Sans for big text (theme `sans-orange`; download `SmileySans.otf` yourself into `public/craft/fonts/`, see that README); a missing file falls back to system PingFang.
@@ -108,7 +108,7 @@ Shrink the person to 0.56× and put them in the center, put the giant word above
 | `split-retention` | Hook / talking about "nobody watches to the end": retention-curve card on top + portrait window below |
 | `split-compare` | "Messy vs. aligned": comparison chart on top + portrait window below |
 | `phone-swipe` | Talking about "swiping away": the talking head sits in a phone, which swipes up and away at the key line |
-| `reporter` | Explaining steps: card + matted person standing in front (needs matting, macOS only) |
+| `reporter` | Explaining steps: card + matted person standing in front (needs matting; slower on Windows) |
 **Douyin refined cut · footage types** (cut to whatever footage matches the noun being said; footage is not bundled, pass it in as `broll`):
 | id | When to use |
 |---|---|
@@ -128,7 +128,7 @@ Parameters and scenarios to avoid for each: `references/en/layouts.md`; the full
 | `chapter-tag` | Chapter tag: "01 ▶ title" yellow block + dashed box |
 **Pairing formula** (from statistics over 81–88 layouts, full-parse version; details in `typography-pairing.md`): ① white as the base + **one** accent color (yellow = benefit / red = pain point; 80% of layouts use only 1–2 colors) ② ≤2 fonts: serif bold for the hero word (主角词), sans-serif for the supporting text ③ supporting : hero ≈ 1 : 2, giant text at ≥4× only 1–2 times per video ④ ≤3 lines ⑤ everything inside the safe zone. The four typesetting principles (alignment / contrast / proximity / repetition): one alignment per video; the hero word is obviously the hero; related lines sit close together; parallel content uses the same style.
 
-**Text behind the person / glass text** (`TextBehind` / `GlassWord`): `text-behind` (background → text → matte PNG on top) · `glass-hero` glass text (translucent gradient, the texture behind shows through) · `glass-behind` both together. Three hard rules: glass text **must not be wrapped in an element with transform / opacity / filter** (so not inside `Zone` / `FitBox`); the text must be in the **same camera container** as the video; the background needs light/dark variation. 🔴 **The text must be readable at a glance — the person may cover only a little of it** (8–20% on average, ≤30% at most): make headroom with `Headroom` first, then measure with `tools/check_text_visible.py`; frames without a matte draw no text. Matting is macOS only (`tools/mk_matte.py` for people, `tools/mk_subject_matte.py` for any subject).
+**Text behind the person / glass text** (`TextBehind` / `GlassWord`): `text-behind` (background → text → matte PNG on top) · `glass-hero` glass text (translucent gradient, the texture behind shows through) · `glass-behind` both together. Three hard rules: glass text **must not be wrapped in an element with transform / opacity / filter** (so not inside `Zone` / `FitBox`); the text must be in the **same camera container** as the video; the background needs light/dark variation. 🔴 **The text must be readable at a glance — the person may cover only a little of it** (8–20% on average, ≤30% at most): make headroom with `Headroom` first, then measure with `tools/check_text_visible.py`; frames without a matte draw no text. Matting is Vision on a Mac, rembg automatically on Windows / Linux (`tools/mk_matte.py` for people, `tools/mk_subject_matte.py` for any subject).
 
 **Emotion words** (one word carries one emotion, `EmotionWord`): `emo-cry` crying (red fills from the bottom) · `emo-surprise` surprised (two characters bob out of phase) · `emo-joy` joy (pulsing radiating light) · `emo-shout` shout (outward tilt + echo). 1–2 per video; put them in the chest band (the original pack puts them above the head; there is no room in this library's framing). ⚠ Only the **text** part is built; the pack's tears / "真香" glow-and-wings are JianYing **face effects** and are not built.
 
@@ -173,7 +173,7 @@ All 57 ids and their semantics: `references/en/sfx-pairing.md`.
 ## 8. Known limitations (don't pretend they don't exist)
 - **No automatic out-of-bounds detection**: it relies on `Txt/FitBox` measuring width at render time → shrinking → pushing back, plus eyeballing the red box. Character-by-character typed text and nested text can still be off by a few pixels.
 - **The feel of the motion can only be judged by a human**: a still check can't tell the force of a text slam or the timing of a fade-out.
-- **Matting is macOS only** (Apple Vision).
+- **Matting / face tracking**: macOS uses Apple Vision (verified by the author); Windows / Linux fall back to MediaPipe for faces + rembg for mattes (`tools/vision_fallback.py`; tested on a Mac with the fallback forced, **not yet run on a real Windows machine**). The fallback face tracker misses small faces in full-body wide shots; the fallback subject matte sometimes pulls in stray objects such as poles, so check a few frames.
 - **Sound effects / BGM are not bundled** (copyright).
 - **Text pairing / animation not finished**: white-background small-block list, white-border matted sticker, viewfinder / REC / scan lines, scattered / diagonal staggered layout, the face-effect part of emotion words, chat-bubble CTA, pinyin annotation; particle-type / 3D-type / light-effect transition animations, exit animations, looping animations (see the "not built yet" section of the two references).
 - Animations were verified only on **still frames (mid-motion moments)**; the speed curve was not checked frame by frame; the animation scale factors are estimated from frames.

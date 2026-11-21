@@ -104,7 +104,7 @@ python3 tools/audio/qa.py         final.mp4                # 5 质检（响度 +
 | `mlx_whisper` 转写 | 仅 Apple Silicon | faster-whisper（CPU / CUDA，较慢；**没测过**） |
 | MMS_FA 强制对齐 | 跨平台（pip） | — |
 | DeepFilterNet3 / Demucs | 跨平台，版本要钉；**Windows 没测** | — |
-| 透明人像抠像（字在人后） | **macOS only**（Vision） | RobustVideoMatting / MediaPipe / rembg（**没做过**） |
+| 透明人像抠像（字在人后） | macOS（Vision） | rembg（`tools/vision_fallback.py`，自动；Windows 实机没跑过） |
 | 深度视差背景（给任意图 + 深度图 → 真 2.5D） | 要 three.js + 深度模型；Depth Anything V2 **Large 是非商用授权（CC-BY-NC，需核实）**，Small 是 Apache | **没搬进来** |
 | 2.5D 照片视差（`make_parallax`）、国风九宫盘、八神报告等 | 绑定奇门 / Ivy 内容 | 没搬 |
 | 残留口头禅质检 | 要再转写一次成片找 | 手动用 `transcribe.py` 的 disf 那遍 |

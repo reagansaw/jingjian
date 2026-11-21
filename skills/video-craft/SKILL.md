@@ -24,7 +24,7 @@ description: 把真人口播竖屏短视频剪出「网感」——用 Remotion 
 2. 平台：抖音 / Reels / Shorts（决定安全区，默认按下面这组）。
 3. 有没有稿？有 → 用来校对错字；没有 → 先转写。
 4. 脸是不是很大（特写）？是 → 画面要先上移+放大，见 §3.2。
-5. 能不能用抠像？抠像只有 macOS（Apple Vision）能跑；不能就别选「记者出镜」。
+5. 能不能用抠像？macOS 用系统 Vision；Windows / Linux 走 rembg（要先 `python -m pip install mediapipe "rembg[cpu]"`，抠人每帧约 0.6 秒、主体约 1.4 秒，边缘比 Mac 粗）。装不了就别选「记者出镜」和字在人后。
 
 ## 1. 工作流（按顺序，别跳）
 > 声音、字幕、精剪的命令和实测数字：`references/audio-pipeline.md`；每个脚本都在 `tools/audio/`。**起步项目 `remotion/` 才是出片的地方**（见 §9）。
@@ -59,11 +59,11 @@ description: 把真人口播竖屏短视频剪出「网感」——用 Remotion 
 整个画面**上移 120px 并放大 ≥1.12 倍**（不放大底边会露），文字压进下巴到 y1250 之间那 ~370px 的「胸口带」。版式坐标按 y≈1050 起排，用 `<Zone>` 整体上移 150px。
 ### 3.2b 字会盖到脸时（高级剪辑师的做法）
 **先量，别猜**：特写口播的头常常占 y≈0–1000，「胸口带」其实在下巴下面，不一定有位置。
-0. `python3 tools/face_track.py 视频 face.json`（macOS）量出每 0.25 秒的人脸，再 `python3 tools/place_check.py edit.json face.json`：每个带位置的特效会标 ✓ / ✗，✗ 的给出「头顶上方 / 下巴下面」的建议 y，`--fix` 直接写回。
+0. `python3 tools/face_track.py 视频 face.json`（macOS 用 Vision；Windows / Linux 自动改用 MediaPipe）量出每 0.25 秒的人脸，再 `python3 tools/place_check.py edit.json face.json`：每个带位置的特效会标 ✓ / ✗，✗ 的给出「头顶上方 / 下巴下面」的建议 y，`--fix` 直接写回。
 按顺序试：
 1. **字居中、放安全区（x 60–1010，y 250–1250），不要左对齐。**
 2. **特效出现时「收紧构图」**（`reframe`）：窗口内平滑把画面上提并略放大（实测这条素材：`zoom 1.1, shiftY -290`），头顶被裁掉一点、下巴上移，下巴到字幕之间腾出 ~300px 放字。**别用缩小（zoom<1）**：人会变成中间一条小窄条，周围全是虚化，不好看（试过）。下方露出的边自动用虚化的同一支视频补（`fill:'blur'`）。
-3. **字躲到人后面**（最有层次）：先 `reframe` 下移（`zoom 1.0, shiftY +150`）给头顶腾空位，再用 `behind:[{text, at, until, matte, from, to, y, size}]`。抠像先 `mk_subject_matte.py 视频 起帧 止帧 public/matte/x`（仅 macOS，约 1 秒 / 帧，窗口 ≤3 秒）；字被头发盖住一点、其余仍读得出；没有抠像的帧不画字。
+3. **字躲到人后面**（最有层次）：先 `reframe` 下移（`zoom 1.0, shiftY +150`）给头顶腾空位，再用 `behind:[{text, at, until, matte, from, to, y, size}]`。抠像先 `mk_subject_matte.py 视频 起帧 止帧 public/matte/x`（Mac 约 1 秒 / 帧、Windows 走 rembg 约 0.6–1.4 秒 / 帧，窗口 ≤3 秒）；字被头发盖住一点、其余仍读得出；没有抠像的帧不画字。
 4. 实在要盖脸：只盖**一瞬间**（≤0.3 秒，如白闪 + 砸字），别让字停在眼睛、嘴上。
 位置不一定正中：中上（头顶上方）、中下（下巴下面）都行，以检查结果为准。
 字体：大字推荐得意黑（主题 `sans-orange`，需自己下载 `SmileySans.otf` 放 `public/craft/fonts/`，见该目录 README）；缺文件会退到系统苹方。
@@ -106,7 +106,7 @@ description: 把真人口播竖屏短视频剪出「网感」——用 Remotion 
 | `split-retention` | 钩子 / 讲「没人看完」：上留存曲线卡 + 下人像窗 |
 | `split-compare` | 「乱 vs 齐」：上对比图 + 下人像窗 |
 | `phone-swipe` | 讲「划走」：手机放口播，说到关键句往上划走 |
-| `reporter` | 讲步骤：卡片 + 抠像站前面（需要抠像，仅 macOS） |
+| `reporter` | 讲步骤：卡片 + 抠像站前面（需要抠像；Windows 较慢） |
 **抖音精剪 · 素材类**（讲到什么名词就切什么素材；素材不附带，作为 `broll` 传入）：
 | id | 什么时候用 |
 |---|---|
@@ -126,7 +126,7 @@ description: 把真人口播竖屏短视频剪出「网感」——用 Remotion 
 | `chapter-tag` | 章节标签：「01 ▶ 标题」黄色块 + 虚线框 |
 **搭配公式**（来自 81–88 个版式的统计，完整解析版，细节见 `typography-pairing.md`）：①白色打底 + **一种**强调色（黄 = 利益 / 红 = 痛点；80% 的版式只用 1–2 种颜色）②字体 ≤2 种：主角衬线粗体、配角无衬线 ③配角 : 主角 ≈ 1 : 2，≥4× 的巨字全片 1–2 个 ④≤3 行 ⑤全部压进安全区。排版四原则（对齐 / 对比 / 亲密 / 重复）：一支片一种对齐；主角词一眼是主角；相关的行靠近；并列内容用同一个样式。
 
-**字在人后 / 玻璃字**（`TextBehind` / `GlassWord`）：`text-behind` 字在人后（背景 → 字 → 抠像 PNG 盖在最上面）· `glass-hero` 玻璃字（半透明渐层，背后纹理透进字里）· `glass-behind` 两者结合。三条硬规则：玻璃字**不能被带 transform / opacity / filter 的外层包住**（不能放进 `Zone` / `FitBox`）；字要和视频在**同一个镜头容器**里；背景要有明暗起伏。🔴 **字必须一眼看得清，人只能遮住一点点**（平均 8–20%、最多 ≤30%）：先用 `Headroom` 给字腾出头顶空间，再用 `tools/check_text_visible.py` 量；没抠像的帧不画字。抠像仅 macOS（`tools/mk_matte.py` 抠人、`tools/mk_subject_matte.py` 抠任意主体）。
+**字在人后 / 玻璃字**（`TextBehind` / `GlassWord`）：`text-behind` 字在人后（背景 → 字 → 抠像 PNG 盖在最上面）· `glass-hero` 玻璃字（半透明渐层，背后纹理透进字里）· `glass-behind` 两者结合。三条硬规则：玻璃字**不能被带 transform / opacity / filter 的外层包住**（不能放进 `Zone` / `FitBox`）；字要和视频在**同一个镜头容器**里；背景要有明暗起伏。🔴 **字必须一眼看得清，人只能遮住一点点**（平均 8–20%、最多 ≤30%）：先用 `Headroom` 给字腾出头顶空间，再用 `tools/check_text_visible.py` 量；没抠像的帧不画字。抠像Mac 用 Vision、Windows / Linux 自动走 rembg（`tools/mk_matte.py` 抠人、`tools/mk_subject_matte.py` 抠任意主体）。
 
 **情绪字**（一个词就是一个情绪，`EmotionWord`）：`emo-cry` 哭泣（红色从下往上灌满）· `emo-surprise` 惊讶（两字一上一下摆动）· `emo-joy` 开心（放射光芒脉动）· `emo-shout` 喊话（向外倾斜 + 回声）。全片 1–2 次；放胸口带（原包放人头上方，本库的画面里没有空间）。⚠ 只做了**文字**；原包的眼泪 / 真香光晕翅膀是剪映的**人脸特效**，没有做。
 
@@ -171,7 +171,7 @@ description: 把真人口播竖屏短视频剪出「网感」——用 Remotion 
 ## 8. 已知限制（别假装没有）
 - **没有自动越界检测**：靠 `Txt/FitBox` 渲染时量宽→缩小→推回 + 红框目视。逐字打出和嵌套文字仍可能差几像素。
 - **动态手感只能人看**：静帧检查不出砸字力度、淡出时机。
-- **抠像仅 macOS**（Apple Vision）。
+- **抠像 / 量脸**：macOS 用 Apple Vision（作者验证）；Windows / Linux 自动改用 MediaPipe 量脸 + rembg 抠像（`tools/vision_fallback.py`，在 Mac 上强制走后备测过，**没在 Windows 实机跑过**）。后备量脸会漏全身远景的小脸；后备主体抠像偶尔带进杆子之类的杂物，抽几帧看。
 - **音效/BGM 不附带**（版权）。
 - **字搭配 / 动画还没做完**：白底小块列表、白边抠像贴纸、取景框 / REC / 扫描线、散布错落、情绪字的人脸特效类、聊天气泡 CTA、拼音标注；粒子类 / 3D 类 / 光效转场动画、出场动画、循环动画（见两份 reference 的「还没做」）。
 - 动画只验证了**静帧（动到一半的时刻）**，没有逐帧核对速度曲线；动画倍数是从帧里估的。
