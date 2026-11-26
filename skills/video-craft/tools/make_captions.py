@@ -65,7 +65,7 @@ def align(text, asr):
 def split_clause(chars, mx):
     """一个分句 → 若干行，每行宽度 ≤ mx。只在「词边界」断行（有 jieba 用分词；没有就每个字后面都可以断，但不在英文单词 / 数字中间断），
     用动态规划让各行长度尽量均匀。"""
-    ws = [width(c[0]) for c in chars]; total = sum(ws)
+    ws = [width(c[0]) + (0.3 if k and c[1] > chars[k - 1][1] + 1 else 0) for k, c in enumerate(chars)]; total = sum(ws)   # 前面有空格的字多算 0.3（和 check 的算法一致）
     if total <= mx: return [chars]
     n = int(-(-total // mx)); target = total / n
     txt = "".join(c[0] for c in chars)
@@ -77,6 +77,11 @@ def split_clause(chars, mx):
     else:
         for k in range(1, len(chars)):
             if not (re.match(r"[A-Za-z0-9%]", txt[k - 1]) and re.match(r"[A-Za-z0-9%]", txt[k])): cut.add(k)
+    # 英文 / 马来文 / 数字：原文里两个字母紧挨着（中间没有空格）就是同一个词，不能在中间断（jieba 对去掉空格的英文会乱切）
+    def latin(ch): return re.match(r"[A-Za-z0-9%'’]", ch) is not None
+    cut = {k for k in cut if k in (0, len(chars)) or not (latin(chars[k - 1][0]) and latin(chars[k][0]) and chars[k][1] == chars[k - 1][1] + 1)}
+    for k in range(1, len(chars)):                               # 有空格的地方一定可以断
+        if chars[k][1] > chars[k - 1][1] + 1: cut.add(k)
     cut = sorted(cut)
     def w(a, b): return sum(ws[a:b])
     INF = float("inf"); best = {0: (0.0, [0])}
